@@ -34,8 +34,6 @@ static AVAudioPlayer *thePlayer;
     image2.frame = CGRectMake(self.view.frame.size.width*.5f, 0, self.view.frame.size.width*.5f, self.view.frame.size.height);
     image2.transform = CGAffineTransformMakeScale(-1.0, 1.0);
     [black addSubview:image2];
-    //
-    //[[NetSocket getInstance] connect:@"127.0.0.1" port:9555];
     //按钮
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     btn.frame = CGRectMake(0, 0, 100, 100);
@@ -62,8 +60,10 @@ static AVAudioPlayer *thePlayer;
     //TableView
     MoreTableView *table = [[MoreTableView alloc] initWithNull];
     [self.view addSubview:table];
-    //
+    //播放声音
     thePlayer = [Sound playSoundEffect:@"/Users/MikeRiy/Desktop/newdali.mp3"];
+    //连接服务器
+    [[NetSocket getInstance] connect:@"127.0.0.1" port:9555];
 }
 
 
