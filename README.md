@@ -1,6 +1,8 @@
 # Glimmer
 objective-c iOS project
 
+//IOS懒人代码
+http://www.lanrenios.com
 
 －－播放声音－－－－－－－－－－－－－
 #import <AVFoundation/AVFoundation.h>
