@@ -2,7 +2,7 @@
 objective-c iOS project
 
 
--------------播放声音-------------
+－－播放声音－－－－－－－－－－－－－
 #import <AVFoundation/AVFoundation.h>
 
 -(void)playSound:(SystemSoundID)soundId
@@ -20,4 +20,4 @@ objective-c iOS project
     return soundId;
 }
 
-----------------------------------
+－－－－－－－－－－－－－－－－－－－
