@@ -22,6 +22,7 @@
 		20B531111BE2514B001956A6 /* NetTcp.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B5310E1BE2514B001956A6 /* NetTcp.m */; };
 		20B531141BE2515A001956A6 /* ActionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B531131BE2515A001956A6 /* ActionUtils.m */; };
 		20B531161BE2517E001956A6 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B531151BE2517E001956A6 /* CocoaAsyncSocket.framework */; };
+		20F056331BE2525D004727D8 /* DrawUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F056321BE2525D004727D8 /* DrawUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		20B531121BE2515A001956A6 /* ActionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionUtils.h; sourceTree = "<group>"; };
 		20B531131BE2515A001956A6 /* ActionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionUtils.m; sourceTree = "<group>"; };
 		20B531151BE2517E001956A6 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaAsyncSocket.framework; sourceTree = "<group>"; };
+		20F056311BE2525D004727D8 /* DrawUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawUtils.h; sourceTree = "<group>"; };
+		20F056321BE2525D004727D8 /* DrawUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,22 +124,11 @@
 		20B530CF1BE24F75001956A6 /* Glimmer */ = {
 			isa = PBXGroup;
 			children = (
-				20B531151BE2517E001956A6 /* CocoaAsyncSocket.framework */,
+				20F056341BE25296004727D8 /* app */,
+				20F0562D1BE25211004727D8 /* src */,
+				20F0562C1BE25208004727D8 /* libs */,
 				20B530D31BE24F75001956A6 /* AppDelegate.h */,
 				20B530D41BE24F75001956A6 /* AppDelegate.m */,
-				20B530D61BE24F75001956A6 /* GameScene.h */,
-				20B530D71BE24F75001956A6 /* GameScene.m */,
-				20B530D91BE24F75001956A6 /* GameScene.sks */,
-				20B531121BE2515A001956A6 /* ActionUtils.h */,
-				20B531131BE2515A001956A6 /* ActionUtils.m */,
-				20B531091BE2514B001956A6 /* MoreTableView.h */,
-				20B5310A1BE2514B001956A6 /* MoreTableView.m */,
-				20B5310B1BE2514B001956A6 /* NetSocket.h */,
-				20B5310C1BE2514B001956A6 /* NetSocket.m */,
-				20B5310D1BE2514B001956A6 /* NetTcp.h */,
-				20B5310E1BE2514B001956A6 /* NetTcp.m */,
-				20B530DB1BE24F75001956A6 /* GameViewController.h */,
-				20B530DC1BE24F75001956A6 /* GameViewController.m */,
 				20B530DE1BE24F75001956A6 /* Main.storyboard */,
 				20B530E11BE24F75001956A6 /* Assets.xcassets */,
 				20B530E31BE24F75001956A6 /* LaunchScreen.storyboard */,
@@ -170,6 +162,75 @@
 				20B530FC1BE24F76001956A6 /* Info.plist */,
 			);
 			path = GlimmerUITests;
+			sourceTree = "<group>";
+		};
+		20F0562C1BE25208004727D8 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				20B531151BE2517E001956A6 /* CocoaAsyncSocket.framework */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		20F0562D1BE25211004727D8 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				20F0562E1BE25221004727D8 /* sdk */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		20F0562E1BE25221004727D8 /* sdk */ = {
+			isa = PBXGroup;
+			children = (
+				20F056301BE25238004727D8 /* utils */,
+				20F0562F1BE25228004727D8 /* net */,
+			);
+			name = sdk;
+			sourceTree = "<group>";
+		};
+		20F0562F1BE25228004727D8 /* net */ = {
+			isa = PBXGroup;
+			children = (
+				20B5310B1BE2514B001956A6 /* NetSocket.h */,
+				20B5310C1BE2514B001956A6 /* NetSocket.m */,
+				20B5310D1BE2514B001956A6 /* NetTcp.h */,
+				20B5310E1BE2514B001956A6 /* NetTcp.m */,
+			);
+			name = net;
+			sourceTree = "<group>";
+		};
+		20F056301BE25238004727D8 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				20B531091BE2514B001956A6 /* MoreTableView.h */,
+				20B5310A1BE2514B001956A6 /* MoreTableView.m */,
+				20B531121BE2515A001956A6 /* ActionUtils.h */,
+				20F056311BE2525D004727D8 /* DrawUtils.h */,
+				20F056321BE2525D004727D8 /* DrawUtils.m */,
+				20B531131BE2515A001956A6 /* ActionUtils.m */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
+		20F056341BE25296004727D8 /* app */ = {
+			isa = PBXGroup;
+			children = (
+				20B530DB1BE24F75001956A6 /* GameViewController.h */,
+				20B530DC1BE24F75001956A6 /* GameViewController.m */,
+				20F056351BE2529A004727D8 /* scenes */,
+			);
+			name = app;
+			sourceTree = "<group>";
+		};
+		20F056351BE2529A004727D8 /* scenes */ = {
+			isa = PBXGroup;
+			children = (
+				20B530D61BE24F75001956A6 /* GameScene.h */,
+				20B530D71BE24F75001956A6 /* GameScene.m */,
+				20B530D91BE24F75001956A6 /* GameScene.sks */,
+			);
+			name = scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +371,7 @@
 				20B530D81BE24F75001956A6 /* GameScene.m in Sources */,
 				20B531111BE2514B001956A6 /* NetTcp.m in Sources */,
 				20B530D21BE24F75001956A6 /* main.m in Sources */,
+				20F056331BE2525D004727D8 /* DrawUtils.m in Sources */,
 				20B531141BE2515A001956A6 /* ActionUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
