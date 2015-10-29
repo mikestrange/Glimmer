@@ -7,20 +7,21 @@
 //
 
 #import "GameScene.h"
-#import "NetTcp.h"
 #import "NetSocket.h"
 #import "ActionUtils.h"
 #import "DrawUtils.h"
 #import "MoreTableView.h"
+#import "Sound.h"
+#import <AVFoundation/AVFoundation.h>
+
+
+static AVAudioPlayer *thePlayer;
 
 @implementation GameScene
 
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
-    NSLog(@"屏幕大小：width = %i , height = %i", (int)self.view.frame.size.width, (int)self.view.frame.size.height);
-    
-    NSLog(@"应用程序的路径：%@",[[NSBundle mainBundle] resourcePath]);
     UIView *black = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     [self.view addSubview:black];
     UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"match_bg.jpg"]];
@@ -34,8 +35,7 @@
     image2.transform = CGAffineTransformMakeScale(-1.0, 1.0);
     [black addSubview:image2];
     //
-    [NetTcp getSocket];
-    [NetSocket getSocket];
+    //[[NetSocket getInstance] connect:@"127.0.0.1" port:9555];
     //按钮
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     btn.frame = CGRectMake(0, 0, 100, 100);
@@ -62,9 +62,12 @@
     //TableView
     MoreTableView *table = [[MoreTableView alloc] initWithNull];
     [self.view addSubview:table];
+    //
+    thePlayer = [Sound playSoundEffect:@"/Users/MikeRiy/Desktop/newdali.mp3"];
 }
 
-//执行动画
+
+//执行动画 
 -(void)clickCategory:(UIGestureRecognizer *)gestureRecognizer
 {
     UIButton *target = (UIButton*)[self.view viewWithTag:1];

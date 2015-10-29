@@ -2,13 +2,16 @@
 //  NetSocket.m
 //  MyGame
 //
-//  Created by Mac_Tech on 15/10/27.
-//  Copyright © 2015年 Mac_Tech. All rights reserved.
+//  Created by MikeRiy on 15/10/26.
+//  Copyright © 2015年 MikeRiy. All rights reserved.
 //
 
 #import "NetSocket.h"
+#import <CocoaAsyncSocket/CocoaAsyncSocket.h>
 
-static NetSocket* _socket = nil;
+static NetSocket* _instance = NULL;
+static NSTimeInterval _TIME_ = 60*1000;     //超时时间
+static long SOCKET_OPPTER_TAG = -1;        //一个标记
 
 enum{
     SocketOfflineByServer,// 服务器掉线，默认为0
@@ -16,81 +19,113 @@ enum{
 };
 
 @implementation NetSocket
+//
+@synthesize socket = _socket;
 
-@synthesize a_socket = _a_socket;
-
-+(NetSocket*)getSocket
+//static
++(NetSocket*)getInstance
 {
-    if(nil==_socket){
-        _socket = [[NetSocket alloc] init];
-       [_socket link];
+    if(_instance == NULL)
+    {
+        _instance = [[NetSocket alloc] init];
     }
-    return _socket;
+    return _instance;
 }
 
-- (void)onSocket:(AsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port
+//连接
+-(void)connect:(NSString*)host port:(UInt16)port
 {
-    NSLog(@"did connect to host");
-}
-
-- (void)onSocket:(AsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
-{
-    NSLog(@"did read data");
-    NSInteger len = data.length;
-    uint8_t *t = (uint8_t*)data.bytes;
-    [self loginResult:t length:len];
-}
-
--(void)loginResult:(uint8_t*)byte length:(NSInteger)len
-{
-    NSLog(@"begin");
-    int all_len = (int)len;
-    int point = 4+4+2+1+2;//[len+cmd+type+bool+str_len]
-    char* t = malloc(all_len - point);
-    int index = 0;
-    for(int i = point ; i< all_len; i++){
-        t[index++] = byte[i];
-        NSLog(@"%i %c", index, byte[i]);
+    if(!_socket){
+        _socket = [[AsyncSocket alloc] initWithDelegate:self userData:SocketOfflineByServer];
     }
-    NSString *str=[NSString stringWithFormat:@"%s", t];
-    NSLog(@"l = %@", str);
-    NSLog(@"end");
-    free(t);
+    if(![self isConnected])
+    {
+        _socket.userData = SocketOfflineByServer;
+        [_socket connectToHost:host onPort:port error:nil];
+        [_socket readDataWithTimeout:_TIME_ tag:SOCKET_OPPTER_TAG];
+    }
 }
 
+-(BOOL)isConnected
+{
+    if(_socket && [_socket isConnected]) return YES;
+    return NO;
+}
+
+// 切断socket
+-(void)close
+{
+    if([self isConnected])
+    {
+        _socket.userData = SocketOfflineByUser;// 声明是由用户主动切断
+        [_socket disconnect];
+    }
+}
+
+-(void)flush:(char*)bytes length:(NSUInteger)len
+{
+    if([self isConnected])
+    {
+        NSData* data = [NSData dataWithBytes:bytes length:len];
+        [_socket writeData:data withTimeout:_TIME_ tag:SOCKET_OPPTER_TAG];
+    }
+}
+
+//delegate------
+
+#pragma mark  - 重连断开socket连接
 -(void)onSocketDidDisconnect:(AsyncSocket *)sock
 {
     NSLog(@"sorry the connect is failure %ld",sock.userData);
     if (sock.userData == SocketOfflineByServer) {
         // 服务器掉线，重连
-        //[self socketConnectHost];
+        NSLog(@"服务器掉线，重连");
     }else if (sock.userData == SocketOfflineByUser) {
         // 如果由用户断开，不进行重连
+        NSLog(@"如果由用户断开，不进行重连");
     }
 }
 
--(void)onSocket:(AsyncSocket *)sock willDisconnectWithError:(NSError *)err
+#pragma mark  - 连接成功回调
+- (void)onSocket:(AsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port
 {
-    NSLog(@"willDisconnectWithError");
+    NSLog(@"did connect to host");
+    //test
+    [NSTimer scheduledTimerWithTimeInterval:1
+                                     target:self
+                                   selector:@selector(handleTimer)
+                                   userInfo:nil
+                                    repeats:YES];
 }
 
--(void)link
+// 每隔1秒会触发这个方法
+- (void)handleTimer
 {
-    _a_socket=[[AsyncSocket alloc] initWithDelegate:self];
-    [_a_socket connectToHost:@"192.168.1.27" onPort:9555 error:nil];
-    //
-    int len = 4+2;
-    char *t = malloc(len);
-    t[0] = 0;
-    t[1] = 0;
-    t[2] = 0;
-    t[3] = 2;
-    t[4] = 125;
-    t[5] = 125;
-    NSData * data = [NSData dataWithBytes:t length:len];
-    [_a_socket writeData:data withTimeout:1 tag:1];
-    [_a_socket readDataWithTimeout:3 tag:1];
-    //w[socket writeData:[@"GET / HTTP/1.1nn" dataUsingEncoding:NSUTF8StringEncoding] withTimeout:3 tag:1];
+    char* t = malloc(6);
+    t[0]=0;
+    t[1]=0;
+    t[2]=0;
+    t[3]=2;
+    t[4]=123;
+    t[5]=124;
+    [self flush:t length:6];
+    free(t);
+}
+
+- (void)onSocket:(AsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
+{
+    [_socket readDataWithTimeout:_TIME_ tag:SOCKET_OPPTER_TAG];
+    //-----reading---------
+    NSLog(@"did read data");
+    int length = (int)data.length;
+    char *byte = (char*)data.bytes;
+    int position = 4+4+2+1+2;
+    char *t = malloc(length-position);
+    int index = 0;
+    for(int i = position;i<length;i++){
+        t[index++] = byte[i];
+    }
+    NSLog(@"%s",t);
 }
 
 @end
