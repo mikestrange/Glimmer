@@ -8,19 +8,161 @@
 
 #import "Sound.h"
 
+static const NSInteger FOREVER = -1;
+static const NSInteger ONCE = 0;
+static const NSInteger DEF_VOLUME = 1;
+static SoundManager* _instance = nil;
 
-@implementation Sound
+@implementation SoundManager
 
-+(AVAudioPlayer*)playSoundEffect:(NSString*)path
+-(instancetype)init
+{
+    if(self = [super init]){
+        if(!_soundList){
+            _soundList = [[NSMutableArray alloc] init];
+        };
+    }
+    return self;
+}
+
++(SoundManager*)getInstance
+{
+    if(nil == _instance){
+        _instance = [[SoundManager alloc] init];
+    }
+    return _instance;
+}
+
+-(void)playSoundForever:(NSString*)path
+{
+    [self playSound:path times:FOREVER];
+}
+
+-(void)playSoundOnce:(NSString*)path
+{
+    [self playSound:path times:ONCE];
+}
+
+-(void)playSoundSole:(NSString*)path forever:(BOOL)value
+{
+    [self stopSoundByPath:path sole:NO];
+    if(value){
+        [self playSoundForever:path];
+    }else{
+        [self playSoundOnce:path];
+    }
+}
+
+-(void)playSound:(NSString*)path times:(NSInteger)value
+{
+    AVAudioPlayer* player = [SoundManager createAudioPlayer:path times:value];
+    player.delegate = self;
+    //添加到队列中
+    NSLog(@"play sound with path:%@",path);
+    [_soundList addObject:[[SoundData alloc] initWithPath:path sound:player]];
+}
+
+//存在某个声音
+-(BOOL)hasSound:(NSString*)path
+{
+    for(SoundData *data in _soundList)
+    {
+        if([data match:path]) return YES;
+    }
+    return NO;
+}
+
+//关闭一个名字的声音 sole＝true单独删除 =false集体删除
+-(void)stopSoundByPath:(NSString*)path sole:(BOOL)value
+{
+    for(SoundData *data in _soundList){
+        if([data match:path]){
+            [data stop];
+            [_soundList removeObject:data];
+            NSLog(@"remove sound with path:%@",path);
+            if(value) break;
+        }
+    }
+}
+
+//代理方法
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+{
+    SoundData* data = [self stopSoundByAudio:player];
+    NSLog(@"complete sound:%@(remove)",[data getPlayerName]);
+}
+
+- (void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer *)player error:(NSError * __nullable)error
+{
+    SoundData* data = [self stopSoundByAudio:player];
+    NSLog(@"error sound:%@(remove) error:%@", [data getPlayerName], error);
+}
+
+-(SoundData*)stopSoundByAudio:(AVAudioPlayer*)player
+{
+    SoundData* data = nil;
+    for(data in _soundList){
+        if([data matchAudio:player]){
+            [_soundList removeObject:data];
+            return data;
+        }
+    }
+    return nil;
+}
+
+
+//----------static--------------建立一个本地声音
++(AVAudioPlayer*)createAudioPlayer:(NSString*)path times:(NSInteger)value
 {
     //@"/Users/MikeRiy/Desktop/newdali.mp3"
     NSURL *url = [[NSURL alloc] initWithString:path];
     AVAudioPlayer* thePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
-    thePlayer.numberOfLoops = 1;
+    thePlayer.numberOfLoops = value;
     [thePlayer prepareToPlay];
-    [thePlayer setVolume:1];
+    [thePlayer setVolume:DEF_VOLUME];
     [thePlayer play];
     return thePlayer;
+}
+
+@end
+
+//-----data--------
+@implementation SoundData
+
+-(instancetype)initWithPath:(NSString*)name sound:(AVAudioPlayer*)player
+{
+    if(self=[super init])
+    {
+        _name = name;
+        _player = player;
+    }
+    return self;
+}
+
+-(BOOL)match:(NSString*)name
+{
+    return _name == name;
+}
+
+-(BOOL)matchAudio:(AVAudioPlayer*)player
+{
+    return _player == player;
+}
+
+-(void)stop
+{
+    [_player stop];
+}
+
+-(NSString*)getPlayerName
+{
+    return _name;
+}
+
+-(void)dealloc
+{
+    _name = nil;
+    _player = nil;
 }
 
 @end

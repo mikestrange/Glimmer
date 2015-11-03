@@ -22,7 +22,7 @@
 
 -(void)showTableView
 {
-    self.frame = CGRectMake(0, 0, 1000, 800);
+    self.frame = CGRectMake(0, 0, 300, 500);
     //
     UITableView *_tableView = [[UITableView alloc] initWithFrame:(CGRect){0,0,300,500}];
     //_tableView.rowHeight = 50;
@@ -72,14 +72,14 @@
         //UITableViewCellStyleValue2,        标题和子标题
         //UITableViewCellStyleSubtitle       显示图片，标题和子标题（子标题在下边）
     }
-    // 指向其中一行
-    //    cell.textLabel.text = [self.listArray objectAtIndex:indexPath.row];//设置cell的标题
-    cell.textLabel.textColor = [UIColor redColor];//设置标题字体颜色
-    cell.textLabel.font = [UIFont fontWithName:@"大宋" size:18];//设置标题字体大小
-    UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkbox_selected.png"]];
-    [cell addSubview:image];
-    NSLog(@"ss");
-    //cell.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"black.png"]];//设置cell的图片
+    //设置标题字体颜色
+    NSString* str = [[NSString alloc] initWithFormat:@"一个测试的: %i",(int)indexPath.section];
+    cell.textLabel.text = str;
+    cell.textLabel.textColor = [UIColor redColor];
+    //设置标题字体大小
+    cell.textLabel.font = [UIFont fontWithName:@"大宋" size:18];
+    [cell.imageView setImage:[UIImage imageNamed:@"checkbox_selected.png"]];
+    
     return cell;
 }
 

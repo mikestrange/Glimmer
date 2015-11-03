@@ -12,10 +12,9 @@
 #import "DrawUtils.h"
 #import "MoreTableView.h"
 #import "Sound.h"
+#import "TickUtils.h"
 #import <AVFoundation/AVFoundation.h>
 
-
-static AVAudioPlayer *thePlayer;
 
 @implementation GameScene
 
@@ -25,15 +24,16 @@ static AVAudioPlayer *thePlayer;
     UIView *black = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     [self.view addSubview:black];
     UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"match_bg.jpg"]];
-    image.userInteractionEnabled = YES;
     image.frame = CGRectMake(0, 0, self.view.frame.size.width*.5f, self.view.frame.size.height);
     [black addSubview:image];
     //
     UIImageView *image2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"match_bg.jpg"]];
-    image2.userInteractionEnabled = YES;
     image2.frame = CGRectMake(self.view.frame.size.width*.5f, 0, self.view.frame.size.width*.5f, self.view.frame.size.height);
     image2.transform = CGAffineTransformMakeScale(-1.0, 1.0);
     [black addSubview:image2];
+    //TableView
+    MoreTableView *table = [[MoreTableView alloc] initWithNull];
+    [self.view addSubview:table];
     //按钮
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     btn.frame = CGRectMake(0, 0, 100, 100);
@@ -47,29 +47,45 @@ static AVAudioPlayer *thePlayer;
     //远程图片
     NSURL *url = [NSURL URLWithString:@"http://avatar.csdn.net/6/8/B/1_chenyong05314.jpg"];
     UIImageView *loader = [[UIImageView alloc] initWithImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:url]]];
+    loader.frame = CGRectMake(0, 0, 100, 100);
     [loader.layer setAnchorPoint:CGPointMake(0, 0)];
-    loader.layer.position =CGPointMake(100, 200);
+    loader.layer.position = CGPointMake(100, 300);
     [self.view addSubview:loader];
-    //EVENT
-     UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickCategory:)];
-     [black addGestureRecognizer:singleTap1];
+    //Events
+    //[self getSingleTab:black];
+    [self getSingleTab:loader];
+    //
+    
     //读取文件
     NSString *str2=[[NSString alloc]initWithContentsOfFile:@"/Users/mac_tech/Desktop/develop/texas/frameworks/runtime-src/project/texas_amazon/api_key.txt" encoding:NSUTF8StringEncoding error:nil];
     //NSLog(@"什么东东：%@",str2);
     [btn setTitle:str2 forState:UIControlStateNormal];
-    //TableView
-    MoreTableView *table = [[MoreTableView alloc] initWithNull];
-    [self.view addSubview:table];
     //播放声音
-    thePlayer = [Sound playSoundEffect:@"/Users/MikeRiy/Desktop/newdali.mp3"];
+    //[[SoundManager getInstance] playSoundOnce:@"/Users/MikeRiy/Documents/quick-3.3/quick/samples/anysdk/res/background.mp3"];
+    //
     //连接服务器
     [[NetSocket getInstance] connect:@"127.0.0.1" port:9555];
+    //
+    [TickManager scheduled:self function:@selector(calleds) interval:1 repeats:NO];
+}
+
+-(void)calleds
+{
+     [[SoundManager getInstance] playSoundSole:@"/Users/MikeRiy/Documents/quick-3.3/quick/samples/coinflip/res/sfx/LevelWinSound.mp3" forever:NO];
+}
+
+-(void)getSingleTab:(UIView*)target
+{
+    target.userInteractionEnabled = YES;
+    UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickCategory:)];
+    [target addGestureRecognizer:singleTap1];
 }
 
 
 //执行动画 
 -(void)clickCategory:(UIGestureRecognizer *)gestureRecognizer
 {
+    NSLog(@"xxxxx");
     UIButton *target = (UIButton*)[self.view viewWithTag:1];
     CABasicAnimation *anim = (CABasicAnimation*)[ActionUtils addSimpleAction:@"transform.rotation.z" fromValue:[NSNumber numberWithFloat:0.0] toValue:[NSNumber numberWithFloat:180.0 * M_PI]];
     [anim setDelegate:self];
