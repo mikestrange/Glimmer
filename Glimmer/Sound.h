@@ -46,11 +46,10 @@
 
 //声音携带的信息
 @interface SoundData: NSObject
-{
-    @private
-        NSString* _name;
-        AVAudioPlayer* _player;
-}
+
+@property(copy,readonly) NSString* name;
+@property(retain,readonly) AVAudioPlayer*player;
+
 
 -(instancetype)initWithPath:(NSString*)name sound:(AVAudioPlayer*)song;
 

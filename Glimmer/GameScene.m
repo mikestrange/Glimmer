@@ -66,12 +66,14 @@
     //连接服务器
     [[NetSocket getInstance] connect:@"127.0.0.1" port:9555];
     //
-    [TickManager scheduled:self function:@selector(calleds) interval:1 repeats:NO];
+    [TickManager scheduledForever:self function:tickHandler(self, calleds) interval:2];
 }
 
 -(void)calleds
 {
-     [[SoundManager getInstance] playSoundSole:@"/Users/MikeRiy/Documents/quick-3.3/quick/samples/coinflip/res/sfx/LevelWinSound.mp3" forever:NO];
+    NSLog(@"click");
+    /*[[SoundManager getInstance] playSoundSole:@"/Users/MikeRiy/Documents/quick-3.3/quick/samples/coinflip/res/sfx/LevelWinSound.mp3" forever:NO];
+     */
 }
 
 -(void)getSingleTab:(UIView*)target

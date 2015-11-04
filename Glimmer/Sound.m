@@ -129,6 +129,9 @@ static SoundManager* _instance = nil;
 //-----data--------
 @implementation SoundData
 
+@synthesize name = _name;
+@synthesize player = _player;
+
 -(instancetype)initWithPath:(NSString*)name sound:(AVAudioPlayer*)player
 {
     if(self=[super init])
@@ -141,28 +144,23 @@ static SoundManager* _instance = nil;
 
 -(BOOL)match:(NSString*)name
 {
-    return _name == name;
+    return self.name == name;
 }
 
 -(BOOL)matchAudio:(AVAudioPlayer*)player
 {
-    return _player == player;
+    return self.player == player;
 }
 
 -(void)stop
 {
-    [_player stop];
+    [self.player stop];
 }
 
 -(NSString*)getPlayerName
 {
-    return _name;
+    return self.name;
 }
 
--(void)dealloc
-{
-    _name = nil;
-    _player = nil;
-}
 
 @end
