@@ -11,7 +11,6 @@
 
 @implementation XMLAnalysis
 
-
 -(XMLNode*)parseXml:(NSData*)data
 {
     /*

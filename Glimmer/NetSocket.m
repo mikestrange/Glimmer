@@ -35,20 +35,20 @@ enum{
 //连接
 -(void)connect:(NSString*)host port:(UInt16)port
 {
-    if(!_socket){
-        _socket = [[AsyncSocket alloc] initWithDelegate:self userData:SocketOfflineByServer];
+    if(!self.socket){
+        self.socket = [[AsyncSocket alloc] initWithDelegate:self userData:SocketOfflineByServer];
     }
     if(![self isConnected])
     {
-        _socket.userData = SocketOfflineByServer;
-        [_socket connectToHost:host onPort:port error:nil];
-        [_socket readDataWithTimeout:_TIME_ tag:SOCKET_OPPTER_TAG];
+        self.socket.userData = SocketOfflineByServer;
+        [self.socket connectToHost:host onPort:port error:nil];
+        [self.socket readDataWithTimeout:_TIME_ tag:SOCKET_OPPTER_TAG];
     }
 }
 
 -(BOOL)isConnected
 {
-    if(_socket && [_socket isConnected]) return YES;
+    if(self.socket && [self.socket isConnected]) return YES;
     return NO;
 }
 
@@ -57,8 +57,8 @@ enum{
 {
     if([self isConnected])
     {
-        _socket.userData = SocketOfflineByUser;// 声明是由用户主动切断
-        [_socket disconnect];
+        self.socket.userData = SocketOfflineByUser;// 声明是由用户主动切断
+        [self.socket disconnect];
     }
 }
 
@@ -67,7 +67,7 @@ enum{
     if([self isConnected])
     {
         NSData* data = [NSData dataWithBytes:bytes length:len];
-        [_socket writeData:data withTimeout:_TIME_ tag:SOCKET_OPPTER_TAG];
+        [self.socket writeData:data withTimeout:_TIME_ tag:SOCKET_OPPTER_TAG];
     }
 }
 
@@ -114,7 +114,7 @@ enum{
 
 - (void)onSocket:(AsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
 {
-    [_socket readDataWithTimeout:_TIME_ tag:SOCKET_OPPTER_TAG];
+    [self.socket readDataWithTimeout:_TIME_ tag:SOCKET_OPPTER_TAG];
     //-----reading---------
     NSLog(@"did read data");
     int length = (int)data.length;
