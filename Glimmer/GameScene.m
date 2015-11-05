@@ -113,7 +113,6 @@
     // [UIImage imageNamed:@"checkbox_selected.png"]
     DownLoader* loader = [[DownLoader alloc] init];
     [loader sendHttps:httpUrl];
-    [loader upLoad:httpUrl data:@"s"];
     NSLog(@"sta");
 }
 
