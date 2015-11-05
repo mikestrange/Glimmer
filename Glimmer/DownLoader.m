@@ -28,10 +28,8 @@
 
 -(void)sendHttpsResultHandler:(NSData*)data response:(NSURLResponse*)response error:(NSError*)error
 {
-    NSLog(@"sendHttpsResultHandler over:");
-    char *ct = (char*)data.bytes;
-    NSString* str = [[NSString alloc]initWithUTF8String:ct];
-    NSLog(@"data = %@ %@",str,error);
+    NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"sendHttpsResultHandler over:%@ %@", str, error);
 }
 
 
@@ -53,7 +51,8 @@
 
 -(void)upLoadResultHandler:(NSData*)data response:(NSURLResponse*)response error:(NSError*)error
 {
-    NSLog(@"upLoadResultHandler over:");
+    NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"upLoadResultHandler over:%@ %@", str, error);
 }
 
 //下载任务也需要一个请求，但不同之处在于它们的completionHandler。数据和上传任务在完成时立即返回，但下载任务将数据写入本地的临时文件。completionHandler有责任将文件从它的临时位置移动到一个永久位置，这个永久位置就是块的返回值。

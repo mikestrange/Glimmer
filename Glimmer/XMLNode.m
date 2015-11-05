@@ -75,8 +75,9 @@
 //直接解析出xml
 +(XMLNode*)make:(NSString*)file
 {
-    NSFileManager *fm = [NSFileManager defaultManager];
-    NSData* data = [fm contentsAtPath:file];
+    //NSFileManager *fm = [NSFileManager defaultManager];
+    //NSData* data = [fm contentsAtPath:file];
+    NSData* data = [[NSData alloc] initWithContentsOfFile:file];
     XMLAnalysis* xml = [[XMLAnalysis alloc] init];
     return [xml parseXml:data];
 }
