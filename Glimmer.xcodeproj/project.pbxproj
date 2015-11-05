@@ -161,6 +161,13 @@
 			name = net;
 			sourceTree = "<group>";
 		};
+		202A125C1BEBA47E008A3026 /* document */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = document;
+			sourceTree = "<group>";
+		};
 		207AA7691BE25637008D5E44 /* ui */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,6 +261,7 @@
 		20F0562E1BE25221004727D8 /* sdk */ = {
 			isa = PBXGroup;
 			children = (
+				202A125C1BEBA47E008A3026 /* document */,
 				202A125B1BEBA2C5008A3026 /* net */,
 				202A125A1BEBA29B008A3026 /* manager */,
 				0AFF4A211BEB0D88001C2B11 /* xml */,

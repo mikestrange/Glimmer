@@ -45,38 +45,31 @@
     [btn setBackgroundImage:[UIImage imageNamed:@"black.png"] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(clearAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
+    [btn setTitle:@"好好学习" forState:UIControlStateNormal];
     //远程图片
     NSURL *url = [NSURL URLWithString:@"http://avatar.csdn.net/6/8/B/1_chenyong05314.jpg"];
     UIImageView *loader = [[UIImageView alloc] initWithImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:url]]];
     loader.frame = CGRectMake(0, 0, 100, 100);
     [loader.layer setAnchorPoint:CGPointMake(0, 0)];
     loader.layer.position = CGPointMake(100, 300);
-    //[self.view addSubview:loader];
+    [self.view addSubview:loader];
     //Events
     //[self getSingleTab:black];
     //[self getSingleTab:loader];
     //
-    
-    //读取文件
-    NSString *str2=[[NSString alloc]initWithContentsOfFile:@"/Users/mac_tech/Desktop/develop/texas/frameworks/runtime-src/project/texas_amazon/api_key.txt" encoding:NSUTF8StringEncoding error:nil];
-    //NSLog(@"什么东东：%@",str2);
-    [btn setTitle:str2 forState:UIControlStateNormal];
     //播放声音
-    //[[SoundManager getInstance] playSoundOnce:@"/Users/MikeRiy/Documents/quick-3.3/quick/samples/anysdk/res/background.mp3"];
+    [[SoundManager getInstance] playSoundOnce:@"/Users/MikeRiy/Documents/quick-3.3/quick/samples/anysdk/res/background.mp3"];
     //
     //连接服务器
     [[NetSocket getInstance] connect:@"127.0.0.1" port:9555];
-    //
-    [TickManager scheduledOnce:self function:tickHandler(self, calleds) interval:.5];
+    //延时调用
+    [TickManager scheduledOnce:self function:tickHandler(self, xmlHandler) interval:.5];
 }
 
--(void)calleds
+-(void)xmlHandler
 {
     NSLog(@"click");
-    /*[[SoundManager getInstance] playSoundSole:@"/Users/MikeRiy/Documents/quick-3.3/quick/samples/coinflip/res/sfx/LevelWinSound.mp3" forever:NO];
-     */
-    //
-   // NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"config/api_key" ofType:@"txt"];
+    //NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"config/api_key" ofType:@"txt"];
     XMLNode* data = [XMLNode make:@"/Users/MikeRiy/Documents/test.txt"];
     //[data toString];
     NSString* str = [data getChildByName:@"map"].elementValue;
@@ -100,9 +93,6 @@
         }
     }
     //NSLog(@"%@", arr);
-    //NSMutableDictionary* dict =  [ [ NSMutableDictionary alloc ] initWithContentsOfFile:@"/Users/mac_tech/Desktop/develop/texas/tpfiles/wars/yz/yz.plist"];
-    //NSMutableDictionary* object = [ dict objectForKey:@"metadata" ];
-    //NSLog(@"%@", object);
     //
     //AVPlayerViewController* p;
     //MoviePlayerViewController *w;
