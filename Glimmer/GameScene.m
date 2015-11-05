@@ -101,18 +101,18 @@
         }
     }
     //NSLog(@"%@", arr);
-    NSMutableDictionary* dict =  [ [ NSMutableDictionary alloc ] initWithContentsOfFile:@"/Users/mac_tech/Desktop/develop/texas/tpfiles/wars/yz/yz.plist"];
+    //NSMutableDictionary* dict =  [ [ NSMutableDictionary alloc ] initWithContentsOfFile:@"/Users/mac_tech/Desktop/develop/texas/tpfiles/wars/yz/yz.plist"];
     //NSMutableDictionary* object = [ dict objectForKey:@"metadata" ];
     //NSLog(@"%@", object);
     //
     //AVPlayerViewController* p;
     //MoviePlayerViewController *w;
     //
-    NSString *httpUrl = @"https://www.baidu.com";
+    NSString *httpUrl = @"http://dlsw.baidu.com/sw-search-sp/soft/b4/25734/itunes12.3.1442478948.dmg";
     //
     // [UIImage imageNamed:@"checkbox_selected.png"]
     DownLoader* loader = [[DownLoader alloc] init];
-    [loader sendHttps:httpUrl];
+    [loader downLoad:httpUrl];
     NSLog(@"sta");
 }
 

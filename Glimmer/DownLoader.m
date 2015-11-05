@@ -73,11 +73,12 @@
 
 -(void)downLoadResultHandler:(NSURL*)location response:(NSURLResponse*)response error:(NSError*)error
 {
-    //NSLog(@"downLoadResultHandler over:%@",location);
+    NSLog(@"downLoadResultHandler over:%@",location);
     NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     NSURL *documentsDirectoryURL = [NSURL fileURLWithPath:documentsPath];
     NSURL *newFileLocation = [documentsDirectoryURL URLByAppendingPathComponent:[[response URL] lastPathComponent]];
     [[NSFileManager defaultManager] copyItemAtURL:location toURL:newFileLocation error:nil];
+    NSLog(@"保存至新路径 over:%@",newFileLocation);
 }
 
 
