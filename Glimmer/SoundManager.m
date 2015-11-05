@@ -6,7 +6,7 @@
 //  Copyright © 2015年 MikeRiy. All rights reserved.
 //
 
-#import "Sound.h"
+#import "SoundManager.h"
 
 static const NSInteger FOREVER = -1;
 static const NSInteger ONCE = 0;

@@ -6,7 +6,7 @@
 //  Copyright © 2015年 MikeRiy. All rights reserved.
 //
 
-#import "TickUtils.h"
+#import "TickManager.h"
 
 
 static NSMutableArray* _tickList = nil;

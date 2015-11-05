@@ -5,6 +5,11 @@
 //  Created by Mac_Tech on 15/11/5.
 //  Copyright © 2015年 MikeRiy. All rights reserved.
 //
+/* ------test---------
+ NSString *httpUrl = @"http://img1.cache.netease.com/catchpic/2/2A/2A8C5233674571F889B7324C336E926F.jpg";
+ DownLoader* loader = [[DownLoader alloc] init];
+ [loader downLoad:httpUrl];
+ */
 
 #import "DownLoader.h"
 
@@ -24,13 +29,13 @@
                                       [self sendHttpsResultHandler:data response:response error:error];
                                   }];
     [task resume];
-
 }
 
 -(void)sendHttpsResultHandler:(NSData*)data response:(NSURLResponse*)response error:(NSError*)error
 {
     NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSLog(@"sendHttpsResultHandler over:%@ %@", str, error);
+    //回执：三个打包
 }
 
 
@@ -73,12 +78,19 @@
 
 -(void)downLoadResultHandler:(NSURL*)location response:(NSURLResponse*)response error:(NSError*)error
 {
-    NSLog(@"downLoadResultHandler over:%@",location);
+    NSLog(@"downLoadResultHandler over");
+    //获取默认路径
     NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    //转化url
     NSURL *documentsDirectoryURL = [NSURL fileURLWithPath:documentsPath];
-    NSURL *newFileLocation = [documentsDirectoryURL URLByAppendingPathComponent:[[response URL] lastPathComponent]];
+    //下载地址名称
+    NSString* fileName = [[response URL] lastPathComponent];
+    //新的保存路径
+    NSURL *newFileLocation = [documentsDirectoryURL URLByAppendingPathComponent:fileName];
+    //拷贝
     [[NSFileManager defaultManager] copyItemAtURL:location toURL:newFileLocation error:nil];
     NSLog(@"保存至新路径 over:%@",newFileLocation);
+    //回执：目标url，保存地址，(原始数据)
 }
 
 

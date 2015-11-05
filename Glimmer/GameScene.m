@@ -11,9 +11,8 @@
 #import "ActionUtils.h"
 #import "DrawUtils.h"
 #import "MoreTableView.h"
-#import "Sound.h"
-#import "TickUtils.h"
-#import <AVFoundation/AVFoundation.h>
+#import "SoundManager.h"
+#import "TickManager.h"
 #import "XMLNode.h"
 #import "TrimString.h"
 #import "DownLoader.h"
@@ -78,7 +77,7 @@
      */
     //
    // NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"config/api_key" ofType:@"txt"];
-    XMLNode* data = [XMLNode make:@"/Users/mac_tech/Documents/test.xml"];
+    XMLNode* data = [XMLNode make:@"/Users/MikeRiy/Documents/test.txt"];
     //[data toString];
     NSString* str = [data getChildByName:@"map"].elementValue;
     //NSLog(@"%@", str);
@@ -108,11 +107,6 @@
     //AVPlayerViewController* p;
     //MoviePlayerViewController *w;
     //
-    NSString *httpUrl = @"http://dlsw.baidu.com/sw-search-sp/soft/b4/25734/itunes12.3.1442478948.dmg";
-    //
-    // [UIImage imageNamed:@"checkbox_selected.png"]
-    DownLoader* loader = [[DownLoader alloc] init];
-    [loader downLoad:httpUrl];
     NSLog(@"sta");
 }
 
