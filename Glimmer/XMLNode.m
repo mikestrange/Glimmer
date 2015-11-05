@@ -37,7 +37,7 @@
 -(XMLNode*)getChildByName:(NSString*)name
 {
     for(XMLNode* data in self.childrens){
-        if(data.elementName == name){
+        if([data.elementName isEqualToString:name]){
             return data;
         }
     }

@@ -15,6 +15,7 @@
 #import "TickUtils.h"
 #import <AVFoundation/AVFoundation.h>
 #import "XMLNode.h"
+#import "TrimString.h"
 
 @implementation GameScene
 
@@ -32,8 +33,8 @@
     image2.transform = CGAffineTransformMakeScale(-1.0, 1.0);
     [black addSubview:image2];
     //TableView
-    MoreTableView *table = [[MoreTableView alloc] initWithNull];
-    [self.view addSubview:table];
+    //MoreTableView *table = [[MoreTableView alloc] initWithNull];
+    //[self.view addSubview:table];
     //按钮
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     btn.frame = CGRectMake(0, 0, 100, 100);
@@ -50,10 +51,10 @@
     loader.frame = CGRectMake(0, 0, 100, 100);
     [loader.layer setAnchorPoint:CGPointMake(0, 0)];
     loader.layer.position = CGPointMake(100, 300);
-    [self.view addSubview:loader];
+    //[self.view addSubview:loader];
     //Events
     //[self getSingleTab:black];
-    [self getSingleTab:loader];
+    //[self getSingleTab:loader];
     //
     
     //读取文件
@@ -77,7 +78,30 @@
     //
    // NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"config/api_key" ofType:@"txt"];
     XMLNode* data = [XMLNode make:@"/Users/mac_tech/Documents/test.xml"];
-    NSLog(@"%@",[data getChildByIndex:0].elementName);
+    //[data toString];
+    NSString* str = [data getChildByName:@"map"].elementValue;
+    //NSLog(@"%@", str);
+    NSArray* arr = [str componentsSeparatedByString:@","];
+    NSInteger len = 7;
+    NSInteger index = 0;
+    for(str in arr)
+    {
+        str = [NSString trimWhitespaceAndNewline:str];
+        NSInteger value = [str integerValue];
+        //
+        UIImageView* item = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkbox_selected.png"]];
+        NSInteger dx = 50*(index%len);
+        NSInteger dy = 50*floor(index/len);
+        index++;
+        [item.layer setAnchorPoint:CGPointMake(0, 0)];
+        item.layer.position = CGPointMake(dx, dy);
+        if(value==1){
+            [self.view addSubview:item];
+        }
+    }
+    //NSLog(@"%@", arr);
+    //
+    // [UIImage imageNamed:@"checkbox_selected.png"]
 }
 
 -(void)getSingleTab:(UIView*)target

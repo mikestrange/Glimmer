@@ -145,7 +145,7 @@ static SoundManager* _instance = nil;
 
 -(BOOL)match:(NSString*)name
 {
-    return self.name == name;
+    return [self.name isEqualToString:name];
 }
 
 -(BOOL)matchAudio:(AVAudioPlayer*)player

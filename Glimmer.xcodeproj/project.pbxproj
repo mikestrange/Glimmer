@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AFBAF7F1BEB31E9008AE72B /* TrimString.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFBAF7E1BEB31E9008AE72B /* TrimString.m */; settings = {ASSET_TAGS = (); }; };
 		0AFF4A201BEB0403001C2B11 /* XML_Decode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFF4A1F1BEB0403001C2B11 /* XML_Decode.m */; settings = {ASSET_TAGS = (); }; };
 		0AFF4A241BEB0DA6001C2B11 /* XMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFF4A231BEB0DA6001C2B11 /* XMLNode.m */; settings = {ASSET_TAGS = (); }; };
 		20138C9E1BE7AD07001F04EB /* TickUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 20138C9D1BE7AD07001F04EB /* TickUtils.m */; };
@@ -47,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0AFBAF7D1BEB31E9008AE72B /* TrimString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrimString.h; sourceTree = "<group>"; };
+		0AFBAF7E1BEB31E9008AE72B /* TrimString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrimString.m; sourceTree = "<group>"; };
 		0AFF4A1E1BEB0403001C2B11 /* XML_Decode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XML_Decode.h; sourceTree = "<group>"; };
 		0AFF4A1F1BEB0403001C2B11 /* XML_Decode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XML_Decode.m; sourceTree = "<group>"; };
 		0AFF4A221BEB0DA6001C2B11 /* XMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLNode.h; sourceTree = "<group>"; };
@@ -120,6 +123,8 @@
 				0AFF4A1F1BEB0403001C2B11 /* XML_Decode.m */,
 				0AFF4A221BEB0DA6001C2B11 /* XMLNode.h */,
 				0AFF4A231BEB0DA6001C2B11 /* XMLNode.m */,
+				0AFBAF7D1BEB31E9008AE72B /* TrimString.h */,
+				0AFBAF7E1BEB31E9008AE72B /* TrimString.m */,
 			);
 			name = xml;
 			sourceTree = "<group>";
@@ -392,6 +397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AFBAF7F1BEB31E9008AE72B /* TrimString.m in Sources */,
 				20B531101BE2514B001956A6 /* NetSocket.m in Sources */,
 				20B530DD1BE24F75001956A6 /* GameViewController.m in Sources */,
 				20B530D51BE24F75001956A6 /* AppDelegate.m in Sources */,

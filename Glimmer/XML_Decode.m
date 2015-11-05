@@ -7,6 +7,7 @@
 //
 
 #import "XML_Decode.h"
+#import "TrimString.h"
 
 @implementation XMLAnalysis
 
@@ -46,7 +47,7 @@
 #pragma - mark 发现节点值时
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
-    string = [XMLAnalysis trimWhitespaceAndNewline:string];
+    string = [NSString trimWhitespaceAndNewline:string];
     if(string.length){
         //NSLog(@"%@",string);
         currentNode.elementValue = string;
@@ -68,36 +69,6 @@
 {
     //[root toString];
     NSLog(@"---xml---over-------");
-}
-
-
-#pragma - mark NSString过滤空格和换行
-//可以作为NSString的扩展,这里私有化
-+(NSString *)trim:(NSString *)val trimCharacterSet:(NSCharacterSet *)characterSet
-{
-    NSString *returnVal = @"";
-    if (val) {
-        returnVal = [val stringByTrimmingCharactersInSet:characterSet];
-    }
-    return returnVal;
-}
-
-//去掉前后空格
-+(NSString *)trimWhitespace:(NSString *)val
-{
-    return [self trim:val trimCharacterSet:[NSCharacterSet whitespaceCharacterSet]];
-}
-
-//去掉前后回车符
-+(NSString *)trimNewline:(NSString *)val
-{
-    return [self trim:val trimCharacterSet:[NSCharacterSet newlineCharacterSet]];
-}
-
-//去掉前后空格和回车符
-+(NSString *)trimWhitespaceAndNewline:(NSString *)val
-{
-    return [self trim:val trimCharacterSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
 @end
