@@ -15,14 +15,12 @@ static SoundManager* _instance = nil;
 
 @implementation SoundManager
 
--(instancetype)init
+-(NSMutableArray*)getVector
 {
-    if(self = [super init]){
-        if(!_soundList){
-            _soundList = [[NSMutableArray alloc] init];
-        };
+    if(!_soundList){
+        _soundList = [[NSMutableArray alloc] init];
     }
-    return self;
+    return _soundList;
 }
 
 +(SoundManager*)getInstance
@@ -59,13 +57,14 @@ static SoundManager* _instance = nil;
     player.delegate = self;
     //添加到队列中
     NSLog(@"play sound with path:%@",path);
-    [_soundList addObject:[[SoundData alloc] initWithPath:path sound:player]];
+    [[self getVector] addObject:[[SoundData alloc] initWithPath:path sound:player]];
 }
 
 //存在某个声音
 -(BOOL)hasSound:(NSString*)path
 {
-    for(SoundData *data in _soundList)
+    NSMutableArray* list = [self getVector];
+    for(SoundData *data in list)
     {
         if([data match:path]) return YES;
     }
@@ -75,10 +74,11 @@ static SoundManager* _instance = nil;
 //关闭一个名字的声音 sole＝true单独删除 =false集体删除
 -(void)stopSoundByPath:(NSString*)path sole:(BOOL)value
 {
-    for(SoundData *data in _soundList){
+    NSMutableArray* list = [self getVector];
+    for(SoundData *data in list){
         if([data match:path]){
             [data stop];
-            [_soundList removeObject:data];
+            [list removeObject:data];
             NSLog(@"remove sound with path:%@",path);
             if(value) break;
         }
@@ -100,10 +100,11 @@ static SoundManager* _instance = nil;
 
 -(SoundData*)stopSoundByAudio:(AVAudioPlayer*)player
 {
+    NSMutableArray* list = [self getVector];
     SoundData* data = nil;
-    for(data in _soundList){
+    for(data in list){
         if([data matchAudio:player]){
-            [_soundList removeObject:data];
+            [list removeObject:data];
             return data;
         }
     }
