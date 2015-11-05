@@ -16,6 +16,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "XMLNode.h"
 #import "TrimString.h"
+#import "DownLoader.h"
 
 @implementation GameScene
 
@@ -67,7 +68,7 @@
     //连接服务器
     [[NetSocket getInstance] connect:@"127.0.0.1" port:9555];
     //
-    [TickManager scheduledOnce:self function:tickHandler(self, calleds) interval:2];
+    [TickManager scheduledOnce:self function:tickHandler(self, calleds) interval:.5];
 }
 
 -(void)calleds
@@ -100,8 +101,17 @@
         }
     }
     //NSLog(@"%@", arr);
+    NSMutableDictionary* dict =  [ [ NSMutableDictionary alloc ] initWithContentsOfFile:@"/Users/mac_tech/Desktop/develop/texas/tpfiles/wars/yz/yz.plist"];
+    //NSMutableDictionary* object = [ dict objectForKey:@"metadata" ];
+    //NSLog(@"%@", object);
+    //
+    //AVPlayerViewController* p;
+    //MoviePlayerViewController *w;
     //
     // [UIImage imageNamed:@"checkbox_selected.png"]
+    DownLoader* loader = [[DownLoader alloc] init];
+    [loader sendHttps:@""];
+    NSLog(@"sta");
 }
 
 -(void)getSingleTab:(UIView*)target
