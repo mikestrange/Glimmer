@@ -14,8 +14,6 @@
 //简单的http请求
 -(void)sendHttps:(NSString*)httpUrl
 {
-    httpUrl = @"https://www.baidu.com";
-    //
     NSURL *URL = [NSURL URLWithString:httpUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     NSURLSession *session = [NSURLSession sharedSession];
@@ -30,6 +28,7 @@
 
 -(void)sendHttpsResultHandler:(NSData*)data response:(NSURLResponse*)response error:(NSError*)error
 {
+    NSLog(@"sendHttpsResultHandler over:");
     char *ct = (char*)data.bytes;
     NSString* str = [[NSString alloc]initWithUTF8String:ct];
     NSLog(@"data = %@ %@",str,error);
@@ -54,7 +53,7 @@
 
 -(void)upLoadResultHandler:(NSData*)data response:(NSURLResponse*)response error:(NSError*)error
 {
-    
+    NSLog(@"upLoadResultHandler over:");
 }
 
 //下载任务也需要一个请求，但不同之处在于它们的completionHandler。数据和上传任务在完成时立即返回，但下载任务将数据写入本地的临时文件。completionHandler有责任将文件从它的临时位置移动到一个永久位置，这个永久位置就是块的返回值。
@@ -74,6 +73,7 @@
 
 -(void)downLoadResultHandler:(NSURL*)location response:(NSURLResponse*)response error:(NSError*)error
 {
+    //NSLog(@"downLoadResultHandler over:%@",location);
     NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     NSURL *documentsDirectoryURL = [NSURL fileURLWithPath:documentsPath];
     NSURL *newFileLocation = [documentsDirectoryURL URLByAppendingPathComponent:[[response URL] lastPathComponent]];

@@ -108,9 +108,12 @@
     //AVPlayerViewController* p;
     //MoviePlayerViewController *w;
     //
+    NSString *httpUrl = @"https://www.baidu.com";
+    //
     // [UIImage imageNamed:@"checkbox_selected.png"]
     DownLoader* loader = [[DownLoader alloc] init];
-    [loader sendHttps:@""];
+    [loader sendHttps:httpUrl];
+    [loader downLoad:httpUrl];
     NSLog(@"sta");
 }
 
