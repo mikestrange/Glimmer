@@ -14,7 +14,7 @@
 #import "Sound.h"
 #import "TickUtils.h"
 #import <AVFoundation/AVFoundation.h>
-
+#import "XMLNode.h"
 
 @implementation GameScene
 
@@ -66,7 +66,7 @@
     //连接服务器
     [[NetSocket getInstance] connect:@"127.0.0.1" port:9555];
     //
-    [TickManager scheduledForever:self function:tickHandler(self, calleds) interval:2];
+    [TickManager scheduledOnce:self function:tickHandler(self, calleds) interval:2];
 }
 
 -(void)calleds
@@ -74,6 +74,10 @@
     NSLog(@"click");
     /*[[SoundManager getInstance] playSoundSole:@"/Users/MikeRiy/Documents/quick-3.3/quick/samples/coinflip/res/sfx/LevelWinSound.mp3" forever:NO];
      */
+    //
+   // NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"config/api_key" ofType:@"txt"];
+    XMLNode* data = [XMLNode make:@"/Users/mac_tech/Documents/test.xml"];
+    NSLog(@"%@",[data getChildByIndex:0].elementName);
 }
 
 -(void)getSingleTab:(UIView*)target
@@ -87,7 +91,6 @@
 //执行动画 
 -(void)clickCategory:(UIGestureRecognizer *)gestureRecognizer
 {
-    NSLog(@"xxxxx");
     UIButton *target = (UIButton*)[self.view viewWithTag:1];
     CABasicAnimation *anim = (CABasicAnimation*)[ActionUtils addSimpleAction:@"transform.rotation.z" fromValue:[NSNumber numberWithFloat:0.0] toValue:[NSNumber numberWithFloat:180.0 * M_PI]];
     [anim setDelegate:self];

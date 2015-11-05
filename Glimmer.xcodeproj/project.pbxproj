@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AFF4A201BEB0403001C2B11 /* XML_Decode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFF4A1F1BEB0403001C2B11 /* XML_Decode.m */; settings = {ASSET_TAGS = (); }; };
+		0AFF4A241BEB0DA6001C2B11 /* XMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFF4A231BEB0DA6001C2B11 /* XMLNode.m */; settings = {ASSET_TAGS = (); }; };
 		20138C9E1BE7AD07001F04EB /* TickUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 20138C9D1BE7AD07001F04EB /* TickUtils.m */; };
 		207AA7681BE25529008D5E44 /* Sound.m in Sources */ = {isa = PBXBuildFile; fileRef = 207AA7671BE25529008D5E44 /* Sound.m */; };
 		20B530D21BE24F75001956A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B530D11BE24F75001956A6 /* main.m */; };
@@ -45,6 +47,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0AFF4A1E1BEB0403001C2B11 /* XML_Decode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XML_Decode.h; sourceTree = "<group>"; };
+		0AFF4A1F1BEB0403001C2B11 /* XML_Decode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XML_Decode.m; sourceTree = "<group>"; };
+		0AFF4A221BEB0DA6001C2B11 /* XMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLNode.h; sourceTree = "<group>"; };
+		0AFF4A231BEB0DA6001C2B11 /* XMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLNode.m; sourceTree = "<group>"; };
 		20138C9C1BE7AD07001F04EB /* TickUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TickUtils.h; sourceTree = "<group>"; };
 		20138C9D1BE7AD07001F04EB /* TickUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TickUtils.m; sourceTree = "<group>"; };
 		207AA7661BE25529008D5E44 /* Sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sound.h; sourceTree = "<group>"; };
@@ -107,6 +113,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0AFF4A211BEB0D88001C2B11 /* xml */ = {
+			isa = PBXGroup;
+			children = (
+				0AFF4A1E1BEB0403001C2B11 /* XML_Decode.h */,
+				0AFF4A1F1BEB0403001C2B11 /* XML_Decode.m */,
+				0AFF4A221BEB0DA6001C2B11 /* XMLNode.h */,
+				0AFF4A231BEB0DA6001C2B11 /* XMLNode.m */,
+			);
+			name = xml;
+			sourceTree = "<group>";
+		};
 		207AA7691BE25637008D5E44 /* ui */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +217,7 @@
 		20F0562E1BE25221004727D8 /* sdk */ = {
 			isa = PBXGroup;
 			children = (
+				0AFF4A211BEB0D88001C2B11 /* xml */,
 				207AA7691BE25637008D5E44 /* ui */,
 				20F056301BE25238004727D8 /* utils */,
 				20F0562F1BE25228004727D8 /* net */,
@@ -382,7 +400,9 @@
 				20B530D81BE24F75001956A6 /* GameScene.m in Sources */,
 				20B531111BE2514B001956A6 /* NetTcp.m in Sources */,
 				20B530D21BE24F75001956A6 /* main.m in Sources */,
+				0AFF4A241BEB0DA6001C2B11 /* XMLNode.m in Sources */,
 				20F056331BE2525D004727D8 /* DrawUtils.m in Sources */,
+				0AFF4A201BEB0403001C2B11 /* XML_Decode.m in Sources */,
 				20138C9E1BE7AD07001F04EB /* TickUtils.m in Sources */,
 				20B531141BE2515A001956A6 /* ActionUtils.m in Sources */,
 			);
