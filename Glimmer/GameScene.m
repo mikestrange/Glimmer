@@ -16,6 +16,7 @@
 #import "XMLNode.h"
 #import "TrimString.h"
 #import "DownLoader.h"
+#import "QuickHandler.h"
 
 @implementation GameScene
 
@@ -54,11 +55,11 @@
     loader.layer.position = CGPointMake(100, 300);
     [self.view addSubview:loader];
     //Events
-    //[self getSingleTab:black];
-    //[self getSingleTab:loader];
+    //[QuickHandler addTouchHandler:black delegate:self selector:@selector(clickCategory:)];
+    [QuickHandler addTouchHandler:loader delegate:self selector:@selector(clickCategory:)];
     //
     //播放声音
-    [[SoundManager getInstance] playSoundOnce:@"/Users/MikeRiy/Documents/quick-3.3/quick/samples/anysdk/res/background.mp3"];
+    //[[SoundManager getInstance] playSoundOnce:@"/Users/MikeRiy/Documents/quick-3.3/quick/samples/anysdk/res/background.mp3"];
     //
     //连接服务器
     [[NetSocket getInstance] connect:@"127.0.0.1" port:9555];
@@ -88,7 +89,7 @@
         index++;
         [item.layer setAnchorPoint:CGPointMake(0, 0)];
         item.layer.position = CGPointMake(dx, dy);
-        if(value==1){
+        if(value == 1){
             [self.view addSubview:item];
         }
     }
@@ -98,13 +99,6 @@
     //MoviePlayerViewController *w;
     //
     NSLog(@"sta");
-}
-
--(void)getSingleTab:(UIView*)target
-{
-    target.userInteractionEnabled = YES;
-    UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickCategory:)];
-    [target addGestureRecognizer:singleTap1];
 }
 
 

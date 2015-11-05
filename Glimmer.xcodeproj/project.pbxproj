@@ -28,6 +28,7 @@
 		20B531111BE2514B001956A6 /* NetTcp.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B5310E1BE2514B001956A6 /* NetTcp.m */; };
 		20B531141BE2515A001956A6 /* ActionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B531131BE2515A001956A6 /* ActionUtils.m */; };
 		20B531161BE2517E001956A6 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B531151BE2517E001956A6 /* CocoaAsyncSocket.framework */; };
+		20D2C2EC1BEBA706009EFF99 /* QuickHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D2C2EB1BEBA706009EFF99 /* QuickHandler.m */; };
 		20F056331BE2525D004727D8 /* DrawUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F056321BE2525D004727D8 /* DrawUtils.m */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +90,11 @@
 		20B531121BE2515A001956A6 /* ActionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionUtils.h; sourceTree = "<group>"; };
 		20B531131BE2515A001956A6 /* ActionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionUtils.m; sourceTree = "<group>"; };
 		20B531151BE2517E001956A6 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaAsyncSocket.framework; sourceTree = "<group>"; };
+		20D2C2EA1BEBA706009EFF99 /* QuickHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickHandler.h; sourceTree = "<group>"; };
+		20D2C2EB1BEBA706009EFF99 /* QuickHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickHandler.m; sourceTree = "<group>"; };
+		20D2C2EE1BEBAA1A009EFF99 /* IAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAction.h; sourceTree = "<group>"; };
+		20D2C2EF1BEBAA83009EFF99 /* INetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INetwork.h; sourceTree = "<group>"; };
+		20D2C2F11BEBAB28009EFF99 /* IObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IObject.h; sourceTree = "<group>"; };
 		20F056311BE2525D004727D8 /* DrawUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawUtils.h; sourceTree = "<group>"; };
 		20F056321BE2525D004727D8 /* DrawUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,6 +163,7 @@
 			children = (
 				0AFBAF801BEB53CD008AE72B /* http */,
 				20F0562F1BE25228004727D8 /* socket */,
+				20D2C2EF1BEBAA83009EFF99 /* INetwork.h */,
 			);
 			name = net;
 			sourceTree = "<group>";
@@ -171,8 +178,9 @@
 		207AA7691BE25637008D5E44 /* ui */ = {
 			isa = PBXGroup;
 			children = (
-				20B531091BE2514B001956A6 /* MoreTableView.h */,
-				20B5310A1BE2514B001956A6 /* MoreTableView.m */,
+				20D2C2E91BEBA6F1009EFF99 /* test */,
+				20D2C2EA1BEBA706009EFF99 /* QuickHandler.h */,
+				20D2C2EB1BEBA706009EFF99 /* QuickHandler.m */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -242,6 +250,31 @@
 			path = GlimmerUITests;
 			sourceTree = "<group>";
 		};
+		20D2C2E91BEBA6F1009EFF99 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				20B531091BE2514B001956A6 /* MoreTableView.h */,
+				20B5310A1BE2514B001956A6 /* MoreTableView.m */,
+			);
+			name = test;
+			sourceTree = "<group>";
+		};
+		20D2C2ED1BEBA9D1009EFF99 /* actions */ = {
+			isa = PBXGroup;
+			children = (
+				20D2C2EE1BEBAA1A009EFF99 /* IAction.h */,
+			);
+			name = actions;
+			sourceTree = "<group>";
+		};
+		20D2C2F01BEBAB10009EFF99 /* interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				20D2C2F11BEBAB28009EFF99 /* IObject.h */,
+			);
+			name = interfaces;
+			sourceTree = "<group>";
+		};
 		20F0562C1BE25208004727D8 /* libs */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +294,8 @@
 		20F0562E1BE25221004727D8 /* sdk */ = {
 			isa = PBXGroup;
 			children = (
+				20D2C2F01BEBAB10009EFF99 /* interfaces */,
+				20D2C2ED1BEBA9D1009EFF99 /* actions */,
 				202A125C1BEBA47E008A3026 /* document */,
 				202A125B1BEBA2C5008A3026 /* net */,
 				202A125A1BEBA29B008A3026 /* manager */,
@@ -438,6 +473,7 @@
 				20B531101BE2514B001956A6 /* NetSocket.m in Sources */,
 				20B530DD1BE24F75001956A6 /* GameViewController.m in Sources */,
 				20B530D51BE24F75001956A6 /* AppDelegate.m in Sources */,
+				20D2C2EC1BEBA706009EFF99 /* QuickHandler.m in Sources */,
 				207AA7681BE25529008D5E44 /* SoundManager.m in Sources */,
 				20B5310F1BE2514B001956A6 /* MoreTableView.m in Sources */,
 				20B530D81BE24F75001956A6 /* GameScene.m in Sources */,

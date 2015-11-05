@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <CocoaAsyncSocket/CocoaAsyncSocket.h>
+#import "INetwork.h"
 
-@interface NetSocket : NSObject<AsyncSocketDelegate>
+@interface NetSocket : NSObject<AsyncSocketDelegate, INetwork>
 
 @property(nonatomic,retain) AsyncSocket* socket;
 
