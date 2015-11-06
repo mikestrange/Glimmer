@@ -20,13 +20,13 @@ typedef void(^TickMethod)();
 //自定义
 +(void)scheduled:(id)target function:(TickMethod)method selectId:(NSInteger)index
         interval:(NSTimeInterval)value repeats:(NSInteger)times;
-//一次
+//建立一次性计时器
 +(void)scheduledOnce:(id)target function:(TickMethod)method interval:(NSTimeInterval)value;
-//永久
+//建立永久计时器
 +(void)scheduledForever:(id)target function:(TickMethod)method interval:(NSTimeInterval)value;
 //移除单位指定的一个计时器(selid一样都会被移除)
 +(void)removeByTag:(id)target selId:(NSInteger)tag;
-//移除
+//移除包含该对象的所有时间计时器
 +(void)removeByTarget:(id)target;
 
 @end
@@ -39,8 +39,8 @@ typedef void(^TickMethod)();
     TickMethod _method;
 }
 //
+@property(assign) NSInteger selectId;
 @property(retain,readonly) id target;
-@property(assign,readonly) NSInteger selectId;
 @property(assign,readonly) NSInteger runCount;
 
 -(instancetype)initWithArgs:(id)info selId:(NSInteger)value function:(TickMethod)func Interval:(NSTimeInterval)interval times:(NSInteger)count;

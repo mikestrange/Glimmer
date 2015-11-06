@@ -111,6 +111,19 @@ static SoundManager* _instance = nil;
     return nil;
 }
 
+-(void)cleanAll
+{
+    NSLog(@"clean sounds begin:");
+    NSMutableArray* list = [self getVector];
+    for(SoundData *data in list)
+    {
+        [data stop];
+        [list removeObject:data];
+        NSLog(@"remove sound with path:%@",data.name);
+    }
+    NSLog(@"clean sounds end:");
+}
+
 
 //----------static--------------建立一个本地声音
 +(AVAudioPlayer*)createAudioPlayer:(NSString*)path times:(NSInteger)value

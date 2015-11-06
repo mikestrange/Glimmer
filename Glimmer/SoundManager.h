@@ -40,6 +40,10 @@
  *停止一个路径的声音(是否单独停止)
  **/
 -(void)stopSoundByPath:(NSString*)path sole:(BOOL)value;
+/*
+ *清理所有音乐
+ **/
+-(void)cleanAll;
 
 //+(AVAudioPlayer*)createAudioPlayer:(NSString*)url times:(NSInteger)value;
 @end
@@ -49,7 +53,6 @@
 
 @property(copy,readonly) NSString* name;
 @property(retain,readonly) AVAudioPlayer*player;
-
 
 -(instancetype)initWithPath:(NSString*)name sound:(AVAudioPlayer*)song;
 
