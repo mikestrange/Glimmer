@@ -11,6 +11,7 @@
 typedef NSString* NOTICE_NAME;
 typedef NSInteger NOTICE_TYPE;
 
+#define DEF_NOTICE_TYPE 0
 //EventMessage-----------
 @interface EventMessage : NSObject
 @property(copy,readonly,nonatomic) NOTICE_NAME name;
@@ -22,8 +23,7 @@ typedef NSInteger NOTICE_TYPE;
 
 //消息传递方式
 #define MessageHandler(target, method) ^(EventMessage* event){\
-    [target performSelector:@selector(method) withObject:event];\
-}
+    [target performSelector:@selector(method) withObject:event];}
 //消息传递的类型
 typedef void(^MessageMethod)(EventMessage* event);
 

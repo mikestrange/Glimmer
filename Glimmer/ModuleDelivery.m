@@ -15,27 +15,19 @@ static NSUInteger EMPTY = 0;
 static NSUInteger NONE = -1;
 
 @synthesize faced = _faced;
+@synthesize moduleName = _moduleName;
 
--(instancetype)initWithFaced:(FacedEmployer*)employer
+-(void)registered:(FacedEmployer*)employer markId:(NSString*)name
 {
-    if(self = [super init])
-    {
-        [self registered:employer];
-    }
-    return self;
-}
-
--(void)registered:(FacedEmployer*)employer
-{
+    _faced = employer;
+    _moduleName = name;
     _bindMap = [[NSMutableArray alloc] init];
     _dataMap = [[NSMutableDictionary alloc] init];
-    _faced = employer;
-    [_faced addModule:self];
 }
 
 -(void)addBindto:(id<IBindVisitor>)target
 {
-    if(_bindMap && NONE!=[_bindMap indexOfObject:target])
+    if(NONE != [_bindMap indexOfObject:target])
     {
         //add Notices
         NSArray* list = [target getNoticeArray];
@@ -51,7 +43,7 @@ static NSUInteger NONE = -1;
 
 -(void)removeBindto:(id<IBindVisitor>)target
 {
-    if(_bindMap && [_bindMap count] != EMPTY)
+    if([_bindMap count] != EMPTY)
     {
         NSUInteger index = [_bindMap indexOfObject:target];
         if(NONE != index){
@@ -70,8 +62,8 @@ static NSUInteger NONE = -1;
 -(void)addCommand:(NOTICE_NAME)name className:(Class)classes
 {
     [self.faced addEventListener:name observer:^(EventMessage *event) {
-       // classes* cmd = [classes new];
-       // [cmd noticeHandler:event];
+        id handler = [[classes alloc] init];
+        [handler noticeHandler:event];
     } delegate:classes];
 }
 
@@ -80,17 +72,9 @@ static NSUInteger NONE = -1;
     [self.faced removeEventListener:name delegate:classes];
 }
 
--(void)commandHandler:(EventMessage*)event
-{
-    
-}
-
 -(BOOL)isEmpty
 {
-    if(_bindMap && [_bindMap count] == EMPTY){
-        return YES;
-    }
-    return NO;
+    return [_bindMap count] == EMPTY;
 }
 
 -(void)destroy
@@ -98,9 +82,5 @@ static NSUInteger NONE = -1;
     
 }
 
--(void)dealloc
-{
-    [self destroy];
-}
 
 @end

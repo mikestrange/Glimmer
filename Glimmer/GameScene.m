@@ -17,6 +17,8 @@
 #import "TrimString.h"
 #import "DownLoader.h"
 #import "QuickHandler.h"
+#import "FacedEmployer.h"
+#import "EventDispatcher.h"
 
 @implementation GameScene
 
@@ -98,6 +100,13 @@
     //AVPlayerViewController* p;
     //MoviePlayerViewController *w;
     //
+    [[FacedEmployer getInstance] addEventListener:@"s" observer:MessageHandler(self, handEvent:) delegate:self];
+    [[FacedEmployer getInstance] sendMessage:@"s"];
+}
+
+-(void)handEvent:(EventMessage*)event
+{
+    NSLog(@"dddddd");
 }
 
 

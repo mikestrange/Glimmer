@@ -8,22 +8,60 @@
 
 #import "FacedEmployer.h"
 
+static FacedEmployer* _instance;
+
 @implementation FacedEmployer
 
-
--(void)addModule:(ModuleDelivery*)target
++(instancetype)getInstance
 {
-    
+    if(nil == _instance){
+        _instance = [[FacedEmployer alloc] init];
+    }
+    return _instance;
 }
 
--(void)removeModule:(ModuleDelivery*)target
+-(instancetype)init
 {
-    
+    if(self = [super init]){
+        moduleMap = [[NSMutableDictionary alloc] init];
+    }
+    return self;
+}
+
+-(BOOL)hasModule:(NSString*)value
+{
+    return [moduleMap objectForKey:value];
+}
+
+-(void)addModule:(ModuleDelivery*)target markId:(NSString*)value
+{
+    [moduleMap setObject:target forKey:value];
+    [target registered:self markId:value];
+}
+
+-(void)removeModule:(NSString*)value
+{
+    ModuleDelivery* data = [moduleMap objectForKey:value];
+    if(data)
+    {
+        [moduleMap removeObjectForKey:value];
+        [data destroy];
+    }
 }
 
 -(void)sendMessage:(NOTICE_NAME)name info:(id)data type:(NOTICE_TYPE)index
 {
     [self dispatchMessage:[[EventMessage alloc] initWithArgs:name target:data messageType:index]];
+}
+
+-(void)sendMessage:(NOTICE_NAME)name info:(id)data
+{
+    [self dispatchMessage:[[EventMessage alloc] initWithArgs:name target:data messageType:DEF_NOTICE_TYPE]];
+}
+
+-(void)sendMessage:(NOTICE_NAME)name
+{
+    [self dispatchMessage:[[EventMessage alloc] initWithArgs:name target:nil messageType:DEF_NOTICE_TYPE]];
 }
 
 @end

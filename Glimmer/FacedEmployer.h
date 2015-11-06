@@ -12,13 +12,22 @@
 
 @class ModuleDelivery;
 
-@interface FacedEmployer : EventDispatcher
-
+@interface FacedEmployer : EventDispatcher{
+    @protected
+    NSMutableDictionary* moduleMap;
+}
+//使用一个单列
++(instancetype)getInstance;
+//是否存在
+-(BOOL)hasModule:(NSString*)value;
 //添加模块
--(void)addModule:(ModuleDelivery*)target;
+-(void)addModule:(ModuleDelivery*)target markId:(NSString*)value;
 //移除模块
--(void)removeModule:(ModuleDelivery*)target;
+-(void)removeModule:(NSString*)value;
 //发送消息
 -(void)sendMessage:(NOTICE_NAME)name info:(id)data type:(NOTICE_TYPE)index;
-
+//发送消息2
+-(void)sendMessage:(NOTICE_NAME)name info:(id)data;
+//发送消息3
+-(void)sendMessage:(NOTICE_NAME)name;
 @end
