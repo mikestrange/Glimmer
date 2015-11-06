@@ -98,7 +98,6 @@
     //AVPlayerViewController* p;
     //MoviePlayerViewController *w;
     //
-    NSLog(@"sta");
 }
 
 

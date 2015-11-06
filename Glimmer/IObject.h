@@ -10,4 +10,8 @@
 
 @protocol IObject <NSObject>
 
+-(void)applyHandler:(NSString*)notice target:(id)info;
+-(void)setCurrentDelegate:(id)delegate;
+-(id)getCurrentDelegate;
+
 @end
