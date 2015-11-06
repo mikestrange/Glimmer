@@ -11,6 +11,9 @@
 #import "IDataTable.h"
 #import "FacedEmployer.h"
 
+/*
+ *ModuleDelivery的作用是让逻辑和职责更好的分开，他新增了任务模式
+ **/
 @class FacedEmployer;
 
 @interface ModuleDelivery : NSObject{

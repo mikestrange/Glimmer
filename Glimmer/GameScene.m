@@ -68,6 +68,7 @@
     [[NetSocket getInstance] connect:@"127.0.0.1" port:9555];
     //延时调用
     [TickManager scheduledOnce:self function:tickHandler(self, xmlHandler) interval:.5];
+    //
 }
 
 -(void)xmlHandler
@@ -105,6 +106,7 @@
     [[FacedEmployer getInstance] addModule:t markId:@"t"];
     [t addBindto:self];
     [[FacedEmployer getInstance] sendMessage:@"s"];
+    [[FacedEmployer getInstance] sendMessage:@"t"];
 }
 
 -(void)noticeHandler:(EventMessage*)event
@@ -114,7 +116,7 @@
 
 -(NSArray*)getNoticeArray
 {
-    return @[@"t",@"s"];
+    return @[@"ts",@"s"];
 }
 
 -(void)launch

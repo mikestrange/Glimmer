@@ -50,6 +50,7 @@ static NSUInteger NO_EMPTY = 0;
         }
         if(NO_EMPTY == [list count]){
             [noticeMap removeObjectForKey:notice];
+            //NSLog(@"Empty:%@",notice);
         }
     }
 }

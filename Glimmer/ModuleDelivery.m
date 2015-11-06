@@ -92,7 +92,7 @@ static NSUInteger NONE = -1;
 
 -(void)destroy
 {
-    
+    NSLog(@"remove Module");
 }
 
 

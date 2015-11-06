@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ICommandHandler.h"
+#import "EventDispatcher.h"
 
-@protocol IBindVisitor <ICommandHandler>
+@protocol IBindVisitor <NSObject>
 
 -(NSArray*)getNoticeArray;
+-(void)noticeHandler:(EventMessage*)event;
 -(void)launch;
 -(void)free;
 
