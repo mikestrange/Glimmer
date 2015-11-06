@@ -7,8 +7,9 @@
 //
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
+#import "IBindVisitor.h"
 
-@interface GameScene : SKScene<NSXMLParserDelegate>
+@interface GameScene : SKScene<NSXMLParserDelegate,IBindVisitor>
 
 
 @end

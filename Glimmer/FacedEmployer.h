@@ -24,6 +24,8 @@
 -(void)addModule:(ModuleDelivery*)target markId:(NSString*)value;
 //移除模块
 -(void)removeModule:(NSString*)value;
+
+#pragma 发送消息
 //发送消息
 -(void)sendMessage:(NOTICE_NAME)name info:(id)data type:(NOTICE_TYPE)index;
 //发送消息2

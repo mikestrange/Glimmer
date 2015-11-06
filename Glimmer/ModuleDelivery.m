@@ -30,11 +30,7 @@ static NSUInteger NONE = -1;
     if(NONE != [_bindMap indexOfObject:target])
     {
         //add Notices
-        NSArray* list = [target getNoticeArray];
-        for(NSString* key in list){
-            [self.faced addEventListener:key observer:MessageHandler(target,noticeHandler:)
-                                delegate:target];
-        }
+        [self addNotices:target boolean:YES];
         //binding
         [_bindMap addObject:target];
         [target launch];
@@ -48,13 +44,30 @@ static NSUInteger NONE = -1;
         NSUInteger index = [_bindMap indexOfObject:target];
         if(NONE != index){
             //remove Notices
-             NSArray* list = [target getNoticeArray];
-            for(NSString* key in list){
-                [self.faced removeEventListener:key delegate:target];
-            }
+            [self addNotices:target boolean:NO];
             //delete
             [_bindMap removeObjectAtIndex:index];
             [target free];
+            //如果空了，那么删除自身
+            if([self isEmpty]){
+                [self.faced removeModule:self.moduleName];
+            }
+        }
+    }
+}
+
+//私有
+-(void)addNotices:(id<IBindVisitor>)target boolean:(BOOL)value
+{
+    NSArray* list = [target getNoticeArray];
+    if(value){
+        for(NSString* key in list){
+            [self.faced addEventListener:key observer:MessageHandler(target, noticeHandler:)
+                                delegate:target];
+        }
+    }else{
+        for(NSString* key in list){
+            [self.faced removeEventListener:key delegate:target];
         }
     }
 }
