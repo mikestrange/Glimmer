@@ -28,40 +28,48 @@ static FacedEmployer* _instance;
     return self;
 }
 
--(BOOL)hasModule:(NSString*)value
+-(void)addCommandVector:(NSArray*)vector command:(id<CommandHandler>)target
 {
-    return [moduleMap objectForKey:value];
-}
-
--(void)addModule:(ModuleDelivery*)target markId:(NSString*)value
-{
-    [moduleMap setObject:target forKey:value];
-    [target registered:self markId:value];
-}
-
--(void)removeModule:(NSString*)value
-{
-    ModuleDelivery* data = [moduleMap objectForKey:value];
-    if(data)
+    for(NSString* name in vector)
     {
-        [moduleMap removeObjectForKey:value];
-        [data destroy];
+        [self addCommandListener:name command:target];
+    }
+}
+
+-(void)addClassVector:(NSArray*)vector classes:(Class)target
+{
+    for(NSString* name in vector)
+    {
+        [self addClassListener:name classes:target];
+    }
+}
+
+-(void)removeNotices:(NSArray*)vector delegate:(id)target
+{
+    for(NSString* name in vector)
+    {
+        [self removeEventListener:name delegate:target];
     }
 }
 
 -(void)sendMessage:(NOTICE_NAME)name info:(id)data type:(NOTICE_TYPE)index
 {
-    [self dispatchMessage:[[EventMessage alloc] initWithArgs:name target:data messageType:index]];
+    [self dispatchMessage:[[EventCaptive alloc] initWithArgs:name target:data messageType:index]];
 }
 
 -(void)sendMessage:(NOTICE_NAME)name info:(id)data
 {
-    [self dispatchMessage:[[EventMessage alloc] initWithArgs:name target:data messageType:DEF_NOTICE_TYPE]];
+    [self dispatchMessage:[[EventCaptive alloc] initWithArgs:name target:data messageType:DEF_NOTICE_TYPE]];
 }
 
 -(void)sendMessage:(NOTICE_NAME)name
 {
-    [self dispatchMessage:[[EventMessage alloc] initWithArgs:name target:nil messageType:DEF_NOTICE_TYPE]];
+    [self dispatchMessage:[[EventCaptive alloc] initWithArgs:name target:nil messageType:DEF_NOTICE_TYPE]];
+}
+
+-(void)sendMessage:(NOTICE_NAME)name type:(NOTICE_TYPE)index
+{
+    [self dispatchMessage:[[EventCaptive alloc] initWithArgs:name target:nil messageType:index]];
 }
 
 @end

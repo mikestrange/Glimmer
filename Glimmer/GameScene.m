@@ -19,7 +19,6 @@
 #import "QuickHandler.h"
 #import "FacedEmployer.h"
 #import "EventDispatcher.h"
-#import "ModuleDelivery.h"
 
 @implementation GameScene
 
@@ -102,31 +101,14 @@
     //AVPlayerViewController* p;
     //MoviePlayerViewController *w;
     //
-    ModuleDelivery* t = [[ModuleDelivery alloc] init];
-    [[FacedEmployer getInstance] addModule:t markId:@"t"];
-    [t addBindto:self];
+    [[FacedEmployer getInstance] addCommandVector:@[@"s",@"t"] command:self];
     [[FacedEmployer getInstance] sendMessage:@"s"];
     [[FacedEmployer getInstance] sendMessage:@"t"];
 }
 
--(void)noticeHandler:(EventMessage*)event
+-(void)noticeHandler:(EventCaptive*)event
 {
     NSLog(@"dddddd");
-}
-
--(NSArray*)getNoticeArray
-{
-    return @[@"ts",@"s"];
-}
-
--(void)launch
-{
-    
-}
-
--(void)free
-{
-    
 }
 
 //执行动画

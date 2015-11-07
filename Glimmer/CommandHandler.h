@@ -1,5 +1,5 @@
 //
-//  IBindVisitor.h
+//  ICommandHandler.h
 //  Glimmer
 //
 //  Created by Mac_Tech on 15/11/6.
@@ -9,11 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "EventDispatcher.h"
 
-@protocol IBindVisitor <NSObject>
+@class EventCaptive;
+@protocol CommandHandler<NSObject>
 
--(NSArray*)getNoticeArray;
--(void)noticeHandler:(EventMessage*)event;
--(void)launch;
--(void)free;
+@required
+-(void)noticeHandler:(EventCaptive*)event;
 
 @end

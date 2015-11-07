@@ -7,7 +7,6 @@
 //
 
 #import "EventDispatcher.h"
-#import "ICommandHandler.h"
 
 @implementation EventDispatcher
 
@@ -22,26 +21,36 @@ static NSUInteger NO_EMPTY = 0;
     return self;
 }
 
--(void)addEventListener:(NOTICE_NAME)notice observer:(MessageMethod)method delegate:(id)target
+-(void)addEventListener:(NOTICE_NAME)notice oberver:(BaseOberver*)target
 {
     NSMutableArray* list = [noticeMap objectForKey:notice];
     if(!list){
         list = [[NSMutableArray alloc] init];
-        [list addObject:[[EventObserver alloc] initWithTarget:method delegate:target]];
+        [list addObject:target];
         [noticeMap setObject:list forKey:notice];
     }else{
-        NSUInteger index = [list indexOfObject:target];
+        NSUInteger index = [list indexOfObject:target.delegate];
         if(NONE != index){
-            [list addObject:[[EventObserver alloc] initWithTarget:method delegate:target]];
+            [list addObject:target];
         }
     }
+}
+
+-(void)addCommandListener:(NOTICE_NAME)notice command:(id)target
+{
+    [self addEventListener:notice oberver:[[CommandOberver alloc] initWithTarget:target]];
+}
+
+-(void)addClassListener:(NOTICE_NAME)notice classes:(Class)target
+{
+    [self addEventListener:notice oberver:[[ClassOberver alloc] initWithTarget:target]];
 }
 
 -(void)removeEventListener:(NOTICE_NAME)notice delegate:(id)target
 {
     NSMutableArray* list = [noticeMap objectForKey:notice];
     if(list){
-        for(EventObserver* data in list){
+        for(BaseOberver* data in list){
             if([data match:target]){
                 [data free];
                 [list removeObject:data];
@@ -55,14 +64,22 @@ static NSUInteger NO_EMPTY = 0;
     }
 }
 
--(void)dispatchMessage:(EventMessage*)event
+//执行
+-(void)dispatchMessage:(EventCaptive*)event
 {
     NSMutableArray* list = [noticeMap objectForKey:[event name]];
     if(list)
     {
+        //传入自身
+        event.target = self;
+        //拷贝
         NSMutableArray* vector = [NSMutableArray arrayWithArray:list];
-        for(EventObserver* data in vector){
-            [data eventHandler:event];
+        //派发
+        for(BaseOberver* oberver in vector)
+        {
+            if(oberver.isLive){
+                [oberver noticeHandler:event];
+            }
         }
     }
 }
@@ -72,53 +89,24 @@ static NSUInteger NO_EMPTY = 0;
     return [noticeMap objectForKey:notice];
 }
 
-@end
-
-
-//EventObserver==========================
-#pragma class EventObserver
-
-@implementation EventObserver
-
-@synthesize function = _function;
-@synthesize isFree = _isFree;
-@synthesize delegate = _delegate;
-
--(instancetype)initWithTarget:(MessageMethod)method delegate:(id)target
+-(BOOL)hasEventListener:(NOTICE_NAME)notice delegate:(id)target
 {
-    if(self = [super init])
+    NSMutableArray* list = [noticeMap objectForKey:notice];
+    if(list)
     {
-        _function = method;
-        _delegate = target;
-        _isFree = NO;
+        for(BaseOberver* data in list){
+            if([data match:target]) return YES;
+        }
     }
-    return self;
+    return NO;
 }
 
--(BOOL)match:(id)target
-{
-    return self.delegate == target;
-}
-
--(void)free
-{
-    _isFree = YES;
-}
-
--(void)eventHandler:(EventMessage*)event
-{
-    if(!self.isFree){
-        self.function(event);
-    }
-}
 
 @end
 
 
-//EventMessage==========================
-#pragma class EventMessage
-
-@implementation EventMessage
+#pragma EventCaptive
+@implementation EventCaptive
 
 @synthesize name = _name;
 @synthesize type = _type;
@@ -135,3 +123,4 @@ static NSUInteger NO_EMPTY = 0;
 }
 
 @end
+
