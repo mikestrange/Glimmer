@@ -84,7 +84,8 @@ static const NSInteger DEF_FOREVER_TIMES = -1;
 @synthesize selectId;
 @synthesize runCount;
 
--(instancetype)initWithArgs:(id)info selId:(NSInteger)value function:(TickMethod)func Interval:(NSTimeInterval)interval times:(NSInteger)count;
+-(instancetype)initWithArgs:(id)info selId:(NSInteger)value function:(TickMethod)func
+                   Interval:(NSTimeInterval)interval times:(NSInteger)count;
 {
     if(self=[super init])
     {

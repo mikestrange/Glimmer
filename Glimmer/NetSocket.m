@@ -10,7 +10,7 @@
 #import <CocoaAsyncSocket/CocoaAsyncSocket.h>
 
 static NetSocket* _instance = NULL;
-static NSTimeInterval _TIME_ = 60*1000;     //超时时间
+static NSTimeInterval _TIME_ = 10*1000;     //超时时间:10秒
 static long SOCKET_OPPTER_TAG = -1;        //一个标记
 
 enum{

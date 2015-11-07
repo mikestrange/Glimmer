@@ -17,7 +17,7 @@
     XMLNode* currentNode;
 }
 
-//解析数据，得到顶级节点
+//解析数据，得到顶级节点 注意：这里必须以单节点作为父节点，不允许多个父节点
 -(XMLNode*)parseXml:(NSData*)data;
 
 @end

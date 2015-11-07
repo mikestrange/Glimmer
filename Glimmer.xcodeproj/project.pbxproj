@@ -28,7 +28,6 @@
 		20B530FB1BE24F76001956A6 /* GlimmerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B530FA1BE24F76001956A6 /* GlimmerUITests.m */; };
 		20B5310F1BE2514B001956A6 /* MoreTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B5310A1BE2514B001956A6 /* MoreTableView.m */; };
 		20B531101BE2514B001956A6 /* NetSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B5310C1BE2514B001956A6 /* NetSocket.m */; };
-		20B531111BE2514B001956A6 /* NetTcp.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B5310E1BE2514B001956A6 /* NetTcp.m */; };
 		20B531141BE2515A001956A6 /* ActionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B531131BE2515A001956A6 /* ActionUtils.m */; };
 		20B531161BE2517E001956A6 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B531151BE2517E001956A6 /* CocoaAsyncSocket.framework */; };
 		20D2C2EC1BEBA706009EFF99 /* QuickHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D2C2EB1BEBA706009EFF99 /* QuickHandler.m */; };
@@ -97,8 +96,6 @@
 		20B5310A1BE2514B001956A6 /* MoreTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableView.m; sourceTree = "<group>"; };
 		20B5310B1BE2514B001956A6 /* NetSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetSocket.h; sourceTree = "<group>"; };
 		20B5310C1BE2514B001956A6 /* NetSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetSocket.m; sourceTree = "<group>"; };
-		20B5310D1BE2514B001956A6 /* NetTcp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetTcp.h; sourceTree = "<group>"; };
-		20B5310E1BE2514B001956A6 /* NetTcp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetTcp.m; sourceTree = "<group>"; };
 		20B531121BE2515A001956A6 /* ActionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionUtils.h; sourceTree = "<group>"; };
 		20B531131BE2515A001956A6 /* ActionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionUtils.m; sourceTree = "<group>"; };
 		20B531151BE2517E001956A6 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaAsyncSocket.framework; sourceTree = "<group>"; };
@@ -364,8 +361,6 @@
 			children = (
 				20B5310B1BE2514B001956A6 /* NetSocket.h */,
 				20B5310C1BE2514B001956A6 /* NetSocket.m */,
-				20B5310D1BE2514B001956A6 /* NetTcp.h */,
-				20B5310E1BE2514B001956A6 /* NetTcp.m */,
 			);
 			name = socket;
 			sourceTree = "<group>";
@@ -531,7 +526,6 @@
 				20B5310F1BE2514B001956A6 /* MoreTableView.m in Sources */,
 				20B530D81BE24F75001956A6 /* GameScene.m in Sources */,
 				0A7F7B141BEC4AE100B12B9D /* FacedEmployer.m in Sources */,
-				20B531111BE2514B001956A6 /* NetTcp.m in Sources */,
 				20B530D21BE24F75001956A6 /* main.m in Sources */,
 				0AFF4A241BEB0DA6001C2B11 /* XMLNode.m in Sources */,
 				201C42521BEE261800E7A316 /* BaseOberver.m in Sources */,

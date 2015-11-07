@@ -7,11 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "INetwork.h"
 
-@interface DownLoader : NSObject
+@interface DownLoader : NSObject<INetwork>
 
+/*
+ *http请求
+ **/
 -(void)sendHttps:(NSString*)httpUrl;
+/*
+ *上传
+ **/
 -(void)upLoad:(NSString*)httpUrl data:(NSData*)data;
+/*
+ *下载
+ **/
 -(void)downLoad:(NSString*)httpUrl;
+/*
+ *关闭
+ **/
+-(void)close;
 
 @end
