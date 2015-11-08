@@ -58,7 +58,7 @@ static const NSInteger DEF_FOREVER_TIMES = -1;
         interval:(NSTimeInterval)value repeats:(NSInteger)times;
 {
    //添加队列
-    [[TickManager getTickPool] addObject:[[TickData alloc] initWithArgs:NULL selId:0 function:method Interval:value times:times]];
+    [[TickManager getTickPool] addObject:[[TickData alloc] initWithArgs:NULL selId:index function:method Interval:value times:times]];
 }
 
 +(void)scheduledOnce:(id)target function:(TickMethod)method interval:(NSTimeInterval)value

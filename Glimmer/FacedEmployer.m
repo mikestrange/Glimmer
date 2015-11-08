@@ -52,6 +52,7 @@ static FacedEmployer* _instance;
     }
 }
 
+#pragma sendMessage
 -(void)sendMessage:(NOTICE_NAME)name info:(id)data type:(NOTICE_TYPE)index
 {
     [self dispatchMessage:[[EventCaptive alloc] initWithArgs:name target:data messageType:index]];

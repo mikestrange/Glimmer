@@ -29,17 +29,17 @@ typedef void(^EventMethod)(EventCaptive* event);
 
 @end
 
-//静态绑定
+//第一种，实例静态绑定
 @interface CommandOberver : BaseOberver
 
 @end
 
-//第二种动态形式
+//第二种，类动态形式
 @interface ClassOberver : BaseOberver
 
 @end
 
-//第三种回调形式
+//第三种，回调形式
 @interface MethodOberver : BaseOberver
 //回调方法
 @property(assign,nonatomic)EventMethod method;

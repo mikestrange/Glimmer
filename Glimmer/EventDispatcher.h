@@ -57,8 +57,6 @@ typedef void(^EventMethod)(EventCaptive* event);
 
 -(BOOL)hasEventListener:(NOTICE_NAME)notice;
 
--(BOOL)hasEventListener:(NOTICE_NAME)notice delegate:(id)target;
-
 @end
 
 

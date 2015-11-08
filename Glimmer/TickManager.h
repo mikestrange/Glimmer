@@ -43,7 +43,8 @@ typedef void(^TickMethod)();
 @property(retain,readonly) id target;
 @property(assign,readonly) NSInteger runCount;
 
--(instancetype)initWithArgs:(id)info selId:(NSInteger)value function:(TickMethod)func Interval:(NSTimeInterval)interval times:(NSInteger)count;
+-(instancetype)initWithArgs:(id)info selId:(NSInteger)value function:(TickMethod)func
+                   Interval:(NSTimeInterval)interval times:(NSInteger)count;
 
 -(BOOL)matchSelectId:(NSInteger)value;
 

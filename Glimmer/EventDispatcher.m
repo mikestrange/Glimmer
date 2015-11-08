@@ -30,9 +30,9 @@ static NSUInteger NO_EMPTY = 0;
         [noticeMap setObject:list forKey:notice];
     }else{
         NSUInteger index = [list indexOfObject:target.delegate];
-        if(NONE != index){
+        //if(NONE != index){
             [list addObject:target];
-        }
+        //}
     }
 }
 
@@ -92,18 +92,6 @@ static NSUInteger NO_EMPTY = 0;
 -(BOOL)hasEventListener:(NOTICE_NAME)notice
 {
     return [noticeMap objectForKey:notice];
-}
-
--(BOOL)hasEventListener:(NOTICE_NAME)notice delegate:(id)target
-{
-    NSMutableArray* list = [noticeMap objectForKey:notice];
-    if(list)
-    {
-        for(BaseOberver* data in list){
-            if([data match:target]) return YES;
-        }
-    }
-    return NO;
 }
 
 

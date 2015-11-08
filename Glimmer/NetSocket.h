@@ -17,8 +17,8 @@
 +(NetSocket*)getInstance;
 
 -(void)connect:(NSString*)host port:(UInt16)port;
--(void)close;
 -(BOOL)isConnected;
+-(void)close;
 
 @end
 

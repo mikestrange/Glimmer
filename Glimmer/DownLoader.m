@@ -89,7 +89,7 @@
     NSURL *newFileLocation = [documentsDirectoryURL URLByAppendingPathComponent:fileName];
     //拷贝
     [[NSFileManager defaultManager] copyItemAtURL:location toURL:newFileLocation error:nil];
-    NSLog(@"保存至新路径 over:%@",newFileLocation);
+    NSLog(@"保存至新路径 over:%@", newFileLocation);
     //回执：目标url，保存地址，(原始数据)
 }
 
