@@ -15,6 +15,7 @@
 		0AFF4A241BEB0DA6001C2B11 /* XMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFF4A231BEB0DA6001C2B11 /* XMLNode.m */; settings = {ASSET_TAGS = (); }; };
 		20138C9E1BE7AD07001F04EB /* TickManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20138C9D1BE7AD07001F04EB /* TickManager.m */; };
 		201C42521BEE261800E7A316 /* BaseOberver.m in Sources */ = {isa = PBXBuildFile; fileRef = 201C42511BEE261800E7A316 /* BaseOberver.m */; };
+		201C425A1BEF4DFE00E7A316 /* ByteArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 201C42591BEF4DFE00E7A316 /* ByteArray.m */; };
 		207AA7681BE25529008D5E44 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 207AA7671BE25529008D5E44 /* SoundManager.m */; };
 		20B530D21BE24F75001956A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B530D11BE24F75001956A6 /* main.m */; };
 		20B530D51BE24F75001956A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B530D41BE24F75001956A6 /* AppDelegate.m */; };
@@ -71,6 +72,8 @@
 		20138C9D1BE7AD07001F04EB /* TickManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TickManager.m; sourceTree = "<group>"; };
 		201C42501BEE261800E7A316 /* BaseOberver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseOberver.h; sourceTree = "<group>"; };
 		201C42511BEE261800E7A316 /* BaseOberver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseOberver.m; sourceTree = "<group>"; };
+		201C42581BEF4DFE00E7A316 /* ByteArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ByteArray.h; sourceTree = "<group>"; };
+		201C42591BEF4DFE00E7A316 /* ByteArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ByteArray.m; sourceTree = "<group>"; };
 		207AA7661BE25529008D5E44 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
 		207AA7671BE25529008D5E44 /* SoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundManager.m; sourceTree = "<group>"; };
 		20B530CD1BE24F75001956A6 /* Glimmer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glimmer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,6 +215,8 @@
 				0AFBAF801BEB53CD008AE72B /* http */,
 				20F0562F1BE25228004727D8 /* socket */,
 				20D2C2EF1BEBAA83009EFF99 /* INetwork.h */,
+				201C42581BEF4DFE00E7A316 /* ByteArray.h */,
+				201C42591BEF4DFE00E7A316 /* ByteArray.m */,
 			);
 			name = net;
 			sourceTree = "<group>";
@@ -517,6 +522,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				201C425A1BEF4DFE00E7A316 /* ByteArray.m in Sources */,
 				0AFBAF7F1BEB31E9008AE72B /* TrimString.m in Sources */,
 				20B531101BE2514B001956A6 /* NetSocket.m in Sources */,
 				20B530DD1BE24F75001956A6 /* GameViewController.m in Sources */,
