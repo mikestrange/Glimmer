@@ -36,6 +36,11 @@ static NSUInteger NO_EMPTY = 0;
     }
 }
 
+-(void)addMethodListener:(NOTICE_NAME)notice method:(EventMethod)function delegate:(id)target
+{
+    [self addEventListener:notice oberver:[[MethodOberver alloc] initWithMethod:target methodFunction:function]];
+}
+
 -(void)addCommandListener:(NOTICE_NAME)notice command:(id)target
 {
     [self addEventListener:notice oberver:[[CommandOberver alloc] initWithTarget:target]];

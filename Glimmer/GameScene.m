@@ -102,8 +102,8 @@
     //MoviePlayerViewController *w;
     //
     [[FacedEmployer getInstance] addCommandVector:@[@"s",@"t"] command:self];
-    [[FacedEmployer getInstance] sendMessage:@"s"];
-    [[FacedEmployer getInstance] sendMessage:@"t"];
+    [[FacedEmployer getInstance] addMethodListener:@"x" method:EventHandler(self, noticeHandler:) delegate:self];
+    [[FacedEmployer getInstance] sendMessage:@"x"];
 }
 
 -(void)noticeHandler:(EventCaptive*)event

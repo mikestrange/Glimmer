@@ -12,6 +12,12 @@
 
 typedef NSString* NOTICE_NAME;
 typedef NSInteger NOTICE_TYPE;
+//回执方法
+typedef void(^EventMethod)(EventCaptive* event);
+
+#define EventHandler(target, method) ^(EventCaptive* event){\
+    [self performSelector:@selector(method) withObject:event];\
+}
 
 #define DEF_NOTICE_TYPE 0
 
@@ -42,6 +48,8 @@ typedef NSInteger NOTICE_TYPE;
 -(void)addCommandListener:(NOTICE_NAME)notice command:(id/*<CommandHandler>*/)target;
 //添加一个处理类
 -(void)addClassListener:(NOTICE_NAME)notice classes:(Class)target;
+//
+-(void)addMethodListener:(NOTICE_NAME)notice method:(EventMethod)function delegate:(id)target;
 //根据一个对象移除
 -(void)removeEventListener:(NOTICE_NAME)notice delegate:(id)target;
 

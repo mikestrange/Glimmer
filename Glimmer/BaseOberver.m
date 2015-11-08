@@ -63,3 +63,23 @@
 }
 
 @end
+
+#pragma MethodOberver
+@implementation MethodOberver
+
+@synthesize method;
+
+-(instancetype)initWithMethod:(id)target methodFunction:(EventMethod)function
+{
+    if(self = [super initWithTarget:target]){
+        self.method = function;
+    }
+    return self;
+}
+
+-(void)noticeHandler:(EventCaptive*)event
+{
+    self.method(event);
+}
+
+@end
