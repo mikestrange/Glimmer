@@ -19,6 +19,8 @@
 #import "QuickHandler.h"
 #import "FacedEmployer.h"
 #import "EventDispatcher.h"
+#import "NetSocket.h"
+#import "ByteArray.h"
 
 @implementation GameScene
 
@@ -68,6 +70,15 @@
     //延时调用
     [TickManager scheduledOnce:self function:tickHandler(self, xmlHandler) interval:.5];
     //
+    ByteArray* byte = [[ByteArray alloc] init];
+    [byte writeShort:23309];
+    [byte writeInt:255];
+    [byte writeInt:-2341];
+    [byte writeString:@"1中国"];
+    NSLog(@"%li",[byte readShort]);
+    NSLog(@"%li",[byte readInt]);
+    NSLog(@"%li",[byte readInt]);
+    NSLog(@"---->%@",[byte readString:@"x"]);
 }
 
 -(void)xmlHandler

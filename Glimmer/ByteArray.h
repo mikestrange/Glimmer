@@ -11,27 +11,19 @@
 typedef char* BYTE;
 
 @interface ByteArray : NSObject
-{
-    @private
-    BYTE _byte;
-}
 
 @property(assign,nonatomic)NSInteger position;
 @property(assign,readonly,nonatomic)NSInteger length;
+@property(assign,readonly,nonatomic)BYTE bytes;
 
--(instancetype)initWithByte:(BYTE)byte;
-
+#pragma clear
 -(void)clear;
 
+#pragma gets
 -(NSInteger)getScalableTotals;
 
 #pragma setBytes
--(void)setBytes:(BYTE)bytes;
-
-#pragma getBytes
--(BYTE)getBytes;
--(BYTE)getBytes:(NSInteger)beginIndex;
--(BYTE)getBytes:(NSInteger)beginIndex length:(NSInteger)offLen;
+-(void)updateBytes:(BYTE)bytes length:(NSInteger)len;
 
 #pragma reading
 -(BOOL)readBoolean;
@@ -40,8 +32,8 @@ typedef char* BYTE;
 -(NSInteger)readShort;
 -(NSInteger)readUShort;
 -(NSInteger)readInt;
--(NSUInteger)readUint;
--(NSString*)readString:(NSInteger)type;
+-(NSUInteger)readUInt;
+-(NSString*)readString:(NSString*)type;
 //读取一个长度，写入到对象中
 -(void)readBytes:(ByteArray*)target length:(NSInteger)offLen;
 
@@ -49,7 +41,7 @@ typedef char* BYTE;
 -(void)writeByte:(NSInteger)value;
 -(void)writeShort:(NSInteger)value;
 -(void)writeInt:(NSInteger)value;
--(void)writeUint:(NSUInteger)value;
+-(void)writeUInt:(NSUInteger)value;
 -(void)writeString:(NSString*)value;
 //这里从target读取开始到结束的所有字节,写入到自己队列中
 -(void)writeBytes:(ByteArray*)target beginfor:(NSInteger)beginIndex;
