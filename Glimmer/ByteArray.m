@@ -135,7 +135,7 @@ static const NSInteger BYTE_LEN = 1;
 
 -(NSULong)readULong
 {
-    return [self readLong] & 0xffffffffffffffffL;
+    return [self readLong]&0xffffffffffffffffL;
 }
 
 -(NSString*)readString:(NSString*)type
