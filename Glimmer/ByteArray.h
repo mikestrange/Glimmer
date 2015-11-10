@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 typedef char* BYTE;
+typedef long long NSLong;
+typedef unsigned long long NSULong;
 
 @interface ByteArray : NSObject
 
@@ -39,6 +41,8 @@ typedef char* BYTE;
 -(NSInteger)readUShort;
 -(NSInteger)readInt;
 -(NSUInteger)readUInt;
+-(NSLong)readLong;
+-(NSULong)readULong;
 -(NSString*)readString:(NSString*)type;
 //读取一个长度，写入到对象中
 -(void)readBytes:(ByteArray*)target length:(NSInteger)offLen;
@@ -48,6 +52,8 @@ typedef char* BYTE;
 -(void)writeShort:(NSInteger)value;
 -(void)writeInt:(NSInteger)value;
 -(void)writeUInt:(NSUInteger)value;
+-(void)writeLong:(NSLong)value;
+-(void)writeULong:(NSULong)value;
 -(void)writeString:(NSString*)value;
 //将对象写入自己
 -(void)writeBytes:(ByteArray*)target;

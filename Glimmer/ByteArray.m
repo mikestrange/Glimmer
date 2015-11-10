@@ -14,7 +14,12 @@ static const NSInteger NONE = 0;
 static const NSInteger BIT8 = 8;
 static const NSInteger BIT16 = 16;
 static const NSInteger BIT24 = 24;
+static const NSInteger BIT32 = 32;
+static const NSInteger BIT40 = 40;
+static const NSInteger BIT48 = 48;
+static const NSInteger BIT56 = 56;
 //
+static const NSInteger LONG_LEN = 8;
 static const NSInteger INT_LEN = 4;
 static const NSInteger SHORT_LEN = 2;
 static const NSInteger BYTE_LEN = 1;
@@ -109,6 +114,30 @@ static const NSInteger BYTE_LEN = 1;
     return [self readInt] & 0xffffffff;
 }
 
+-(NSLong)readLong
+{
+    u_char v1 = self.bytes[self.position];
+    u_char v2 = self.bytes[self.position+1];
+    u_char v3 = self.bytes[self.position+2];
+    u_char v4 = self.bytes[self.position+3];
+    //
+    NSInteger p1 = (v1<<BIT24)|(v2<<BIT16)|(v3<<BIT8)|v4;
+    //
+    u_char v5 = self.bytes[self.position+4];
+    u_char v6 = self.bytes[self.position+5];
+    u_char v7 = self.bytes[self.position+6];
+    u_char v8 = self.bytes[self.position+7];
+    NSInteger p2 = ((v5<<BIT24)|(v6<<BIT16)|(v7<<BIT8)|v8)&0xffffffff;
+    //
+    self.position+=LONG_LEN;
+    return (p1<<BIT32)|p2;
+}
+
+-(NSULong)readULong
+{
+    return [self readLong] & 0xffffffffffffffffL;
+}
+
 -(NSString*)readString:(NSString*)type
 {
     NSInteger len = [self readShort];
@@ -193,6 +222,40 @@ static const NSInteger BYTE_LEN = 1;
     byte[2] = (value >> BIT8) & 0xff;
     byte[3] = value & 0xff;
     [self addToBytes:byte length:INT_LEN];
+    free(byte);
+}
+
+-(void)writeLong:(NSLong)value
+{
+    BYTE byte = malloc(LONG_LEN);
+    //add
+    byte[0] = (value >> BIT56) & 0xff;
+    byte[1] = (value >> BIT48) & 0xff;
+    byte[2] = (value >> BIT40) & 0xff;
+    byte[3] = (value >> BIT32) & 0xff;
+    //
+    byte[4] = (value >> BIT24) & 0xff;
+    byte[5] = (value >> BIT16) & 0xff;
+    byte[6] = (value >> BIT8) & 0xff;
+    byte[7] = value & 0xff;
+    [self addToBytes:byte length:LONG_LEN];
+    free(byte);
+}
+
+-(void)writeULong:(NSULong)value
+{
+    BYTE byte = malloc(LONG_LEN);
+    //add
+    byte[0] = (value >> BIT56) & 0xff;
+    byte[1] = (value >> BIT48) & 0xff;
+    byte[2] = (value >> BIT40) & 0xff;
+    byte[3] = (value >> BIT32) & 0xff;
+    //
+    byte[4] = (value >> BIT24) & 0xff;
+    byte[5] = (value >> BIT16) & 0xff;
+    byte[6] = (value >> BIT8) & 0xff;
+    byte[7] = value & 0xff;
+    [self addToBytes:byte length:LONG_LEN];
     free(byte);
 }
 

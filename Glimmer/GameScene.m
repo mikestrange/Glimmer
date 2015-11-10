@@ -70,6 +70,9 @@
     //延时调用
     [TickManager scheduledOnce:self function:tickHandler(self, xmlHandler) interval:.5];
     //
+    ByteArray *byte = [[ByteArray alloc] init];
+    [byte writeULong:9323372036854775807L];
+    NSLog(@"%lld",[byte readULong]);
 }
 
 -(void)xmlHandler
