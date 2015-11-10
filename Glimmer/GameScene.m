@@ -66,19 +66,10 @@
     //[[SoundManager getInstance] playSoundOnce:@"/Users/MikeRiy/Documents/quick-3.3/quick/samples/anysdk/res/background.mp3"];
     //
     //连接服务器
-    [[NetSocket getInstance] connect:@"127.0.0.1" port:9555];
+    [[NetSocket getInstance] connect:@"192.168.1.27" port:9555];
     //延时调用
     [TickManager scheduledOnce:self function:tickHandler(self, xmlHandler) interval:.5];
     //
-    ByteArray* byte = [[ByteArray alloc] init];
-    [byte writeShort:23309];
-    [byte writeInt:255];
-    [byte writeInt:-2341];
-    [byte writeString:@"1中国"];
-    NSLog(@"%li",[byte readShort]);
-    NSLog(@"%li",[byte readInt]);
-    NSLog(@"%li",[byte readInt]);
-    NSLog(@"---->%@",[byte readString:@"x"]);
 }
 
 -(void)xmlHandler

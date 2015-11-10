@@ -8,6 +8,7 @@
 
 #import "NetSocket.h"
 #import <CocoaAsyncSocket/CocoaAsyncSocket.h>
+#import "ByteArray.h"
 
 static NetSocket* _instance = NULL;
 static NSTimeInterval _TIME_ = 10*1000;     //超时时间:10秒
@@ -117,6 +118,7 @@ enum{
     [self.socket readDataWithTimeout:_TIME_ tag:SOCKET_OPPTER_TAG];
     //-----reading---------
     NSLog(@"did read data");
+    /*
     int length = (int)data.length;
     char *byte = (char*)data.bytes;
     int position = 4+4+2+1+2;
@@ -125,7 +127,15 @@ enum{
     for(int i = position;i<length;i++){
         t[index++] = byte[i];
     }
-    NSLog(@"%s",t);
+     */
+    ByteArray *byte = [[ByteArray alloc] init];
+    [byte updateBytes:(BYTE)data.bytes length:data.length];
+    NSLog(@"%li",[byte readInt]);
+    NSLog(@"%li",[byte readInt]);
+    NSLog(@"%li",[byte readShort]);
+    [byte readBoolean];
+    NSLog(@"%@",[byte readString:@""]);
+    //NSLog(@"%s",t);
 }
 
 @end

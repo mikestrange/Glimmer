@@ -16,10 +16,16 @@ typedef char* BYTE;
 @property(assign,readonly,nonatomic)NSInteger length;
 @property(assign,readonly,nonatomic)BYTE bytes;
 
-#pragma clear
+//清理
 -(void)clear;
 
-#pragma gets
+//字节是否为空
+-(BOOL)isEmpty;
+
+//移动到开始位置
+-(void)moveToBegin;
+
+//剩余字节
 -(NSInteger)getScalableTotals;
 
 #pragma setBytes
@@ -37,12 +43,14 @@ typedef char* BYTE;
 //读取一个长度，写入到对象中
 -(void)readBytes:(ByteArray*)target length:(NSInteger)offLen;
 
-#pragma writting
+#pragma writting 写入的时候指针不会发生改变
 -(void)writeByte:(NSInteger)value;
 -(void)writeShort:(NSInteger)value;
 -(void)writeInt:(NSInteger)value;
 -(void)writeUInt:(NSUInteger)value;
 -(void)writeString:(NSString*)value;
+//将对象写入自己
+-(void)writeBytes:(ByteArray*)target;
 //这里从target读取开始到结束的所有字节,写入到自己队列中
 -(void)writeBytes:(ByteArray*)target beginfor:(NSInteger)beginIndex;
 //这里从target读取开始到一个长度的字节,写入到自己队列中

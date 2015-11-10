@@ -33,7 +33,7 @@ static const NSInteger BYTE_LEN = 1;
     if(bytes){
         _bytes = malloc(len);
         _length = len;
-        for(NSInteger i = 0 ; i<len; i++){
+        for(NSInteger i = BEGIN ; i<len; i++){
             _bytes[i] = bytes[i];
         }
     }else{
@@ -53,6 +53,17 @@ static const NSInteger BYTE_LEN = 1;
     [self updateBytes:nil length:NONE];
 }
 
+-(BOOL)isEmpty
+{
+    return self.length == NONE;
+}
+
+-(void)moveToBegin
+{
+    self.position = BEGIN;
+}
+
+#pragma reading
 -(BOOL)readBoolean
 {
     return [self readUByte] > NONE;
@@ -102,7 +113,7 @@ static const NSInteger BYTE_LEN = 1;
 {
     NSInteger len = [self readShort];
     BYTE str = malloc(len);
-    for(NSInteger i = 0;i<len;i++)
+    for(NSInteger i = BEGIN;i<len;i++)
     {
         str[i] = self.bytes[i + self.position];
     }
@@ -115,7 +126,7 @@ static const NSInteger BYTE_LEN = 1;
 //读取一个长度，写入到对象中
 -(void)readBytes:(ByteArray*)target length:(NSInteger)offLen
 {
-    for(NSInteger i = 0; i < offLen; i++)
+    for(NSInteger i = BEGIN; i < offLen; i++)
     {
         [target writeByte:self.bytes[i + self.position]];
     }
@@ -193,6 +204,11 @@ static const NSInteger BYTE_LEN = 1;
     [self addToBytes:chars length:len];
 }
 
+-(void)writeBytes:(ByteArray*)target
+{
+    [self writeBytes:target beginfor:BEGIN length:target.length];
+}
+
 //这里从target读取开始到结束的所有字节,写入到自己队列中
 -(void)writeBytes:(ByteArray*)target beginfor:(NSInteger)beginIndex
 {
@@ -205,16 +221,17 @@ static const NSInteger BYTE_LEN = 1;
 {
     NSInteger len = MIN(offLen, target.length - beginIndex);
     BYTE byte = malloc(len);
-    NSInteger makeIndex = target.position;
-    target.position = beginIndex;
-    for(NSInteger i = 0; i < len; i++)
+    for(NSInteger i = BEGIN; i < len; i++)
     {
-        byte[i] = [target readByte];
+        byte[i] = target.bytes[i];
     }
-    target.position = makeIndex;
     [self addToBytes:byte length:len];
     free(byte);
 }
 
+-(void)dealloc
+{
+    [self clear];
+}
 
 @end
