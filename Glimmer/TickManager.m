@@ -29,8 +29,10 @@ static const NSInteger DEF_FOREVER_TIMES = -1;
 +(void)removeByTag:(id)target selId:(NSInteger)tag
 {
     const NSMutableArray* list = [TickManager getTickPool];
-    for(TickData* data in list){
-        if([data matchSelectId:tag] && [data matchTarget:target]){
+    for(TickEvent* data in list)
+    {
+        if([data match:target selectId:tag])
+        {
             [TickManager removeTick:data];
         }
     }
@@ -39,8 +41,9 @@ static const NSInteger DEF_FOREVER_TIMES = -1;
 +(void)removeByTarget:(id)target
 {
     const NSMutableArray* list = [TickManager getTickPool];
-    for(TickData* data in list){
-        if([data matchTarget:target]){
+    for(TickEvent* data in list){
+        if([data matchTarget:target])
+        {
             [TickManager removeTick:data];
         }
     }
@@ -58,7 +61,7 @@ static const NSInteger DEF_FOREVER_TIMES = -1;
         interval:(NSTimeInterval)value repeats:(NSInteger)times;
 {
    //添加队列
-    [[TickManager getTickPool] addObject:[[TickData alloc] initWithArgs:NULL selId:index function:method Interval:value times:times]];
+    [[TickManager getTickPool] addObject:[[TickEvent alloc] initWithArgs:NULL selId:index function:method Interval:value times:times]];
 }
 
 +(void)scheduledOnce:(id)target function:(TickMethod)method interval:(NSTimeInterval)value
@@ -78,14 +81,14 @@ static const NSInteger DEF_FOREVER_TIMES = -1;
 
 
 //计时器信息
-@implementation TickData
+@implementation TickEvent
 
 @synthesize target;
 @synthesize selectId;
 @synthesize runCount;
 
 -(instancetype)initWithArgs:(id)info selId:(NSInteger)value function:(TickMethod)func
-                   Interval:(NSTimeInterval)interval times:(NSInteger)count;
+                   Interval:(NSTimeInterval)interval times:(NSInteger)count
 {
     if(self=[super init])
     {
@@ -107,6 +110,11 @@ static const NSInteger DEF_FOREVER_TIMES = -1;
 -(BOOL)matchTarget:(id)value
 {
     return self.target == value;
+}
+
+-(BOOL)match:(id)value selectId:(NSInteger)index
+{
+    return self.target==value&&self.selectId==index;
 }
 
 //private
@@ -142,7 +150,13 @@ static const NSInteger DEF_FOREVER_TIMES = -1;
     if (_timer && [_timer isValid])
     {
         [_timer invalidate];
+        _timer = nil;
     }
+}
+
+-(void)dealloc
+{
+    [self stop];
 }
 
 @end

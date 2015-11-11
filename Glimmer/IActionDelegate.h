@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol IAction <NSObject>
+@protocol IActionDelegate <NSObject>
 
 @end

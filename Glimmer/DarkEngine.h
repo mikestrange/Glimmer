@@ -6,11 +6,8 @@
 //  Copyright © 2015年 MikeRiy. All rights reserved.
 //
 
-#ifndef Headquarters_h
-#define Headquarters_h
-
-
-
+#ifndef DarkEngine_h
+#define DarkEngine_h
 
 
 

@@ -32,22 +32,29 @@ typedef void(^TickMethod)();
 @end
 
 
+
+
 //计时器携带的信息
-@interface TickData : NSObject{
+@interface TickEvent : NSObject{
     @private
     NSTimer* _timer;
     TickMethod _method;
 }
-//
+//识别id
 @property(assign) NSInteger selectId;
+//绑定对象
 @property(retain,readonly) id target;
+//执行次数
 @property(assign,readonly) NSInteger runCount;
 
 -(instancetype)initWithArgs:(id)info selId:(NSInteger)value function:(TickMethod)func
                    Interval:(NSTimeInterval)interval times:(NSInteger)count;
 
--(BOOL)matchSelectId:(NSInteger)value;
-
+#pragma match
 -(BOOL)matchTarget:(id)value;
+-(BOOL)matchSelectId:(NSInteger)value;
+-(BOOL)match:(id)value selectId:(NSInteger)index;
+
+
 
 @end

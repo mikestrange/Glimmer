@@ -7,18 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CocoaAsyncSocket/CocoaAsyncSocket.h>
-#import "INetwork.h"
+#import "ExpandSocket.h"
 
-@interface NetSocket : NSObject<AsyncSocketDelegate, INetwork>
-
-@property(nonatomic,retain) AsyncSocket* socket;
+@interface NetSocket : ExpandSocket
 
 +(NetSocket*)getInstance;
-
--(void)connect:(NSString*)host port:(UInt16)port;
--(BOOL)isConnected;
--(void)close;
 
 @end
 

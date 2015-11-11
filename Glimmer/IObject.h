@@ -11,7 +11,7 @@
 @protocol IObject <NSObject>
 
 -(void)applyHandler:(NSString*)notice target:(id)info;
--(void)setCurrentDelegate:(id)delegate;
--(id)getCurrentDelegate;
+-(void)currentDelegate:(id)delegate;
+-(id)currentDelegate;
 
 @end

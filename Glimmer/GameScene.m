@@ -69,17 +69,13 @@
     [[NetSocket getInstance] connect:@"192.168.1.27" port:9555];
     //延时调用
     [TickManager scheduledOnce:self function:tickHandler(self, xmlHandler) interval:.5];
-    //
-    ByteArray *byte = [[ByteArray alloc] init];
-    [byte writeULong:18446744073709551615L];
-    NSLog(@"%llu",[byte readULong]);
 }
 
 -(void)xmlHandler
 {
     NSLog(@"click");
     //NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"config/api_key" ofType:@"txt"];
-    XMLNode* data = [XMLNode make:@"/Users/MikeRiy/Documents/test.txt"];
+    XMLNode* data = [XMLNode make:@"/Users/mac_tech/Documents/test.xml"];
     //[data toString];
     NSString* str = [data getChildByName:@"map"].elementValue;
     //NSLog(@"%@", str);
