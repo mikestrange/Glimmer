@@ -28,5 +28,6 @@
 @interface GameScene : SKScene<NSXMLParserDelegate,CommandHandler>
 
 @property(strong,nonatomic)MapController* controller;
+@property(assign,nonatomic)CGPoint beginPoint;
 
 @end

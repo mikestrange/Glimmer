@@ -125,6 +125,7 @@
 		20D2C2EE1BEBAA1A009EFF99 /* IActionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IActionDelegate.h; sourceTree = "<group>"; };
 		20D2C2EF1BEBAA83009EFF99 /* INetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INetwork.h; sourceTree = "<group>"; };
 		20D2C2F11BEBAB28009EFF99 /* IObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IObject.h; sourceTree = "<group>"; };
+		20D3643A1BF58B8B00710DC9 /* EntitySprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntitySprite.h; sourceTree = "<group>"; };
 		20F056311BE2525D004727D8 /* DrawUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawUtils.h; sourceTree = "<group>"; };
 		20F056321BE2525D004727D8 /* DrawUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -249,19 +250,10 @@
 		206A2CAC1BF4C10800698548 /* lite */ = {
 			isa = PBXGroup;
 			children = (
+				206C6D6E1BF573AD003BE459 /* slammer */,
 				206A2CB21BF4CDF900698548 /* map */,
-				206A2CAD1BF4C11300698548 /* ui */,
 			);
 			name = lite;
-			sourceTree = "<group>";
-		};
-		206A2CAD1BF4C11300698548 /* ui */ = {
-			isa = PBXGroup;
-			children = (
-				206A2CAE1BF4C19B00698548 /* SlammerCharge.h */,
-				206A2CAF1BF4C19B00698548 /* SlammerCharge.m */,
-			);
-			name = ui;
 			sourceTree = "<group>";
 		};
 		206A2CB21BF4CDF900698548 /* map */ = {
@@ -277,6 +269,16 @@
 				206A2CBD1BF4E1EB00698548 /* MapCamera.m */,
 			);
 			name = map;
+			sourceTree = "<group>";
+		};
+		206C6D6E1BF573AD003BE459 /* slammer */ = {
+			isa = PBXGroup;
+			children = (
+				206A2CAE1BF4C19B00698548 /* SlammerCharge.h */,
+				206A2CAF1BF4C19B00698548 /* SlammerCharge.m */,
+				20D3643A1BF58B8B00710DC9 /* EntitySprite.h */,
+			);
+			name = slammer;
 			sourceTree = "<group>";
 		};
 		207AA7691BE25637008D5E44 /* ui */ = {

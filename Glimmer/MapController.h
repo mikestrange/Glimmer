@@ -30,6 +30,8 @@
 //渲染的一个宽高
 @property(nonatomic,assign)NSUInteger widthRender;
 @property(nonatomic,assign)NSUInteger heightRender;
+//
+@property(nonatomic,retain)UIView* smallMap;
 
 -(instancetype)initWithInfo:(MapInfo*)data parent:(UIView*)root;
 //刷新当前区域

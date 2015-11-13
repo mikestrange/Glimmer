@@ -27,7 +27,7 @@
     //UIImage *image = [UIImage imageNamed:@"black.png"];
     CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], rect);
     UIImage *clipImage = [UIImage imageWithCGImage:imageRef];
-    //CGImageRelease(imageRef);
+    CGImageRelease(imageRef);
     return clipImage;
 }
 @end

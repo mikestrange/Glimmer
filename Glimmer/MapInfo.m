@@ -43,7 +43,7 @@
 }
 
 //
--(NSString*)getNodePath:(NSString*)type x:(NSInteger)x y:(NSInteger)y
+-(NSString*)nodePath:(NSString*)type x:(NSInteger)x y:(NSInteger)y
 {
     //map_(y)x(x).type
     NSString* fx = nil;
@@ -64,7 +64,13 @@
     return file;
 }
 
--(CGPoint)getNodePoint:(NSInteger)x y:(NSInteger)y
+-(NSString*)smallPath
+{
+    NSString* file = [NSString stringWithFormat:@"%@/map.jpg", self.rootFile];
+    return file;
+}
+
+-(CGPoint)nodePoint:(NSInteger)x y:(NSInteger)y
 {
     return CGPointMake(x*self.nodeWidth, y*self.nodeHeight);
 }

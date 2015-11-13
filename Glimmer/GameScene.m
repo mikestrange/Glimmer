@@ -11,7 +11,7 @@
 @implementation GameScene
 
 @synthesize controller;
-
+@synthesize beginPoint;
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
@@ -54,7 +54,7 @@
     //[[SoundManager getInstance] playSoundOnce:@"/Users/MikeRiy/Documents/quick-3.3/quick/samples/anysdk/res/background.mp3"];
     //
     //连接服务器
-    [[NetSocket getInstance] connect:@"192.168.1.27" port:9555];
+    //[[NetSocket getInstance] connect:@"192.168.1.27" port:9555];
     //延时调用
     [TickManager scheduledOnce:self function:tickHandler(self, xmlHandler) interval:.5];
 }
@@ -119,12 +119,34 @@
     NSLog(@"upInside...");
 }
 
+-(void)touchesBegan:(nonnull NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    self.beginPoint = [touch locationInView:self.view];
+}
+
+-(void)touchesMoved:(nonnull NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    CGPoint point = [touch locationInView:self.view];
+    CGFloat deltaX = self.beginPoint.x - point.x;
+    CGFloat deltaY = self.beginPoint.y - point.y;
+    if(self.controller){
+        [self.controller moveOffset:deltaX y:deltaY];
+    }
+    self.beginPoint = point;
+}
+
+-(void)touchesEnded:(nonnull NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event
+{
+    
+}
+
+//帧事件
 -(void)update:(CFTimeInterval)currentTime
 {
     /* Called before each frame is rendered */
-    if(self.controller){
-       [self.controller moveOffset:4 y:4];
-    }
+    
 }
 
 @end

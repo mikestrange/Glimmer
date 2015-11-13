@@ -11,14 +11,15 @@
 @implementation MapController
 
 @synthesize info;
+@synthesize mapX;
+@synthesize mapY;
 @synthesize parent;
 @synthesize camera;
 @synthesize nodeList;
 @synthesize openList;
 @synthesize widthRender;
 @synthesize heightRender;
-@synthesize mapX;
-@synthesize mapY;
+@synthesize smallMap;
 
 -(instancetype)initWithInfo:(MapInfo*)data parent:(UIView*)root
 {
@@ -49,11 +50,17 @@
         {
             //一横排一排添加
             MapNode *node = [[MapNode alloc] initWithCross:i vertical:j];
-            node.path = [self.info getNodePath:@"jpg" x:node.x y:node.y];
+            node.path = [self.info nodePath:@"jpg" x:node.x y:node.y];
             [nodeList addObject:node];
         }
     }
     NSLog(@"init map");
+    /*
+    //小地图，动态绘制当前的卡位(不必添加到舞台)
+    self.smallMap = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[self.info smallPath]]];
+    [self.smallMap.layer setAnchorPoint:CGPointMake(0, 0)];
+    self.smallMap.frame = CGRectMake(0, 0, self.info.totalWidth, self.info.totalHeight);
+     */
 }
 
 //--
@@ -64,6 +71,7 @@
     NSLog(@"map size :%li,%li,{%li,%li}", wide, high, self.info.nodeWidth, self.info.nodeHeight);
 }
 
+//固定的时候限制位置
 -(void)moveFixed:(float)x y:(float)y
 {
     const float None = 0;
@@ -144,7 +152,8 @@
 -(void)addSubNode:(MapNode*)node
 {
     UIView *image = [node image:self.parent];
-    CGPoint point = [self.info getNodePoint:node.x y:node.y];
+    CGPoint point = [self.info nodePoint:node.x y:node.y];
+    //重绘位置
     point.x += -self.mapX;
     point.y += -self.mapY;
     image.layer.position = point;
@@ -164,7 +173,7 @@
     if(![self hasNode:node])
     {
         [self.openList setObject:node forKey:node.name];
-        //
+        //log
         NSLog(@"add:%@",node.name);
     }
 }
@@ -176,7 +185,7 @@
     {
         [node close];
         [self.openList removeObjectForKey:node.name];
-        //
+        //log
         NSLog(@"remove:%@",node.name);
     }
 }

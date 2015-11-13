@@ -1,7 +1,7 @@
 //
 //  MapInfo.h
 //  Glimmer
-//
+//  获取地图的基本数据
 //  Created by MikeRiy on 15/11/12.
 //  Copyright © 2015年 MikeRiy. All rights reserved.
 //
@@ -29,9 +29,11 @@
 //初始化地图数据(XML路径)
 -(instancetype)initWithPath:(NSString*)path;
 //获取节点地图的路径
--(NSString*)getNodePath:(NSString*)type x:(NSInteger)x y:(NSInteger)y;
+-(NSString*)nodePath:(NSString*)type x:(NSInteger)x y:(NSInteger)y;
 //获取节点的位置（全局位置）
--(CGPoint)getNodePoint:(NSInteger)x y:(NSInteger)y;
+-(CGPoint)nodePoint:(NSInteger)x y:(NSInteger)y;
+//
+-(NSString*)smallPath;
 
 //end
 @end

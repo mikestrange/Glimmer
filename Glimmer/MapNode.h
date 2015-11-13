@@ -1,7 +1,7 @@
 //
 //  MapNode.h
 //  Glimmer
-//
+//  地图节点
 //  Created by MikeRiy on 15/11/12.
 //  Copyright © 2015年 MikeRiy. All rights reserved.
 //
