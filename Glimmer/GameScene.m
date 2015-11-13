@@ -7,22 +7,10 @@
 //
 
 #import "GameScene.h"
-#import "NetSocket.h"
-#import "ActionUtils.h"
-#import "DrawUtils.h"
-#import "MoreTableView.h"
-#import "SoundManager.h"
-#import "TickManager.h"
-#import "XMLNode.h"
-#import "TrimString.h"
-#import "DownLoader.h"
-#import "QuickHandler.h"
-#import "FacedEmployer.h"
-#import "EventDispatcher.h"
-#import "NetSocket.h"
-#import "ByteArray.h"
 
 @implementation GameScene
+
+@synthesize controller;
 
 
 -(void)didMoveToView:(SKView *)view {
@@ -74,9 +62,9 @@
 -(void)xmlHandler
 {
     NSLog(@"click");
-    //NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"config/api_key" ofType:@"txt"];
-    XMLNode* data = [XMLNode make:@"/Users/mac_tech/Documents/test.xml"];
-    //[data toString];
+    /*
+    XMLNode* data = [XMLNode make:@"/Users/MikeRiy/Documents/test.txt"];
+    [data toString];
     NSString* str = [data getChildByName:@"map"].elementValue;
     //NSLog(@"%@", str);
     NSArray* arr = [str componentsSeparatedByString:@","];
@@ -97,6 +85,11 @@
             [self.view addSubview:item];
         }
     }
+    */
+    //
+    MapInfo* info = [[MapInfo alloc] initWithPath:@"/Users/MikeRiy/Home/source_code/mapDemo/map/map3"];
+    self.controller = [[MapController alloc] initWithInfo:info parent:self.view];
+    [self.controller moveFixed:1 y:1];
     //NSLog(@"%@", arr);
     //
     //AVPlayerViewController* p;
@@ -109,7 +102,7 @@
 
 -(void)noticeHandler:(EventCaptive*)event
 {
-    NSLog(@"dddddd");
+    NSLog(@"noticeHandler");
 }
 
 //执行动画
@@ -129,6 +122,9 @@
 -(void)update:(CFTimeInterval)currentTime
 {
     /* Called before each frame is rendered */
+    if(self.controller){
+       [self.controller moveOffset:4 y:4];
+    }
 }
 
 @end

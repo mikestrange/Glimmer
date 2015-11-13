@@ -10,7 +10,6 @@
 
 @implementation EventDispatcher
 
-static NSUInteger NONE = -1;
 static NSUInteger NO_EMPTY = 0;
 
 -(instancetype)init
@@ -29,8 +28,8 @@ static NSUInteger NO_EMPTY = 0;
         [list addObject:target];
         [noticeMap setObject:list forKey:notice];
     }else{
-        NSUInteger index = [list indexOfObject:target.delegate];
-        //if(NONE != index){
+        //NSUInteger index = [list indexOfObject:target.delegate];
+        //if(-1 != index){
             [list addObject:target];
         //}
     }

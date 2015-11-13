@@ -45,5 +45,14 @@ anim.fromValue = [NSValue valueWithCGPoint:CGPointMake(0, 360)];
     return anim;
 }
 
+/*
+ [imageView setAnimationImages:frames];//设置动画图片数组  数组中存放的是一组UIImage图片（帐动画图片）
+ 
+ [imageView setAnimationDuration:animationTime];//设置动画持续时间
+ 
+ imageView.animationRepeatCount = 1;//设置动画重复次数
+ 
+ [imageView startAnimating];//开始动画
+ */
 
 @end

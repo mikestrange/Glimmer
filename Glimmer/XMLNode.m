@@ -66,7 +66,7 @@
     if(self.parent){
         parentName = self.parent.elementName;
     }
-    NSLog(@"name = %@ , parent = %@ , value = %@", self.elementName, parentName, self.elementValue);
+    NSLog(@"name = %@ , parent = %@ , value = %@ dict = %@", self.elementName, parentName, self.elementValue, self.attributeDict);
     for(XMLNode* data in self.childrens){
         [data toString];
     }
