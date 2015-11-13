@@ -25,7 +25,7 @@
 #import "MapInfo.h"
 #import "MapController.h"
 
-@interface GameScene : SKScene<NSXMLParserDelegate,CommandHandler>
+@interface GameScene : SKScene<CommandHandler>
 
 @property(strong,nonatomic)MapController* controller;
 @property(assign,nonatomic)CGPoint beginPoint;

@@ -35,7 +35,8 @@
     btn.layer.position =CGPointMake(100, 460);
     btn.tag = 1;
     [btn setTitle:@"ZoomIn" forState:UIControlStateNormal];
-    [btn setBackgroundImage:[UIImage imageNamed:@"black.png"] forState:UIControlStateNormal];
+    NSURL *url1 = [NSURL URLWithString:@"https://www.baidu.com/img/bd_logo1.png"];
+    [btn setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:url1]] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(clearAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
     [btn setTitle:@"好好学习" forState:UIControlStateNormal];
@@ -56,7 +57,7 @@
     //连接服务器
     //[[NetSocket getInstance] connect:@"192.168.1.27" port:9555];
     //延时调用
-    [TickManager scheduledOnce:self function:tickHandler(self, xmlHandler) interval:.5];
+    //[TickManager scheduledOnce:self function:tickHandler(self, xmlHandler) interval:.5];
 }
 
 -(void)xmlHandler
