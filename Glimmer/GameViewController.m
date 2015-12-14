@@ -9,12 +9,13 @@
 #import "GameViewController.h"
 #import "GameScene.h"
 
+/*
 @implementation SKScene (Unarchive)
 
 + (instancetype)unarchiveFromFile:(NSString *)file {
-    /* Retrieve scene file path from the application bundle */
+    // Retrieve scene file path from the application bundle
     NSString *nodePath = [[NSBundle mainBundle] pathForResource:file ofType:@"sks"];
-    /* Unarchive the file to an SKScene object */
+    // Unarchive the file to an SKScene object
     NSData *data = [NSData dataWithContentsOfFile:nodePath
                                           options:NSDataReadingMappedIfSafe
                                             error:nil];
@@ -22,18 +23,25 @@
     [arch setClass:self forClassName:@"SKScene"];
     SKScene *scene = [arch decodeObjectForKey:NSKeyedArchiveRootObjectKey];
     [arch finishDecoding];
-    
     return scene;
 }
-
 @end
+*/
 
 @implementation GameViewController
+
+static GameViewController* controller;
+
+//全局
++(instancetype) getController{
+    return controller;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    //
+    controller = self;
     // Configure the view.
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = YES;
@@ -42,12 +50,11 @@
     skView.ignoresSiblingOrder = YES;
     
     // Create and configure the scene.
-    GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
-    
     // Present the scene.
-    [skView presentScene:scene];
+    [skView presentScene:[[GameScene alloc] initWithSize:self.view.frame.size]];
+    [skView presentScene:[[GameScene alloc] initWithSize:self.view.frame.size]];
 }
+
 
 - (BOOL)shouldAutorotate
 {

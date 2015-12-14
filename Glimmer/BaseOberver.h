@@ -8,13 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "EventDispatcher.h"
-#import "CommandHandler.h"
+#import "ICommand.h"
 
-@class EventCaptive;
+@class Event;
 @class EventDispatcher;
-
-//重新声明下
-typedef void(^EventMethod)(EventCaptive* event);
 
 @interface BaseOberver : NSObject
 //唯一判断的标准（绑定的对象）
@@ -23,7 +20,7 @@ typedef void(^EventMethod)(EventCaptive* event);
 @property(assign,nonatomic)BOOL isLive;
 //init
 -(instancetype)initWithTarget:(id)target;
--(void)noticeHandler:(EventCaptive*)event;
+-(void)eventHandler:(Event*)event;
 -(BOOL)match:(id)value;
 -(void)free;
 
@@ -39,13 +36,5 @@ typedef void(^EventMethod)(EventCaptive* event);
 
 @end
 
-//第三种，回调形式
-@interface MethodOberver : BaseOberver
-//回调方法
-@property(assign,nonatomic)EventMethod method;
-
--(instancetype)initWithMethod:(id)target methodFunction:(EventMethod)function;
-
-@end
 
 

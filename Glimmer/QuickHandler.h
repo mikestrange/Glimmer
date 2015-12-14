@@ -11,6 +11,7 @@
 
 @interface QuickHandler : NSObject
 
+//添加鼠标事件
 +(UITapGestureRecognizer*)addTouchHandler:(UIView*)target delegate:(id)delegate selector:(SEL)selector;
 
 

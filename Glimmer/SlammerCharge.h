@@ -8,11 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "EntitySprite.h"
+
 
 @interface SlammerCharge : NSObject
 
-//@property(nonatomic,strong)NSArray<UIView *>* vector;
+@property(nonatomic,strong)NSArray<EntitySprite>* vector;
 
-//-(void)update;
+-(void)update;
+
+//-(void)moveOffset:(id)target;
 
 @end

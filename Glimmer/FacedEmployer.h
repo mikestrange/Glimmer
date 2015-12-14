@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "EventDispatcher.h"
-#import "CommandHandler.h"
+#import "ICommand.h"
 
 @interface FacedEmployer : EventDispatcher
 {
@@ -18,18 +18,24 @@
 //使用一个单列
 +(instancetype)getInstance;
 //添加消息队列
--(void)addCommandVector:(NSArray*)vector command:(id<CommandHandler>)target;
+-(void)addCommandVector:(NSArray*)vector command:(id<ICommand>)target;
 //添加命令队列
 -(void)addClassVector:(NSArray*)vector classes:(Class)target;
 //移除消息队列
 -(void)removeNotices:(NSArray*)vector delegate:(id)target;
 #pragma 发送消息
-//发送消息
--(void)sendMessage:(NOTICE_NAME)name info:(id)data type:(NOTICE_TYPE)index;
+//发送消息1
+-(void)sendMessage:(EVENT_NAME)name;
 //发送消息2
--(void)sendMessage:(NOTICE_NAME)name info:(id)data;
+-(void)sendMessage:(EVENT_NAME)name info:(id)data;
 //发送消息3
--(void)sendMessage:(NOTICE_NAME)name;
+-(void)sendMessage:(EVENT_NAME)name type:(EVENT_TYPE)index;
 //发送消息4
--(void)sendMessage:(NOTICE_NAME)name type:(NOTICE_TYPE)index;
+-(void)sendMessage:(EVENT_NAME)name info:(id)data type:(EVENT_TYPE)index;
 @end
+
+
+
+//getCommand
+//addCommand
+//

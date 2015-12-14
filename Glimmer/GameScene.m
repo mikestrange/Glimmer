@@ -8,15 +8,20 @@
 
 #import "GameScene.h"
 
+#import <CoreGraphics/CoreGraphics.h>
+
+#define CG_CONTEXT_SHOW_BACKTRACE
+
 @implementation GameScene
 
 @synthesize controller;
 @synthesize beginPoint;
 
--(void)didMoveToView:(SKView *)view {
+-(void)onEnter:(SKView *)view {
     /* Setup your scene here */
     UIView *black = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-    [self.view addSubview:black];
+    //black.layer.borderColor = (CGColor){221, 221, 221}
+    [view addSubview:black];
     UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"match_bg.jpg"]];
     image.frame = CGRectMake(0, 0, self.view.frame.size.width*.5f, self.view.frame.size.height);
     [black addSubview:image];
@@ -31,7 +36,6 @@
     //按钮
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     btn.frame = CGRectMake(0, 0, 100, 100);
-    [btn.layer setAnchorPoint:CGPointMake(0.5, 0.5)];
     btn.layer.position =CGPointMake(100, 460);
     btn.tag = 1;
     [btn setTitle:@"ZoomIn" forState:UIControlStateNormal];
@@ -58,13 +62,40 @@
     //[[NetSocket getInstance] connect:@"192.168.1.27" port:9555];
     //延时调用
     //[TickManager scheduledOnce:self function:tickHandler(self, xmlHandler) interval:.5];
+    [[FacedEmployer getInstance] addCommandVector:@[@"s",@"t"] command:self];
+    [[FacedEmployer getInstance] sendMessage:@"s"];
 }
+
+-(void)onExit{
+    [[FacedEmployer getInstance] removeNotices:@[@"s",@"t"] delegate:self];
+}
+
+//生成语言包
+-(void)flashMethod{
+    NSString* keys = [NSString stringWithContentsOfFile:@"/Users/MikeRiy/Documents/txt_key.txt" encoding:NSUTF8StringEncoding error:nil];
+    //NSLog(@"%@",keys);
+    NSString* values = [NSString stringWithContentsOfFile:@"/Users/MikeRiy/Documents/txt_value.txt" encoding:NSUTF8StringEncoding error:nil];
+    //NSLog(@"%@",values);
+    NSArray* kes_arr = [keys componentsSeparatedByString:@"\n"];
+    //NSLog(@"%@",kes_arr);
+    NSArray* value_arr = [values componentsSeparatedByString:@"\n"];
+    //NSLog(@"%@",value_arr);
+    //
+    NSMutableString* txt = [[NSMutableString alloc] init];
+    for(int i=0;i<kes_arr.count;i++){
+        NSString* s = [[NSString alloc] initWithFormat:@"?>%@#%@",kes_arr[i],value_arr[i]];
+        [txt appendFormat:@"%@\n", s];
+    }
+    //
+    [txt writeToFile:@"/Users/MikeRiy/Documents/lang.lang" atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    NSLog(@"%@",txt);
+};
 
 -(void)xmlHandler
 {
     NSLog(@"click");
     /*
-    XMLNode* data = [XMLNode make:@"/Users/MikeRiy/Documents/test.txt"];
+    XMLNode* data = [XMLNode make:@"/Users/MikeRiy/Home/test.txt"];
     [data toString];
     NSString* str = [data getChildByName:@"map"].elementValue;
     //NSLog(@"%@", str);
@@ -87,6 +118,7 @@
         }
     }
     */
+    
     //
     MapInfo* info = [[MapInfo alloc] initWithPath:@"/Users/MikeRiy/Home/source_code/mapDemo/map/map3"];
     self.controller = [[MapController alloc] initWithInfo:info parent:self.view];
@@ -96,12 +128,9 @@
     //AVPlayerViewController* p;
     //MoviePlayerViewController *w;
     //
-    [[FacedEmployer getInstance] addCommandVector:@[@"s",@"t"] command:self];
-    [[FacedEmployer getInstance] addMethodListener:@"x" method:EventHandler(self, noticeHandler:) delegate:self];
-    [[FacedEmployer getInstance] sendMessage:@"x"];
 }
 
--(void)noticeHandler:(EventCaptive*)event
+-(void)eventHandler:(Event*)event
 {
     NSLog(@"noticeHandler");
 }
@@ -141,6 +170,7 @@
 -(void)touchesEnded:(nonnull NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event
 {
     
+    
 }
 
 //帧事件
@@ -149,5 +179,6 @@
     /* Called before each frame is rendered */
     
 }
+
 
 @end

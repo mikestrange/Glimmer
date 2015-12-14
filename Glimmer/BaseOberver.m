@@ -33,7 +33,7 @@
     self.isLive = NO;
 }
 
--(void)noticeHandler:(EventCaptive*)event
+-(void)eventHandler:(Event*)event
 {
     
 }
@@ -44,10 +44,10 @@
 #pragma CommandOberver
 @implementation CommandOberver
 
--(void)noticeHandler:(EventCaptive*)event
+-(void)eventHandler:(Event*)event
 {
-    id<CommandHandler> command = (id<CommandHandler>)self.delegate;
-    [command noticeHandler:event];
+    id<ICommand> command = (id<ICommand>)self.delegate;
+    [command eventHandler:event];
 }
 
 @end
@@ -55,31 +55,12 @@
 #pragma ClassOberver
 @implementation ClassOberver
 
--(void)noticeHandler:(EventCaptive*)event
+-(void)eventHandler:(Event*)event
 {
     Class Command = (Class)self.delegate;
-    id<CommandHandler> command = [[Command alloc] init];
-    [command noticeHandler:event];
+    id<ICommand> command = [[Command alloc] init];
+    [command eventHandler:event];
 }
 
 @end
 
-#pragma MethodOberver
-@implementation MethodOberver
-
-@synthesize method;
-
--(instancetype)initWithMethod:(id)target methodFunction:(EventMethod)function
-{
-    if(self = [super initWithTarget:target]){
-        self.method = function;
-    }
-    return self;
-}
-
--(void)noticeHandler:(EventCaptive*)event
-{
-    self.method(event);
-}
-
-@end

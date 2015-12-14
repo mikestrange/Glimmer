@@ -24,6 +24,6 @@ enum Direction
 -(CGFloat)top;
 -(CGFloat)down;
 //
--(Direction)hitShall
+//-(Direction)hitShall;
 
 @end

@@ -7,7 +7,7 @@
 //
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
-#import "CommandHandler.h"
+#import "BaseScene.h"
 #import "NetSocket.h"
 #import "ActionUtils.h"
 #import "DrawUtils.h"
@@ -24,8 +24,9 @@
 #import "ByteArray.h"
 #import "MapInfo.h"
 #import "MapController.h"
+#import "EventFrame.h"
 
-@interface GameScene : SKScene<CommandHandler>
+@interface GameScene : BaseScene<ICommand>
 
 @property(strong,nonatomic)MapController* controller;
 @property(assign,nonatomic)CGPoint beginPoint;

@@ -20,7 +20,7 @@ static NSUInteger NO_EMPTY = 0;
     return self;
 }
 
--(void)addEventListener:(NOTICE_NAME)notice oberver:(BaseOberver*)target
+-(void)addEventListener:(EVENT_NAME)notice oberver:(BaseOberver*)target
 {
     NSMutableArray* list = [noticeMap objectForKey:notice];
     if(!list){
@@ -35,22 +35,17 @@ static NSUInteger NO_EMPTY = 0;
     }
 }
 
--(void)addMethodListener:(NOTICE_NAME)notice method:(EventMethod)function delegate:(id)target
-{
-    [self addEventListener:notice oberver:[[MethodOberver alloc] initWithMethod:target methodFunction:function]];
-}
-
--(void)addCommandListener:(NOTICE_NAME)notice command:(id)target
+-(void)addCommandListener:(EVENT_NAME)notice command:(id)target
 {
     [self addEventListener:notice oberver:[[CommandOberver alloc] initWithTarget:target]];
 }
 
--(void)addClassListener:(NOTICE_NAME)notice classes:(Class)target
+-(void)addClassListener:(EVENT_NAME)notice classes:(Class)target
 {
     [self addEventListener:notice oberver:[[ClassOberver alloc] initWithTarget:target]];
 }
 
--(void)removeEventListener:(NOTICE_NAME)notice delegate:(id)target
+-(void)removeEventListener:(EVENT_NAME)notice delegate:(id)target
 {
     NSMutableArray* list = [noticeMap objectForKey:notice];
     if(list){
@@ -69,7 +64,7 @@ static NSUInteger NO_EMPTY = 0;
 }
 
 //执行
--(void)dispatchMessage:(EventCaptive*)event
+-(void)dispatchMessage:(Event*)event
 {
     NSMutableArray* list = [noticeMap objectForKey:[event name]];
     if(list)
@@ -82,13 +77,13 @@ static NSUInteger NO_EMPTY = 0;
         for(BaseOberver* oberver in vector)
         {
             if(oberver.isLive){
-                [oberver noticeHandler:event];
+                [oberver eventHandler:event];
             }
         }
     }
 }
 
--(BOOL)hasEventListener:(NOTICE_NAME)notice
+-(BOOL)hasEventListener:(EVENT_NAME)notice
 {
     return [noticeMap objectForKey:notice];
 }
@@ -98,13 +93,13 @@ static NSUInteger NO_EMPTY = 0;
 
 
 #pragma EventCaptive
-@implementation EventCaptive
+@implementation Event
 
 @synthesize name = _name;
 @synthesize type = _type;
 @synthesize data = _data;
 
--(instancetype)initWithArgs:(NOTICE_NAME)messageName target:(id)info messageType:(NOTICE_TYPE)index
+-(instancetype)initWithArgs:(EVENT_NAME)messageName target:(id)info messageType:(EVENT_TYPE)index
 {
     if(self = [super init]){
         _name = messageName;

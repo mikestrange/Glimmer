@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "EventDispatcher.h"
 
-@class EventCaptive;
-@protocol CommandHandler<NSObject>
+
+@class Event;
+@protocol ICommand<NSObject>
 
 @required
--(void)noticeHandler:(EventCaptive*)event;
+-(void)eventHandler:(Event*)event;
 
 @end

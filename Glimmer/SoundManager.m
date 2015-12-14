@@ -15,6 +15,8 @@ static SoundManager* _instance = nil;
 
 @implementation SoundManager
 
+static NSString* soleFile;
+
 -(NSMutableArray*)getVector
 {
     if(!_soundList){
@@ -43,7 +45,10 @@ static SoundManager* _instance = nil;
 
 -(void)playSoundSole:(NSString*)path forever:(BOOL)value
 {
-    [self stopSoundByPath:path sole:NO];
+    if(soleFile){
+        [self stopSoundByPath:soleFile sole:NO];
+        soleFile = path;
+    }
     if(value){
         [self playSoundForever:path];
     }else{

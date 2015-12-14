@@ -11,7 +11,7 @@
 @implementation QuickHandler
 
 
-//添加鼠标事件
+
 +(UITapGestureRecognizer*)addTouchHandler:(UIView*)target delegate:(id)delegate selector:(SEL)selector
 {
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:delegate action:selector];

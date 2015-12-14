@@ -28,7 +28,7 @@ static FacedEmployer* _instance;
     return self;
 }
 
--(void)addCommandVector:(NSArray*)vector command:(id<CommandHandler>)target
+-(void)addCommandVector:(NSArray*)vector command:(id<ICommand>)target
 {
     for(NSString* name in vector)
     {
@@ -53,24 +53,24 @@ static FacedEmployer* _instance;
 }
 
 #pragma sendMessage
--(void)sendMessage:(NOTICE_NAME)name info:(id)data type:(NOTICE_TYPE)index
+-(void)sendMessage:(EVENT_NAME)name info:(id)data type:(EVENT_TYPE)index
 {
-    [self dispatchMessage:[[EventCaptive alloc] initWithArgs:name target:data messageType:index]];
+    [self dispatchMessage:[[Event alloc] initWithArgs:name target:data messageType:index]];
 }
 
--(void)sendMessage:(NOTICE_NAME)name info:(id)data
+-(void)sendMessage:(EVENT_NAME)name info:(id)data
 {
-    [self dispatchMessage:[[EventCaptive alloc] initWithArgs:name target:data messageType:DEF_NOTICE_TYPE]];
+    [self dispatchMessage:[[Event alloc] initWithArgs:name target:data messageType:DEF_NOTICE_TYPE]];
 }
 
--(void)sendMessage:(NOTICE_NAME)name
+-(void)sendMessage:(EVENT_NAME)name
 {
-    [self dispatchMessage:[[EventCaptive alloc] initWithArgs:name target:nil messageType:DEF_NOTICE_TYPE]];
+    [self dispatchMessage:[[Event alloc] initWithArgs:name target:nil messageType:DEF_NOTICE_TYPE]];
 }
 
--(void)sendMessage:(NOTICE_NAME)name type:(NOTICE_TYPE)index
+-(void)sendMessage:(EVENT_NAME)name type:(EVENT_TYPE)index
 {
-    [self dispatchMessage:[[EventCaptive alloc] initWithArgs:name target:nil messageType:index]];
+    [self dispatchMessage:[[Event alloc] initWithArgs:name target:nil messageType:index]];
 }
 
 @end

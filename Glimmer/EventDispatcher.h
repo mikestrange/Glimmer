@@ -8,30 +8,31 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseOberver.h"
-#import "CommandHandler.h"
+#import "ICommand.h"
 
-typedef NSString* NOTICE_NAME;
-typedef NSInteger NOTICE_TYPE;
+typedef NSString* EVENT_NAME;
+typedef NSInteger EVENT_TYPE;
+/*
 //回执方法
 typedef void(^EventMethod)(EventCaptive* event);
 
 #define EventHandler(target, method) ^(EventCaptive* event){\
     [self performSelector:@selector(method) withObject:event];\
 }
-
+*/
 #define DEF_NOTICE_TYPE 0
 
 @class BaseOberver;
-@class EventCaptive;
+@class ICommand;
 @class EventDispatcher;
 
-@interface EventCaptive : NSObject
+@interface Event : NSObject
 @property(retain,readonly,nonatomic) id data;
-@property(copy,readonly,nonatomic) NOTICE_NAME name;
-@property(assign,readonly,nonatomic) NOTICE_TYPE type;
+@property(assign,readonly,nonatomic) EVENT_NAME name;
+@property(assign,readonly,nonatomic) EVENT_TYPE type;
 @property(retain,nonatomic) EventDispatcher* target;
 //
--(instancetype)initWithArgs:(NOTICE_NAME)messageName target:(id)info messageType:(NOTICE_TYPE)index;
+-(instancetype)initWithArgs:(EVENT_NAME)messageName target:(id)info messageType:(EVENT_TYPE)index;
 
 @end
 
@@ -43,19 +44,17 @@ typedef void(^EventMethod)(EventCaptive* event);
 }
 
 //可以自定义
--(void)addEventListener:(NOTICE_NAME)notice oberver:(BaseOberver*)target;
+-(void)addEventListener:(EVENT_NAME)notice oberver:(BaseOberver*)target;
 //添加一个处理实例
--(void)addCommandListener:(NOTICE_NAME)notice command:(id/*<CommandHandler>*/)target;
+-(void)addCommandListener:(EVENT_NAME)notice command:(id)target;
 //添加一个处理类
--(void)addClassListener:(NOTICE_NAME)notice classes:(Class)target;
-//
--(void)addMethodListener:(NOTICE_NAME)notice method:(EventMethod)function delegate:(id)target;
+-(void)addClassListener:(EVENT_NAME)notice classes:(Class)target;
 //根据一个对象移除
--(void)removeEventListener:(NOTICE_NAME)notice delegate:(id)target;
-
--(void)dispatchMessage:(EventCaptive*)event;
-
--(BOOL)hasEventListener:(NOTICE_NAME)notice;
+-(void)removeEventListener:(EVENT_NAME)notice delegate:(id)target;
+//判断
+-(BOOL)hasEventListener:(EVENT_NAME)notice;
+//发送消息
+-(void)dispatchMessage:(Event*)event;
 
 @end
 

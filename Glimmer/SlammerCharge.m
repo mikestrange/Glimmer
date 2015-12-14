@@ -10,9 +10,12 @@
 
 @implementation SlammerCharge
 
+@synthesize vector;
 
 
-
-
+-(void)update
+{
+    
+}
 
 @end
