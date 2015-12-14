@@ -53,43 +53,34 @@
     [self.view addSubview:loader];
     //Events
     //[QuickHandler addTouchHandler:black delegate:self selector:@selector(clickCategory:)];
-    [QuickHandler addTouchHandler:loader delegate:self selector:@selector(clickCategory:)];
+    //[QuickHandler addTouchHandler:loader delegate:self selector:@selector(clickCategory:)];
     //
     //播放声音
-    //[[SoundManager getInstance] playSoundOnce:@"/Users/MikeRiy/Documents/quick-3.3/quick/samples/anysdk/res/background.mp3"];
+    [[SoundManager getInstance] playSoundOnce:@"/Users/MikeRiy/Documents/quick-3.3/quick/samples/anysdk/res/background.mp3"];
     //
     //连接服务器
     //[[NetSocket getInstance] connect:@"192.168.1.27" port:9555];
     //延时调用
     //[TickManager scheduledOnce:self function:tickHandler(self, xmlHandler) interval:.5];
-    [[FacedEmployer getInstance] addCommandVector:@[@"s",@"t"] command:self];
+    //
+    [[FacedEmployer getInstance] addCommandVector:[self getEventVector] command:self];
     [[FacedEmployer getInstance] sendMessage:@"s"];
+    ///Users/MikeRiy/Home/github/Glimmer/Resources/player
+    
 }
 
 -(void)onExit{
-    [[FacedEmployer getInstance] removeNotices:@[@"s",@"t"] delegate:self];
+    [[FacedEmployer getInstance] removeNotices:[self getEventVector] delegate:self];
 }
 
-//生成语言包
--(void)flashMethod{
-    NSString* keys = [NSString stringWithContentsOfFile:@"/Users/MikeRiy/Documents/txt_key.txt" encoding:NSUTF8StringEncoding error:nil];
-    //NSLog(@"%@",keys);
-    NSString* values = [NSString stringWithContentsOfFile:@"/Users/MikeRiy/Documents/txt_value.txt" encoding:NSUTF8StringEncoding error:nil];
-    //NSLog(@"%@",values);
-    NSArray* kes_arr = [keys componentsSeparatedByString:@"\n"];
-    //NSLog(@"%@",kes_arr);
-    NSArray* value_arr = [values componentsSeparatedByString:@"\n"];
-    //NSLog(@"%@",value_arr);
-    //
-    NSMutableString* txt = [[NSMutableString alloc] init];
-    for(int i=0;i<kes_arr.count;i++){
-        NSString* s = [[NSString alloc] initWithFormat:@"?>%@#%@",kes_arr[i],value_arr[i]];
-        [txt appendFormat:@"%@\n", s];
-    }
-    //
-    [txt writeToFile:@"/Users/MikeRiy/Documents/lang.lang" atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    NSLog(@"%@",txt);
-};
+-(NSArray*) getEventVector{
+    return @[@"s",@"t"];
+}
+
+-(void)eventHandler:(Event*)event
+{
+    NSLog(@"noticeHandler");
+}
 
 -(void)xmlHandler
 {
@@ -130,10 +121,7 @@
     //
 }
 
--(void)eventHandler:(Event*)event
-{
-    NSLog(@"noticeHandler");
-}
+
 
 //执行动画
 -(void)clickCategory:(UIGestureRecognizer *)gestureRecognizer

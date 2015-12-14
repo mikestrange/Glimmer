@@ -29,6 +29,7 @@
 -(UIView*)image:(UIView*)parent
 {
     if(!_view){
+        //NSLog(self.path);
         _view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:self.path]];
         [_view.layer setAnchorPoint:CGPointMake(0, 0)];
         [parent addSubview:_view];

@@ -52,7 +52,7 @@ static GameViewController* controller;
     // Create and configure the scene.
     // Present the scene.
     [skView presentScene:[[GameScene alloc] initWithSize:self.view.frame.size]];
-    [skView presentScene:[[GameScene alloc] initWithSize:self.view.frame.size]];
+    //[skView presentScene:[[GameScene alloc] initWithSize:self.view.frame.size]];
 }
 
 

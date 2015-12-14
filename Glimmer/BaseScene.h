@@ -9,9 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
+#import "EventFrame.h"
 
 @interface BaseScene : SKScene
 
 -(void)onEnter:(SKView*)view;
 -(void)onExit;
+
+
 @end

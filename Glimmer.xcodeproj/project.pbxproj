@@ -24,6 +24,7 @@
 		206A2CBE1BF4E1EB00698548 /* MapCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 206A2CBD1BF4E1EB00698548 /* MapCamera.m */; };
 		207AA7681BE25529008D5E44 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 207AA7671BE25529008D5E44 /* SoundManager.m */; };
 		2082BA571C1E725D00CC3BBB /* BaseScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 2082BA561C1E725D00CC3BBB /* BaseScene.m */; };
+		2082BA651C1E7E6500CC3BBB /* hall_view.m in Sources */ = {isa = PBXBuildFile; fileRef = 2082BA641C1E7E6500CC3BBB /* hall_view.m */; };
 		20B530D21BE24F75001956A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B530D11BE24F75001956A6 /* main.m */; };
 		20B530D51BE24F75001956A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B530D41BE24F75001956A6 /* AppDelegate.m */; };
 		20B530D81BE24F75001956A6 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B530D71BE24F75001956A6 /* GameScene.m */; };
@@ -78,6 +79,8 @@
 		2082BA511C1E6E5600CC3BBB /* EventFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventFrame.h; sourceTree = "<group>"; };
 		2082BA551C1E725D00CC3BBB /* BaseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseScene.h; sourceTree = "<group>"; };
 		2082BA561C1E725D00CC3BBB /* BaseScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseScene.m; sourceTree = "<group>"; };
+		2082BA631C1E7E6500CC3BBB /* hall_view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hall_view.h; sourceTree = "<group>"; };
+		2082BA641C1E7E6500CC3BBB /* hall_view.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hall_view.m; sourceTree = "<group>"; };
 		20B530CD1BE24F75001956A6 /* Glimmer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glimmer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20B530D11BE24F75001956A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		20B530D31BE24F75001956A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -89,10 +92,6 @@
 		20B530DF1BE24F75001956A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		20B530E41BE24F75001956A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20B530E61BE24F75001956A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20B530EF1BE24F76001956A6 /* GlimmerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlimmerTests.m; sourceTree = "<group>"; };
-		20B530F11BE24F76001956A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20B530FA1BE24F76001956A6 /* GlimmerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlimmerUITests.m; sourceTree = "<group>"; };
-		20B530FC1BE24F76001956A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20B531091BE2514B001956A6 /* MoreTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreTableView.h; sourceTree = "<group>"; };
 		20B5310A1BE2514B001956A6 /* MoreTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableView.m; sourceTree = "<group>"; };
 		20B5310B1BE2514B001956A6 /* NetSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetSocket.h; sourceTree = "<group>"; };
@@ -210,6 +209,24 @@
 			name = net;
 			sourceTree = "<group>";
 		};
+		204094FA1C1EBAE0004FC011 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				20E7FF6D1BF5B6D900F258AF /* Assets.xcassets */,
+				20B530DE1BE24F75001956A6 /* Main.storyboard */,
+				20B530E31BE24F75001956A6 /* LaunchScreen.storyboard */,
+				20B530E61BE24F75001956A6 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		204094FB1C1EBF34004FC011 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = assets;
+			sourceTree = "<group>";
+		};
 		206A2CAC1BF4C10800698548 /* lite */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,12 +281,27 @@
 			name = core;
 			sourceTree = "<group>";
 		};
+		2082BA611C1E7E3B00CC3BBB /* app */ = {
+			isa = PBXGroup;
+			children = (
+				2082BA621C1E7E4300CC3BBB /* views */,
+			);
+			name = app;
+			sourceTree = "<group>";
+		};
+		2082BA621C1E7E4300CC3BBB /* views */ = {
+			isa = PBXGroup;
+			children = (
+				2082BA631C1E7E6500CC3BBB /* hall_view.h */,
+				2082BA641C1E7E6500CC3BBB /* hall_view.m */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
 		20B530C41BE24F75001956A6 = {
 			isa = PBXGroup;
 			children = (
 				20B530CF1BE24F75001956A6 /* Glimmer */,
-				20B530EE1BE24F76001956A6 /* GlimmerTests */,
-				20B530F91BE24F76001956A6 /* GlimmerUITests */,
 				20B530CE1BE24F75001956A6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -285,6 +317,8 @@
 		20B530CF1BE24F75001956A6 /* Glimmer */ = {
 			isa = PBXGroup;
 			children = (
+				204094FA1C1EBAE0004FC011 /* Resources */,
+				2082BA611C1E7E3B00CC3BBB /* app */,
 				20F0562C1BE25208004727D8 /* libs */,
 				20F0562D1BE25211004727D8 /* src */,
 				20F056351BE2529A004727D8 /* scenes */,
@@ -292,10 +326,6 @@
 				20B530D41BE24F75001956A6 /* AppDelegate.m */,
 				20B530DB1BE24F75001956A6 /* GameViewController.h */,
 				20B530DC1BE24F75001956A6 /* GameViewController.m */,
-				20E7FF6D1BF5B6D900F258AF /* Assets.xcassets */,
-				20B530DE1BE24F75001956A6 /* Main.storyboard */,
-				20B530E31BE24F75001956A6 /* LaunchScreen.storyboard */,
-				20B530E61BE24F75001956A6 /* Info.plist */,
 				20B530D01BE24F75001956A6 /* Supporting Files */,
 			);
 			path = Glimmer;
@@ -307,24 +337,6 @@
 				20B530D11BE24F75001956A6 /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		20B530EE1BE24F76001956A6 /* GlimmerTests */ = {
-			isa = PBXGroup;
-			children = (
-				20B530EF1BE24F76001956A6 /* GlimmerTests.m */,
-				20B530F11BE24F76001956A6 /* Info.plist */,
-			);
-			path = GlimmerTests;
-			sourceTree = "<group>";
-		};
-		20B530F91BE24F76001956A6 /* GlimmerUITests */ = {
-			isa = PBXGroup;
-			children = (
-				20B530FA1BE24F76001956A6 /* GlimmerUITests.m */,
-				20B530FC1BE24F76001956A6 /* Info.plist */,
-			);
-			path = GlimmerUITests;
 			sourceTree = "<group>";
 		};
 		20D2C2E91BEBA6F1009EFF99 /* test */ = {
@@ -373,6 +385,7 @@
 		20F0562E1BE25221004727D8 /* sdk */ = {
 			isa = PBXGroup;
 			children = (
+				204094FB1C1EBF34004FC011 /* assets */,
 				0A7F7B0B1BEC3E8F00B12B9D /* frame */,
 				20D2C2F01BEBAB10009EFF99 /* interfaces */,
 				20D2C2ED1BEBA9D1009EFF99 /* actions */,
@@ -501,6 +514,7 @@
 				0A7F7B141BEC4AE100B12B9D /* FacedEmployer.m in Sources */,
 				20B530D21BE24F75001956A6 /* main.m in Sources */,
 				0AFF4A241BEB0DA6001C2B11 /* XMLNode.m in Sources */,
+				2082BA651C1E7E6500CC3BBB /* hall_view.m in Sources */,
 				201C42521BEE261800E7A316 /* BaseOberver.m in Sources */,
 				0AFBAF831BEB53E4008AE72B /* DownLoader.m in Sources */,
 				206A2CBE1BF4E1EB00698548 /* MapCamera.m in Sources */,
