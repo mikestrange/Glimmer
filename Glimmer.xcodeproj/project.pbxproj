@@ -17,6 +17,7 @@
 		20138C9E1BE7AD07001F04EB /* TickManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20138C9D1BE7AD07001F04EB /* TickManager.m */; };
 		201C42521BEE261800E7A316 /* BaseOberver.m in Sources */ = {isa = PBXBuildFile; fileRef = 201C42511BEE261800E7A316 /* BaseOberver.m */; };
 		201C425A1BEF4DFE00E7A316 /* ByteArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 201C42591BEF4DFE00E7A316 /* ByteArray.m */; };
+		205843311C1FC1D2005E8D61 /* MovieClip.m in Sources */ = {isa = PBXBuildFile; fileRef = 205843301C1FC1D2005E8D61 /* MovieClip.m */; };
 		206A2CB01BF4C19B00698548 /* SlammerCharge.m in Sources */ = {isa = PBXBuildFile; fileRef = 206A2CAF1BF4C19B00698548 /* SlammerCharge.m */; };
 		206A2CB51BF4CE3300698548 /* MapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 206A2CB41BF4CE3300698548 /* MapController.m */; };
 		206A2CB81BF4CE9C00698548 /* MapInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 206A2CB71BF4CE9C00698548 /* MapInfo.m */; };
@@ -64,6 +65,8 @@
 		201C42511BEE261800E7A316 /* BaseOberver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseOberver.m; sourceTree = "<group>"; };
 		201C42581BEF4DFE00E7A316 /* ByteArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ByteArray.h; sourceTree = "<group>"; };
 		201C42591BEF4DFE00E7A316 /* ByteArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ByteArray.m; sourceTree = "<group>"; };
+		2058432F1C1FC1D2005E8D61 /* MovieClip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieClip.h; sourceTree = "<group>"; };
+		205843301C1FC1D2005E8D61 /* MovieClip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieClip.m; sourceTree = "<group>"; };
 		206A2CAE1BF4C19B00698548 /* SlammerCharge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlammerCharge.h; sourceTree = "<group>"; };
 		206A2CAF1BF4C19B00698548 /* SlammerCharge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlammerCharge.m; sourceTree = "<group>"; };
 		206A2CB31BF4CE3300698548 /* MapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapController.h; sourceTree = "<group>"; };
@@ -212,6 +215,8 @@
 		204094FA1C1EBAE0004FC011 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				20B530D31BE24F75001956A6 /* AppDelegate.h */,
+				20B530D41BE24F75001956A6 /* AppDelegate.m */,
 				20E7FF6D1BF5B6D900F258AF /* Assets.xcassets */,
 				20B530DE1BE24F75001956A6 /* Main.storyboard */,
 				20B530E31BE24F75001956A6 /* LaunchScreen.storyboard */,
@@ -264,6 +269,7 @@
 		207AA7691BE25637008D5E44 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				2095608D1C1FFF6800C03825 /* extends */,
 				2082BA541C1E724300CC3BBB /* core */,
 				20D2C2E91BEBA6F1009EFF99 /* test */,
 				20D2C2EA1BEBA706009EFF99 /* QuickHandler.h */,
@@ -298,6 +304,15 @@
 			name = views;
 			sourceTree = "<group>";
 		};
+		2095608D1C1FFF6800C03825 /* extends */ = {
+			isa = PBXGroup;
+			children = (
+				2058432F1C1FC1D2005E8D61 /* MovieClip.h */,
+				205843301C1FC1D2005E8D61 /* MovieClip.m */,
+			);
+			name = extends;
+			sourceTree = "<group>";
+		};
 		20B530C41BE24F75001956A6 = {
 			isa = PBXGroup;
 			children = (
@@ -322,8 +337,6 @@
 				20F0562C1BE25208004727D8 /* libs */,
 				20F0562D1BE25211004727D8 /* src */,
 				20F056351BE2529A004727D8 /* scenes */,
-				20B530D31BE24F75001956A6 /* AppDelegate.h */,
-				20B530D41BE24F75001956A6 /* AppDelegate.m */,
 				20B530DB1BE24F75001956A6 /* GameViewController.h */,
 				20B530DC1BE24F75001956A6 /* GameViewController.m */,
 				20B530D01BE24F75001956A6 /* Supporting Files */,
@@ -513,6 +526,7 @@
 				20B530D81BE24F75001956A6 /* GameScene.m in Sources */,
 				0A7F7B141BEC4AE100B12B9D /* FacedEmployer.m in Sources */,
 				20B530D21BE24F75001956A6 /* main.m in Sources */,
+				205843311C1FC1D2005E8D61 /* MovieClip.m in Sources */,
 				0AFF4A241BEB0DA6001C2B11 /* XMLNode.m in Sources */,
 				2082BA651C1E7E6500CC3BBB /* hall_view.m in Sources */,
 				201C42521BEE261800E7A316 /* BaseOberver.m in Sources */,

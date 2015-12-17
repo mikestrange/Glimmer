@@ -25,9 +25,15 @@
 @property(nonatomic,assign)NSInteger nodeHeight;
 //地图文件夹
 @property(nonatomic,copy)NSString* rootFile;
+//
+@property(nonatomic,strong)NSBundle* bundle;
 
 //初始化地图数据(XML路径)
 -(instancetype)initWithPath:(NSString*)path;
+//库
+-(instancetype)initWithBundle:(NSBundle*)_bundle;
+//本地库
+-(instancetype)initWithBundle;
 //获取节点地图的路径
 -(NSString*)nodePath:(NSString*)type x:(NSInteger)x y:(NSInteger)y;
 //获取节点的位置（全局位置）

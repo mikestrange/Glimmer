@@ -16,6 +16,8 @@
 
 -(instancetype)initWithVector:(NSArray*)vector;
 
+-(instancetype)initWithVector:(NSArray*)vector width:(NSInteger)a1 height:(NSInteger)a2;
+
 -(void)play;
 
 -(void)play:(NSTimeInterval)time;

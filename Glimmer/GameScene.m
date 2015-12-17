@@ -66,7 +66,16 @@
     [[FacedEmployer getInstance] addCommandVector:[self getEventVector] command:self];
     [[FacedEmployer getInstance] sendMessage:@"s"];
     ///Users/MikeRiy/Home/github/Glimmer/Resources/player
-    
+    [self xmlHandler];
+    [self setMovieClip:view];
+    //
+    if(NO){
+        UIWebView *web = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)];
+        NSURL *url =[NSURL URLWithString:@"www.baidu.com"];
+        NSURLRequest *request =[NSURLRequest requestWithURL:url];
+        [web loadRequest:request];
+        [view addSubview:web];
+    }
 }
 
 -(void)onExit{
@@ -166,6 +175,44 @@
 {
     /* Called before each frame is rendered */
     
+}
+
+-(void)setMovieClip:(SKView*)view{
+    NSString *rootFile = @"/Users/MikeRiy/Home/github/TechnicalSupport/Resources/player/";
+    NSArray *imagesArray = [NSArray arrayWithObjects:
+                            [NSString stringWithFormat:@"%@%@",rootFile,@"move_1.png"],
+                            [NSString stringWithFormat:@"%@%@",rootFile,@"move_2.png"],
+                            [NSString stringWithFormat:@"%@%@",rootFile,@"move_3.png"],
+                            [NSString stringWithFormat:@"%@%@",rootFile,@"move_4.png"],
+                            [NSString stringWithFormat:@"%@%@",rootFile,@"move_5.png"],
+                            [NSString stringWithFormat:@"%@%@",rootFile,@"move_6.png"],nil];
+    //
+    NSArray *imagesArray2 = [NSArray arrayWithObjects:
+                             [NSString stringWithFormat:@"%@%@",rootFile,@"stop_0.png"],
+                             [NSString stringWithFormat:@"%@%@",rootFile,@"stop_1.png"],
+                             [NSString stringWithFormat:@"%@%@",rootFile,@"stop_2.png"],
+                             [NSString stringWithFormat:@"%@%@",rootFile,@"stop_3.png"],
+                             [NSString stringWithFormat:@"%@%@",rootFile,@"stop_4.png"],
+                             [NSString stringWithFormat:@"%@%@",rootFile,@"stop_5.png"],nil];
+    //
+    NSString *rootFile1 = @"/Users/MikeRiy/Downloads/10/";
+    NSMutableArray* images3 = [[NSMutableArray alloc] init];
+    for(NSInteger i = 4;i<18;i++){
+        [images3 addObject:[NSString stringWithFormat:@"%@1201-%li.png",rootFile1,i]];
+    }
+    
+    
+    
+    MovieClip* node = [[MovieClip alloc] initWithVector:imagesArray];
+    //[node.layer setAnchorPoint:CGPointMake(0, 0)];
+    node.layer.position = CGPointMake(random()%400, random()%600);
+    node.frame = CGRectMake(random()%200, random()%300, 80, 200);
+    [node addActionFrames:images3 name:@"eff"];
+    [node addActionFrames:imagesArray2 name:@"xt"];
+    [node playAction:@"xt"];
+    node.tag = 10;
+    [view addSubview:node];
+    //
 }
 
 

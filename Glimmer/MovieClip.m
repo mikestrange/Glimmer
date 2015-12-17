@@ -28,7 +28,14 @@ static const NSInteger NONE = 0;
         self.frames = vector;
         [self play];
         //自适应图片宽高比例
-        //self.contentMode = UIViewContentModeScaleAspectFit;
+        self.contentMode = UIViewContentModeScaleAspectFit;
+    }
+    return self;
+}
+
+-(instancetype)initWithVector:(NSArray*)vector width:(NSInteger)a1 height:(NSInteger)a2{
+    if(self = [self initWithVector:vector]){
+        self.frame = CGRectMake(0, 0, a1, a2);
     }
     return self;
 }
@@ -92,7 +99,7 @@ static const NSInteger NONE = 0;
 
 //#private
 -(void)updateFrame:(NSInteger)index{
-    if(self.currentFrame == index) return;
+    //if(self.currentFrame == index) return;
     //
     NSArray<NSString*> *vector = self.frames;
     if(self.actionName){
@@ -105,7 +112,7 @@ static const NSInteger NONE = 0;
     self.currentFrame = index;
     self.image = [UIImage imageNamed:vector[index]];
     //设置为图片大小
-    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.image.size.width, self.image.size.height);
+    //self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.image.size.width, self.image.size.height);
 }
 
 

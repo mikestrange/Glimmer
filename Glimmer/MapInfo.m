@@ -18,6 +18,7 @@
 @synthesize totalHeight;
 @synthesize totalWidth;
 @synthesize rootFile;
+@synthesize bundle;
 
 -(instancetype)initWithPath:(NSString*)path
 {
@@ -28,6 +29,22 @@
         [self reading:[XMLNode make:file]];
     }
     return self;
+}
+
+-(instancetype)initWithBundle:(NSBundle*)_bundle
+{
+    if(self = [super init])
+    {
+        self.bundle = _bundle ? _bundle : [NSBundle mainBundle];
+        NSString* file = [self.bundle pathForResource:@"config" ofType:@"xml"];
+        [self reading:[XMLNode make:file]];
+    }
+    return self;
+}
+
+-(instancetype)initWithBundle
+{
+    return [self initWithBundle:[NSBundle mainBundle]];
 }
 
 //解析
@@ -59,14 +76,26 @@
     }else{
         fy = [NSString stringWithFormat:@"0%li",y];
     }
-    NSString* file = [NSString stringWithFormat:@"%@/map_%@x%@.%@", self.rootFile, fy, fx, type];
+    //
+    NSString* file = NULL;
+    if(self.rootFile){
+        file = [NSString stringWithFormat:@"%@/map_%@x%@.%@", self.rootFile, fy, fx, type];
+    }else{
+        NSString* path = [NSString stringWithFormat:@"map_%@x%@", fy, fx];
+        file = [self.bundle pathForResource:path ofType:type];
+    }
     //NSLog(@"地图节点路径：x = %li ,y = % li ,url = %@", x, y, file);
     return file;
 }
 
 -(NSString*)smallPath
 {
-    NSString* file = [NSString stringWithFormat:@"%@/map.jpg", self.rootFile];
+    NSString* file = NULL;
+    if(self.rootFile){
+        file = [NSString stringWithFormat:@"%@/map.jpg", self.rootFile];
+    }else{
+        file = [self.bundle pathForResource:@"map" ofType:@"jpg"];
+    }
     return file;
 }
 

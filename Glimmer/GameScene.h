@@ -24,6 +24,7 @@
 #import "ByteArray.h"
 #import "MapInfo.h"
 #import "MapController.h"
+#import "MovieClip.h"
 #import "EventFrame.h"
 
 @interface GameScene : BaseScene<ICommand>
