@@ -17,6 +17,7 @@
 		20138C9E1BE7AD07001F04EB /* TickManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20138C9D1BE7AD07001F04EB /* TickManager.m */; };
 		201C42521BEE261800E7A316 /* BaseOberver.m in Sources */ = {isa = PBXBuildFile; fileRef = 201C42511BEE261800E7A316 /* BaseOberver.m */; };
 		201C425A1BEF4DFE00E7A316 /* ByteArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 201C42591BEF4DFE00E7A316 /* ByteArray.m */; };
+		2027FB681C22BC53006A4E0E /* Sqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 2027FB671C22BC53006A4E0E /* Sqlite.m */; };
 		205843311C1FC1D2005E8D61 /* MovieClip.m in Sources */ = {isa = PBXBuildFile; fileRef = 205843301C1FC1D2005E8D61 /* MovieClip.m */; };
 		206A2CB01BF4C19B00698548 /* SlammerCharge.m in Sources */ = {isa = PBXBuildFile; fileRef = 206A2CAF1BF4C19B00698548 /* SlammerCharge.m */; };
 		206A2CB51BF4CE3300698548 /* MapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 206A2CB41BF4CE3300698548 /* MapController.m */; };
@@ -65,6 +66,8 @@
 		201C42511BEE261800E7A316 /* BaseOberver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseOberver.m; sourceTree = "<group>"; };
 		201C42581BEF4DFE00E7A316 /* ByteArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ByteArray.h; sourceTree = "<group>"; };
 		201C42591BEF4DFE00E7A316 /* ByteArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ByteArray.m; sourceTree = "<group>"; };
+		2027FB661C22BC53006A4E0E /* Sqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sqlite.h; sourceTree = "<group>"; };
+		2027FB671C22BC53006A4E0E /* Sqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sqlite.m; sourceTree = "<group>"; };
 		2058432F1C1FC1D2005E8D61 /* MovieClip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieClip.h; sourceTree = "<group>"; };
 		205843301C1FC1D2005E8D61 /* MovieClip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieClip.m; sourceTree = "<group>"; };
 		206A2CAE1BF4C19B00698548 /* SlammerCharge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlammerCharge.h; sourceTree = "<group>"; };
@@ -187,6 +190,15 @@
 				0A7F7B181BEC52E300B12B9D /* EventDispatcher.m */,
 			);
 			name = core;
+			sourceTree = "<group>";
+		};
+		2027FB651C22BC46006A4E0E /* sqlite */ = {
+			isa = PBXGroup;
+			children = (
+				2027FB661C22BC53006A4E0E /* Sqlite.h */,
+				2027FB671C22BC53006A4E0E /* Sqlite.m */,
+			);
+			name = sqlite;
 			sourceTree = "<group>";
 		};
 		202A125A1BEBA29B008A3026 /* manager */ = {
@@ -398,6 +410,7 @@
 		20F0562E1BE25221004727D8 /* sdk */ = {
 			isa = PBXGroup;
 			children = (
+				2027FB651C22BC46006A4E0E /* sqlite */,
 				204094FB1C1EBF34004FC011 /* assets */,
 				0A7F7B0B1BEC3E8F00B12B9D /* frame */,
 				20D2C2F01BEBAB10009EFF99 /* interfaces */,
@@ -521,6 +534,7 @@
 				206A2CB81BF4CE9C00698548 /* MapInfo.m in Sources */,
 				20B530D51BE24F75001956A6 /* AppDelegate.m in Sources */,
 				20D2C2EC1BEBA706009EFF99 /* QuickHandler.m in Sources */,
+				2027FB681C22BC53006A4E0E /* Sqlite.m in Sources */,
 				207AA7681BE25529008D5E44 /* SoundManager.m in Sources */,
 				20B5310F1BE2514B001956A6 /* MoreTableView.m in Sources */,
 				20B530D81BE24F75001956A6 /* GameScene.m in Sources */,
