@@ -27,6 +27,7 @@
 		207AA7681BE25529008D5E44 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 207AA7671BE25529008D5E44 /* SoundManager.m */; };
 		2082BA571C1E725D00CC3BBB /* BaseScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 2082BA561C1E725D00CC3BBB /* BaseScene.m */; };
 		2082BA651C1E7E6500CC3BBB /* hall_view.m in Sources */ = {isa = PBXBuildFile; fileRef = 2082BA641C1E7E6500CC3BBB /* hall_view.m */; };
+		209EBEB41C27A45B0026AE37 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 209EBEB31C27A45B0026AE37 /* libsqlite3.tbd */; };
 		20B530D21BE24F75001956A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B530D11BE24F75001956A6 /* main.m */; };
 		20B530D51BE24F75001956A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B530D41BE24F75001956A6 /* AppDelegate.m */; };
 		20B530D81BE24F75001956A6 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B530D71BE24F75001956A6 /* GameScene.m */; };
@@ -87,6 +88,7 @@
 		2082BA561C1E725D00CC3BBB /* BaseScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseScene.m; sourceTree = "<group>"; };
 		2082BA631C1E7E6500CC3BBB /* hall_view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hall_view.h; sourceTree = "<group>"; };
 		2082BA641C1E7E6500CC3BBB /* hall_view.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hall_view.m; sourceTree = "<group>"; };
+		209EBEB31C27A45B0026AE37 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		20B530CD1BE24F75001956A6 /* Glimmer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glimmer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20B530D11BE24F75001956A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		20B530D31BE24F75001956A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				209EBEB41C27A45B0026AE37 /* libsqlite3.tbd in Frameworks */,
 				20E7FF701BF5DC7B00F258AF /* CoreGraphics.framework in Frameworks */,
 				20B531161BE2517E001956A6 /* CocoaAsyncSocket.framework in Frameworks */,
 			);
@@ -195,6 +198,7 @@
 		2027FB651C22BC46006A4E0E /* sqlite */ = {
 			isa = PBXGroup;
 			children = (
+				209EBEB31C27A45B0026AE37 /* libsqlite3.tbd */,
 				2027FB661C22BC53006A4E0E /* Sqlite.h */,
 				2027FB671C22BC53006A4E0E /* Sqlite.m */,
 			);

@@ -9,9 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "sqlite3.h"
 
+
+@class ReadLite;
+
 @interface Sqlite : NSObject{
-    @private
-        sqlite3 *database;
+@private
+    sqlite3 *database;
 }
 
 @property(nonatomic,copy) NSString* liteFile;
@@ -30,7 +33,7 @@
 //原始
 -(BOOL)remove:(NSString*)sql;
 -(BOOL)insert:(NSString *)sql;
--(NSMutableArray*)select:(NSString *)sql;
+-(BOOL)select:(NSString *)sql reader:(ReadLite *) data;
 -(BOOL)update:(NSString *)sql;
 
 
@@ -42,4 +45,10 @@
 -(BOOL)insert:(NSDictionary*)dic table:(NSString*)name;
 -(BOOL)update:(NSDictionary*)dic where:(NSDictionary*)keys table:(NSString*)name;
 //
+@end
+
+
+//获取数据
+@interface ReadLite:NSObject
+-(void)reading:(sqlite3_stmt*)sqlite;
 @end

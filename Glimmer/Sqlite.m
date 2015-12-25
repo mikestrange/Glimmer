@@ -119,22 +119,25 @@
 }
 
 //查找
--(NSMutableArray*)select:(NSString *)sql
+-(BOOL)select:(NSString *)sql reader:(ReadLite *) data
 {
-    //SELECT LastName,FirstName FROM Persons
+    //SELECT * FROM tableName where
     NSMutableArray *list;
-    sqlite3_stmt * statement;
+    sqlite3_stmt *statement;
     int succeed = sqlite3_prepare_v2(database, [sql UTF8String], -1, &statement, nil);
     if (succeed == SQLITE_OK) {
         list = [[NSMutableArray alloc] init];
         while (sqlite3_step(statement) == SQLITE_ROW) {
-            //gets
-            char *name = (char*)sqlite3_column_text(statement, 1);
-            NSString *nsNameStr = [[NSString alloc]initWithUTF8String:name];
-            
-            int money = sqlite3_column_int(statement, 2);
-            
-            NSLog(@"name:%@  money:%d",nsNameStr,money);
+            [data reading:statement];
+            /*
+             //gets
+             char *name = (char*)sqlite3_column_text(statement, 1);
+             NSString *nsNameStr = [[NSString alloc]initWithUTF8String:name];
+             
+             int money = sqlite3_column_int(statement, 2);
+             
+             NSLog(@"name:%@  money:%d",nsNameStr,money);
+             */
         }
     }
     return list;
@@ -235,4 +238,14 @@
     return [self update:sql];
 }
 //
+@end
+
+
+//
+@implementation ReadLite
+
+-(void)reading:(sqlite3_stmt *)sqlite{
+    NSLog(@"reading");
+}
+
 @end
