@@ -85,22 +85,6 @@
     
     //播放视频
     if(YES){
-        /*
-        NSString* file = @"/Users/MikeRiy/Documents/movies/禁止爱情.mp4";
-        NSURL *sourceMovieURL = [NSURL fileURLWithPath:file];
-        AVAsset *movieAsset = [AVURLAsset URLAssetWithURL:sourceMovieURL options:nil];
-        AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:movieAsset];
-        //
-        [playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
-        //
-        AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
-        [player play];
-        //
-        AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
-        playerLayer.frame = self.view.layer.bounds;
-        playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
-        [self.view.layer addSublayer:playerLayer];
-         */
         //
         video = [[Video alloc] init];
         [video setURL:@"/Users/MikeRiy/Documents/movies/禁止爱情.mp4"];

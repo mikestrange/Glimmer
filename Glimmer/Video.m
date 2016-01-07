@@ -47,9 +47,20 @@
     //layer
     self.layer = [AVPlayerLayer playerLayerWithPlayer:self.player];
     self.layer.videoGravity = AVLayerVideoGravityResizeAspect;
+    //--
+    id this = self; //1秒2次
+    [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 2) queue:dispatch_get_main_queue() usingBlock:^(CMTime value) {
+        NSLog(@"xx %f",ceil(value.value/value.timescale));
+        [this update:ceil(value.value/value.timescale)];
+    }];
 }
 
--(void)addTo:(UIView*)root{
+-(void)update:(float)current{
+    
+}
+
+-(void)addTo:(UIView*)root
+{
     [root.layer addSublayer:self.layer];
 }
 
@@ -67,7 +78,8 @@
             NSLog(@"AVPlayerStatusFailed");
         }
     } else if ([keyPath isEqualToString:@"loadedTimeRanges"]) {
-        NSLog(@"update");
+        //NSTimeInterval timeInterval = [self availableDuration];// 计算缓冲进度
+        //NSLog(@"Time Interval:%f",timeInterval);
     }else{
         NSLog(@"update");
     }
