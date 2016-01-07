@@ -85,9 +85,9 @@
     
     //播放视频
     if(YES){
-        //
+        /*
         video = [[Video alloc] init];
-        [video setURL:@"/Users/MikeRiy/Documents/movies/禁止爱情.mp4"];
+        [video setPath:@"/Users/MikeRiy/Documents/movies/禁止爱情.mp4"];
         [video addTo:self.view];
         video.layer.frame = self.view.bounds;
         //
@@ -95,10 +95,19 @@
         [self.view addSubview:slider];
         //
         [video showSlider:slider];
+        */
+        //
+        video2 = [[Video alloc] init];
+        [video2 setURL:@"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"];
+        [video2 addTo:self.view];
+        CGRect rect = self.view.bounds;
+        rect.origin.y = -100;
+        video2.layer.frame = rect;
     }
 }
 
 Video* video;
+Video* video2;
 
 
 -(void)onExit{

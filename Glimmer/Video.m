@@ -32,10 +32,22 @@
     [self play];
 }
 
+-(void)setPath:(NSString*)file{
+    [self setAccept:[NSURL fileURLWithPath:file]];
+}
+
 -(void)setURL:(NSString*)file{
-    //NSString* file = @"/Users/MikeRiy/Documents/movies/禁止爱情.mp4";
-    //URL
-    NSURL *sourceMovieURL = [NSURL fileURLWithPath:file];
+    //解决网络播放无声音
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+    //
+    [self setAccept:[NSURL URLWithString:file]];
+}
+
+-(void)setAccept:(NSURL*)sourceMovieURL{
+    //远程
+    //[NSURL URLWithString:@"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"]
+    //本地
+    //[NSURL fileURLWithPath:@"/Users/MikeRiy/Documents/movies/禁止爱情.mp4"]
     //Asset
     AVAsset *movieAsset = [AVURLAsset URLAssetWithURL:sourceMovieURL options:nil];
     //item

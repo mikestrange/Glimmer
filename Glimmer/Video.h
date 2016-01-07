@@ -30,8 +30,13 @@ typedef enum{
 -(void)play:(CMTimeValue)current;
 -(void)stop;
 
+//网络（无声音）
 -(void)setURL:(NSString*)file;
--(void)addTo:(UIView*)root;
+//本地（有声音）
+-(void)setPath:(NSString*)file;
+
 -(void)showSlider:(UISlider*)slider;
+
+-(void)addTo:(UIView*)root;
 
 @end
