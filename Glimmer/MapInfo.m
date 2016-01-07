@@ -7,7 +7,7 @@
 //
 
 #import "MapInfo.h"
-#import "XMLNode.h"
+#import "XML_Node.h"
 
 @implementation MapInfo
 
@@ -26,7 +26,7 @@
     {
         self.rootFile = path;
         NSString* file = [NSString stringWithFormat:@"%@/config.xml",path];
-        [self reading:[XMLNode make:file]];
+        [self reading:[XML_Node make:file]];
     }
     return self;
 }
@@ -37,7 +37,7 @@
     {
         self.bundle = _bundle ? _bundle : [NSBundle mainBundle];
         NSString* file = [self.bundle pathForResource:@"config" ofType:@"xml"];
-        [self reading:[XMLNode make:file]];
+        [self reading:[XML_Node make:file]];
     }
     return self;
 }
@@ -48,9 +48,9 @@
 }
 
 //解析
--(void)reading:(XMLNode*)node
+-(void)reading:(XML_Node*)node
 {
-    XMLNode* next = [node getChildByName:@"map"];
+    XML_Node* next = [node getChildByName:@"map"];
     crossNum = [[next getDictValue:@"x"] intValue];
     verticalNum = [[next getDictValue:@"y"] intValue];
     nodeWidth = [[next getDictValue:@"w"] intValue];

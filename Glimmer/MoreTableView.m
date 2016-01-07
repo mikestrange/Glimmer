@@ -34,7 +34,7 @@
     //_tableView.separatorColor = [UIColor purpleColor];
     [self addSubview:_tableView];
     //
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 40)];
     headerView.backgroundColor = [UIColor redColor];
     UILabel *headText = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, 200, 40)];
     headText.text = @"警告⚠";
@@ -79,7 +79,10 @@
     //设置标题字体大小
     cell.textLabel.font = [UIFont fontWithName:@"大宋" size:18];
     [cell.imageView setImage:[UIImage imageNamed:@"checkbox_selected.png"]];
-    
+    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
+    label.text = @"厕所不是";
+    [label setTextColor:[UIColor orangeColor]];
+    [cell addSubview:label];
     return cell;
 }
 

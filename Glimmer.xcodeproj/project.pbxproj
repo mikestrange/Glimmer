@@ -13,7 +13,7 @@
 		0AFBAF7F1BEB31E9008AE72B /* TrimString.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFBAF7E1BEB31E9008AE72B /* TrimString.m */; };
 		0AFBAF831BEB53E4008AE72B /* DownLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFBAF821BEB53E4008AE72B /* DownLoader.m */; };
 		0AFF4A201BEB0403001C2B11 /* XML_Decode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFF4A1F1BEB0403001C2B11 /* XML_Decode.m */; };
-		0AFF4A241BEB0DA6001C2B11 /* XMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFF4A231BEB0DA6001C2B11 /* XMLNode.m */; };
+		0AFF4A241BEB0DA6001C2B11 /* XML_Node.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFF4A231BEB0DA6001C2B11 /* XML_Node.m */; };
 		20138C9E1BE7AD07001F04EB /* TickManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20138C9D1BE7AD07001F04EB /* TickManager.m */; };
 		201C42521BEE261800E7A316 /* BaseOberver.m in Sources */ = {isa = PBXBuildFile; fileRef = 201C42511BEE261800E7A316 /* BaseOberver.m */; };
 		201C425A1BEF4DFE00E7A316 /* ByteArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 201C42591BEF4DFE00E7A316 /* ByteArray.m */; };
@@ -28,6 +28,8 @@
 		2082BA571C1E725D00CC3BBB /* BaseScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 2082BA561C1E725D00CC3BBB /* BaseScene.m */; };
 		2082BA651C1E7E6500CC3BBB /* hall_view.m in Sources */ = {isa = PBXBuildFile; fileRef = 2082BA641C1E7E6500CC3BBB /* hall_view.m */; };
 		209EBEB41C27A45B0026AE37 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 209EBEB31C27A45B0026AE37 /* libsqlite3.tbd */; };
+		20A21BEF1C3E4A5000061233 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A21BEE1C3E4A5000061233 /* MediaPlayer.framework */; };
+		20A21BF21C3E624D00061233 /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A21BF11C3E624D00061233 /* Video.m */; };
 		20B530D21BE24F75001956A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B530D11BE24F75001956A6 /* main.m */; };
 		20B530D51BE24F75001956A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B530D41BE24F75001956A6 /* AppDelegate.m */; };
 		20B530D81BE24F75001956A6 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B530D71BE24F75001956A6 /* GameScene.m */; };
@@ -59,8 +61,8 @@
 		0AFBAF821BEB53E4008AE72B /* DownLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownLoader.m; sourceTree = "<group>"; };
 		0AFF4A1E1BEB0403001C2B11 /* XML_Decode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XML_Decode.h; sourceTree = "<group>"; };
 		0AFF4A1F1BEB0403001C2B11 /* XML_Decode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XML_Decode.m; sourceTree = "<group>"; };
-		0AFF4A221BEB0DA6001C2B11 /* XMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLNode.h; sourceTree = "<group>"; };
-		0AFF4A231BEB0DA6001C2B11 /* XMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLNode.m; sourceTree = "<group>"; };
+		0AFF4A221BEB0DA6001C2B11 /* XML_Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XML_Node.h; sourceTree = "<group>"; };
+		0AFF4A231BEB0DA6001C2B11 /* XML_Node.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XML_Node.m; sourceTree = "<group>"; };
 		20138C9C1BE7AD07001F04EB /* TickManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TickManager.h; sourceTree = "<group>"; };
 		20138C9D1BE7AD07001F04EB /* TickManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TickManager.m; sourceTree = "<group>"; };
 		201C42501BEE261800E7A316 /* BaseOberver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseOberver.h; sourceTree = "<group>"; };
@@ -89,6 +91,9 @@
 		2082BA631C1E7E6500CC3BBB /* hall_view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hall_view.h; sourceTree = "<group>"; };
 		2082BA641C1E7E6500CC3BBB /* hall_view.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hall_view.m; sourceTree = "<group>"; };
 		209EBEB31C27A45B0026AE37 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		20A21BEE1C3E4A5000061233 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		20A21BF01C3E624D00061233 /* Video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Video.h; sourceTree = "<group>"; };
+		20A21BF11C3E624D00061233 /* Video.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Video.m; sourceTree = "<group>"; };
 		20B530CD1BE24F75001956A6 /* Glimmer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glimmer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20B530D11BE24F75001956A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		20B530D31BE24F75001956A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -124,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20A21BEF1C3E4A5000061233 /* MediaPlayer.framework in Frameworks */,
 				209EBEB41C27A45B0026AE37 /* libsqlite3.tbd in Frameworks */,
 				20E7FF701BF5DC7B00F258AF /* CoreGraphics.framework in Frameworks */,
 				20B531161BE2517E001956A6 /* CocoaAsyncSocket.framework in Frameworks */,
@@ -169,8 +175,8 @@
 			children = (
 				0AFF4A1E1BEB0403001C2B11 /* XML_Decode.h */,
 				0AFF4A1F1BEB0403001C2B11 /* XML_Decode.m */,
-				0AFF4A221BEB0DA6001C2B11 /* XMLNode.h */,
-				0AFF4A231BEB0DA6001C2B11 /* XMLNode.m */,
+				0AFF4A221BEB0DA6001C2B11 /* XML_Node.h */,
+				0AFF4A231BEB0DA6001C2B11 /* XML_Node.m */,
 				0AFBAF7D1BEB31E9008AE72B /* TrimString.h */,
 				0AFBAF7E1BEB31E9008AE72B /* TrimString.m */,
 			);
@@ -325,6 +331,8 @@
 			children = (
 				2058432F1C1FC1D2005E8D61 /* MovieClip.h */,
 				205843301C1FC1D2005E8D61 /* MovieClip.m */,
+				20A21BF01C3E624D00061233 /* Video.h */,
+				20A21BF11C3E624D00061233 /* Video.m */,
 			);
 			name = extends;
 			sourceTree = "<group>";
@@ -332,6 +340,7 @@
 		20B530C41BE24F75001956A6 = {
 			isa = PBXGroup;
 			children = (
+				20A21BEE1C3E4A5000061233 /* MediaPlayer.framework */,
 				20B530CF1BE24F75001956A6 /* Glimmer */,
 				20B530CE1BE24F75001956A6 /* Products */,
 			);
@@ -532,6 +541,7 @@
 				201C425A1BEF4DFE00E7A316 /* ByteArray.m in Sources */,
 				0AFBAF7F1BEB31E9008AE72B /* TrimString.m in Sources */,
 				206A2CB51BF4CE3300698548 /* MapController.m in Sources */,
+				20A21BF21C3E624D00061233 /* Video.m in Sources */,
 				2082BA571C1E725D00CC3BBB /* BaseScene.m in Sources */,
 				20B531101BE2514B001956A6 /* NetSocket.m in Sources */,
 				20B530DD1BE24F75001956A6 /* GameViewController.m in Sources */,
@@ -545,7 +555,7 @@
 				0A7F7B141BEC4AE100B12B9D /* FacedEmployer.m in Sources */,
 				20B530D21BE24F75001956A6 /* main.m in Sources */,
 				205843311C1FC1D2005E8D61 /* MovieClip.m in Sources */,
-				0AFF4A241BEB0DA6001C2B11 /* XMLNode.m in Sources */,
+				0AFF4A241BEB0DA6001C2B11 /* XML_Node.m in Sources */,
 				2082BA651C1E7E6500CC3BBB /* hall_view.m in Sources */,
 				201C42521BEE261800E7A316 /* BaseOberver.m in Sources */,
 				0AFBAF831BEB53E4008AE72B /* DownLoader.m in Sources */,

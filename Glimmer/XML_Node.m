@@ -6,10 +6,9 @@
 //  Copyright © 2015年 MikeRiy. All rights reserved.
 //
 
-#import "XMLNode.h"
-#import "XML_Decode.h"
+#import "XML_Node.h"
 
-@implementation XMLNode
+@implementation XML_Node
 
 @synthesize elementValue = _elementValue;
 @synthesize elementName = _elementName;
@@ -28,15 +27,15 @@
 }
 
 //根据层次获取子节点
--(XMLNode*)getChildByIndex:(NSInteger)index
+-(XML_Node*)getChildByIndex:(NSInteger)index
 {
     return [self.childrens objectAtIndex:index];
 }
 
 //根据名称获取子节点
--(XMLNode*)getChildByName:(NSString*)name
+-(XML_Node*)getChildByName:(NSString*)name
 {
-    for(XMLNode* data in self.childrens){
+    for(XML_Node* data in self.childrens){
         if([data.elementName isEqualToString:name]){
             return data;
         }
@@ -54,7 +53,7 @@
 }
 
 //添加自节点
--(void)addChildNode:(XMLNode*)node
+-(void)addChildNode:(XML_Node*)node
 {
     node.parent = self;
     [_childrens addObject:node];
@@ -67,13 +66,13 @@
         parentName = self.parent.elementName;
     }
     NSLog(@"name = %@ , parent = %@ , value = %@ dict = %@", self.elementName, parentName, self.elementValue, self.attributeDict);
-    for(XMLNode* data in self.childrens){
+    for(XML_Node* data in self.childrens){
         [data toString];
     }
 }
 
 //直接解析出xml
-+(XMLNode*)make:(NSString*)file
++(XML_Node*)make:(NSString*)file
 {
     //NSFileManager *fm = [NSFileManager defaultManager];
     //NSData* data = [fm contentsAtPath:file];

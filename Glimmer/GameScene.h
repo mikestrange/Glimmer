@@ -7,6 +7,7 @@
 //
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
+//#import <MediaPlayer/MediaPlayer.h>
 #import "BaseScene.h"
 #import "NetSocket.h"
 #import "ActionUtils.h"
@@ -14,7 +15,6 @@
 #import "MoreTableView.h"
 #import "SoundManager.h"
 #import "TickManager.h"
-#import "XMLNode.h"
 #import "TrimString.h"
 #import "DownLoader.h"
 #import "QuickHandler.h"
@@ -26,6 +26,7 @@
 #import "MapController.h"
 #import "MovieClip.h"
 #import "EventFrame.h"
+#import "Video.h"
 
 @interface GameScene : BaseScene<ICommand>
 

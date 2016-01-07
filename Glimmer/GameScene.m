@@ -31,52 +31,91 @@
     image2.transform = CGAffineTransformMakeScale(-1.0, 1.0);
     [black addSubview:image2];
     //TableView
-    //MoreTableView *table = [[MoreTableView alloc] initWithNull];
-    //[self.view addSubview:table];
+    if(NO){
+        MoreTableView *table = [[MoreTableView alloc] initWithNull];
+        [self.view addSubview:table];
+    }
+    
     //按钮
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    btn.frame = CGRectMake(0, 0, 100, 100);
-    btn.layer.position =CGPointMake(100, 460);
-    btn.tag = 1;
-    [btn setTitle:@"ZoomIn" forState:UIControlStateNormal];
-    NSURL *url1 = [NSURL URLWithString:@"https://www.baidu.com/img/bd_logo1.png"];
-    [btn setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:url1]] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(clearAction) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
-    [btn setTitle:@"好好学习" forState:UIControlStateNormal];
-    //远程图片
-    NSURL *url = [NSURL URLWithString:@"http://avatar.csdn.net/6/8/B/1_chenyong05314.jpg"];
-    UIImageView *loader = [[UIImageView alloc] initWithImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:url]]];
-    loader.frame = CGRectMake(0, 0, 100, 100);
-    [loader.layer setAnchorPoint:CGPointMake(0, 0)];
-    loader.layer.position = CGPointMake(100, 300);
-    [self.view addSubview:loader];
+    if(NO){
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        btn.frame = CGRectMake(0, 0, 100, 100);
+        btn.layer.position =CGPointMake(100, 460);
+        btn.tag = 1;
+        [btn setTitle:@"ZoomIn" forState:UIControlStateNormal];
+        NSURL *url1 = [NSURL URLWithString:@"https://www.baidu.com/img/bd_logo1.png"];
+        [btn setBackgroundImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:url1]] forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(clearAction) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:btn];
+        [btn setTitle:@"好好学习" forState:UIControlStateNormal];
+        //远程图片
+        NSURL *url = [NSURL URLWithString:@"http://avatar.csdn.net/6/8/B/1_chenyong05314.jpg"];
+        UIImageView *loader = [[UIImageView alloc] initWithImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:url]]];
+        loader.frame = CGRectMake(0, 0, 100, 100);
+        [loader.layer setAnchorPoint:CGPointMake(0, 0)];
+        loader.layer.position = CGPointMake(100, 300);
+        [self.view addSubview:loader];
+    }
     //Events
     //[QuickHandler addTouchHandler:black delegate:self selector:@selector(clickCategory:)];
     //[QuickHandler addTouchHandler:loader delegate:self selector:@selector(clickCategory:)];
     //
     //播放声音
-    [[SoundManager getInstance] playSoundOnce:@"/Users/MikeRiy/Documents/quick-3.3/quick/samples/anysdk/res/background.mp3"];
+    //[[SoundManager getInstance] playSoundOnce:@"/Users/MikeRiy/Documents/quick-3.3/quick/samples/anysdk/res/background.mp3"];
     //
     //连接服务器
-    //[[NetSocket getInstance] connect:@"192.168.1.27" port:9555];
+    //[[NetSocket getInstance] connect:@"127.0.0.1" port:9555];
     //延时调用
     //[TickManager scheduledOnce:self function:tickHandler(self, xmlHandler) interval:.5];
     //
     [[FacedEmployer getInstance] addCommandVector:[self getEventVector] command:self];
     [[FacedEmployer getInstance] sendMessage:@"s"];
     ///Users/MikeRiy/Home/github/Glimmer/Resources/player
-    [self xmlHandler];
+    //[self xmlHandler];
     [self setMovieClip:view];
     //
     if(NO){
+        //NSLog(@"%f,%f",view.frame.size.width, view.frame.size.height);
         UIWebView *web = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)];
-        NSURL *url =[NSURL URLWithString:@"www.baidu.com"];
+        NSURL *url =[NSURL URLWithString:@"http://www.youku.com"];
         NSURLRequest *request =[NSURLRequest requestWithURL:url];
         [web loadRequest:request];
         [view addSubview:web];
     }
+    
+    //播放视频
+    if(YES){
+        /*
+        NSString* file = @"/Users/MikeRiy/Documents/movies/禁止爱情.mp4";
+        NSURL *sourceMovieURL = [NSURL fileURLWithPath:file];
+        AVAsset *movieAsset = [AVURLAsset URLAssetWithURL:sourceMovieURL options:nil];
+        AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:movieAsset];
+        //
+        [playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+        //
+        AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
+        [player play];
+        //
+        AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+        playerLayer.frame = self.view.layer.bounds;
+        playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+        [self.view.layer addSublayer:playerLayer];
+         */
+        //
+        video = [[Video alloc] init];
+        [video setURL:@"/Users/MikeRiy/Documents/movies/禁止爱情.mp4"];
+        [video addTo:self.view];
+        video.layer.frame = self.view.bounds;
+        //
+        UISlider * slider = [[UISlider alloc]initWithFrame:CGRectMake(0, 0, 300, 100)];
+        [self.view addSubview:slider];
+        //
+        [video showSlider:slider];
+    }
 }
+
+Video* video;
+
 
 -(void)onExit{
     [[FacedEmployer getInstance] removeNotices:[self getEventVector] delegate:self];
@@ -95,7 +134,7 @@
 {
     NSLog(@"click");
     /*
-    XMLNode* data = [XMLNode make:@"/Users/MikeRiy/Home/test.txt"];
+    XML_Node* data = [XML_Node make:@"/Users/MikeRiy/Home/test.txt"];
     [data toString];
     NSString* str = [data getChildByName:@"map"].elementValue;
     //NSLog(@"%@", str);

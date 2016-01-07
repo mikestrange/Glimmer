@@ -11,7 +11,7 @@
 
 @implementation XMLAnalysis
 
--(XMLNode*)parseXml:(NSData*)data
+-(XML_Node*)parseXml:(NSData*)data
 {
     /*
     //读取文件数据
@@ -34,7 +34,7 @@
 #pragma - mark 发现节点时
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
 {
-    currentNode = [[XMLNode alloc] initWithName:elementName property:attributeDict];
+    currentNode = [[XML_Node alloc] initWithName:elementName property:attributeDict];
     if(root == nil){
         root = currentNode;
     }else{
